@@ -18,6 +18,23 @@ function getForm($pdo, $table, $user_id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+function getSkinType($code)
+{
+    $types = [
+        'O' => 'چرب',
+        'D' => 'خشک',
+        'S' => 'حساس',
+        'R' => 'مقاوم',
+        'P' => 'رنگدانه‌دار',
+        'N' => 'غیررنگدانه‌دار',
+        'T' => 'سفت',
+        'W' => 'چروکیده',
+
+    ];
+
+    return $types[strtoupper($code)] ?? 'نامشخص';
+}
+
 $oilyform = getForm($pdo, "oilyform", $user_id);
 $sensitiveform = getForm($pdo, "sensitiveform", $user_id);
 $pigmentedform = getForm($pdo, "pigmentedform", $user_id);
@@ -126,7 +143,8 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="text-success">
-                                        <i class="bx bxs-up-arrow fs-32">نوع پوست <?= $oilyform['type'] ?? 'نتیجه‌ای ثبت نشده است' ?></i>
+                                        
+                                        <i class="bx bxs-up-arrow fs-32">نوع پوست <?= getSkinType($oilyform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></i>
                                     </span>
                                 </div>
                                 <a href="resultOilyform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
@@ -146,7 +164,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="text-success">
-                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= $sensitiveform['type'] ?? 'نتیجه‌ای ثبت نشده است' ?></i>
+                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($sensitiveform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></i>
                                     </span>
                                 </div>
                                 <a href="resultsensitiveform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
@@ -165,8 +183,8 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span class="text-success">
-                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= $pigmentedform['type'] ?? 'نتیجه‌ای ثبت نشده است' ?></i>
+                                    <span class="text-success"> 
+                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($pigmentedform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></i>
                                     </span>
                                 </div>
                                 <a href="resultpigmentedform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
@@ -186,7 +204,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="text-success">
-                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= $wrinkledform['type'] ?? 'نتیجه‌ای ثبت نشده است' ?></i>
+                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($wrinkledform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></i>
                                     </span>
                                 </div>
                                 <a href="resultwrinkledform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>

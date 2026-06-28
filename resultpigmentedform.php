@@ -18,10 +18,25 @@ function getForm($pdo, $table, $user_id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-$oilyform = getForm($pdo, "oilyform", $user_id);
-$sensitiveform = getForm($pdo, "sensitiveform", $user_id);
+function getSkinType($code)
+{
+    $types = [
+        'O' => 'چرب',
+        'D' => 'خشک',
+        'S' => 'حساس',
+        'R' => 'مقاوم',
+        'P' => 'رنگدانه‌دار',
+        'N' => 'غیررنگدانه‌دار',
+        'T' => 'سفت',
+        'W' => 'چروکیده',
+
+    ];
+
+    return $types[strtoupper($code)] ?? 'نامشخص';
+}
+
+
 $pigmentedform = getForm($pdo, "pigmentedform", $user_id);
-$wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 ?>
 
 <!DOCTYPE html>
@@ -44,13 +59,13 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
         <!-- نوع پوست -->
         <div class="mb-4">
-            <div class="skin-type">نوع پوست شما: <?= $oilyform['type'] ?? 'نتیجه‌ای ثبت نشده است' ?></div>
+            <div class="skin-type">نوع پوست شما: <?= getSkinType($pigmentedform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></div>
             <!-- <small class="text-muted">نوع پوست شما</small> -->
         </div>
 
         <!-- امتیاز -->
         <div class="mb-4">
-            <div class="score"><?= $oilyform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></div>
+            <div class="score"><?= $pigmentedform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></div>
             <small class="text-muted">از 100</small>
         </div>
 
