@@ -1,197 +1,300 @@
-﻿<!-- مودال نام -->
-<div class="modal fade" id="editNameModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 
-            <div class="modal-header">
-                <h5 class="modal-title">ویرایش نام و نام خانوادگی</h5>
-                <button class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <title>نسخه مراقبت پوستی</title>
 
-            <div class="modal-body">
-                <input type="text" class="form-control"
-                       value=<?= $users["first_name"] ?><?= $users["last_name"] ?>>
-            </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
 
-            <div class="modal-footer">
-                <button class="btn btn-primary">ذخیره</button>
+    <style>
+        body {
+            background: #f5f6fb;
+            font-family: Tahoma, sans-serif;
+        }
+
+        :root {
+            --primary: #49108B;
+        }
+
+        .prescription-card {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, .08);
+            margin: 50px auto;
+        }
+
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 35px;
+        }
+
+        .header h2 {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-right: 5px solid var(--primary);
+            padding-right: 12px;
+        }
+
+        .skin-box {
+            background: #f9f8fc;
+            border: 1px solid #ece8f5;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .skin-code {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 7px 18px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        p {
+            text-align: justify;
+            line-height: 2.2;
+            color: #555;
+        }
+
+        .routine-item {
+            background: #fafafa;
+            border-right: 5px solid var(--primary);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            transition: .3s;
+        }
+
+        .routine-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,.06);
+        }
+
+        .routine-item strong{
+            color: var(--primary);
+        }
+
+        .note-box{
+            background:#fff8e8;
+            border:1px solid #ffe3a3;
+            border-radius:15px;
+            padding:25px;
+        }
+
+        .note-box li{
+            margin-bottom:15px;
+            line-height:2;
+        }
+
+        .btn-dashboard{
+            background:var(--primary);
+            color:#fff;
+            border-radius:50px;
+            padding:12px 35px;
+            transition:.3s;
+        }
+
+        .btn-dashboard:hover{
+            background:#37086b;
+            color:#fff;
+        }
+
+        @media(max-width:768px){
+
+            .header{
+                text-align:center;
+            }
+
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="prescription-card">
+
+        <div class="header">
+
+            <h2>نسخه تخصصی مراقبت از پوست</h2>
+
+            <div>
+                نتیجه ارزیابی و روتین اختصاصی پوست شما
             </div>
 
         </div>
-    </div>
-</div>
 
-<!-- مودال موبایل -->
-<div class="modal fade" id="editMobileModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="p-4 p-md-5">
 
-            <div class="modal-header">
-                <h5 class="modal-title">ویرایش شماره موبایل</h5>
-                <button class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
+            <h4 class="section-title">
+                مشخصات پوست
+            </h4>
 
-            <div class="modal-body">
-                <input type="text" class="form-control"
-                       value=<?= $users["phone"] ?>>
-            </div>
+            <div class="skin-box">
 
-            <div class="modal-footer">
-                <button class="btn btn-primary">ذخیره</button>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<!-- مودال رمز عبور -->
-<div class="modal fade" id="editPasswordModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <div class="modal-header">
-                <h5 class="modal-title">تغییر رمز عبور</h5>
-                <button class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <div class="mb-3">
-                    <label class="form-label">رمز فعلی</label>
-                    <input type="password" class="form-control">
+                <div class="skin-code">
+                    DSPT
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">رمز جدید</label>
-                    <input type="password" class="form-control">
-                </div>
+                <h5>
+                    Dry • Sensitive • Pigmented • Tight
+                </h5>
 
-                <div>
-                    <label class="form-label">تکرار رمز جدید</label>
-                    <input type="password" class="form-control">
-                </div>
+                <h6 class="mt-3">
+                    تایپ پوستی:
+                    خشک، حساس، مستعد لک، بدون چروک
+                </h6>
 
             </div>
 
-            <div class="modal-footer">
-                <button class="btn btn-primary">ذخیره رمز جدید</button>
+
+            <h4 class="section-title">
+                توضیح وضعیت پوست
+            </h4>
+
+            <p>
+
+                پوست شما خشک، حساس، مستعد ایجاد لک بوده و نسبت به سایر تیپ‌های پوستی دیرتر دچار چروک می‌شود.
+                در این نوع پوست سد دفاعی ضعیف‌تر عمل کرده و توانایی حفظ رطوبت کاهش می‌یابد.
+                بنابراین مهم‌ترین هدف روتین شما ترمیم سد پوستی، حفظ رطوبت، جلوگیری از ایجاد لک و محافظت در برابر عوامل محیطی است.
+
+            </p>
+
+            <p>
+
+                استفاده منظم از شوینده ملایم، مرطوب‌کننده، کرم ترمیم‌کننده، آبرسان و ضدآفتاب می‌تواند در حفظ سلامت پوست، کاهش حساسیت و پیشگیری از پیری زودرس نقش مهمی داشته باشد.
+
+            </p>
+
+
+            <h4 class="section-title mt-5">
+                روتین پیشنهادی
+            </h4>
+
+            <div class="routine-item">
+                <strong>1.</strong>
+                Vitalayer Sensivit Face Wash Gel
+                <br>
+                <small>صبح و شب جهت شستشو</small>
             </div>
 
-        </div>
-    </div>
-</div>
-
-
-
-
- <!-- نام و نام خانوادگی -->
-            <div class="row align-items-center profile-item">
-                <div class="col-md-4 fw-bold">
-                    نام و نام خانوادگی
-                </div>
-
-                <div class="col-md-5">
-                   <?= $users["first_name"] ?><?= $users["last_name"] ?>
-                </div>
-
-                <div class="col-md-3 text-md-end mt-2 mt-md-0">
-                    <button class="btn btn-outline-primary btn-sm"
-                            data-bs-toggle="modal"
-                            data-bs-target="#editNameModal">
-                        ویرایش
-                    </button>
-                </div>
+            <div class="routine-item">
+                <strong>2.</strong>
+                Moist 24h Prime Cream
+                <br>
+                <small>بعد از شستشو در طول روز</small>
             </div>
 
-            <!-- شماره موبایل -->
-            <div class="row align-items-center profile-item">
-                <div class="col-md-4 fw-bold">
-                    شماره موبایل
-                </div>
-
-                <div class="col-md-5">
-                    <?= $users["phone"] ?>
-                </div>
-
-                <div class="col-md-3 text-md-end mt-2 mt-md-0">
-                    <button class="btn btn-outline-primary btn-sm"
-                            data-bs-toggle="modal"
-                            data-bs-target="#editMobileModal">
-                        ویرایش
-                    </button>
-                </div>
+            <div class="routine-item">
+                <strong>3.</strong>
+                Prime Anti Aging Sunscreen SPF50
+                <br>
+                <small>بعد از مرطوب کننده</small>
             </div>
 
-            <!-- رمز عبور -->
-            <div class="row align-items-center profile-item">
-                <div class="col-md-4 fw-bold">
-                    رمز عبور
-                </div>
+            <div class="routine-item">
+                <strong>4.</strong>
+                Prime Repair Night Cream
+                <br>
+                <small>شب‌ها بعد از شستشو</small>
+            </div>
 
-                <div class="col-md-5">
-                    ******
-                </div>
+            <div class="routine-item">
+                <strong>5.</strong>
+                Cerave Hydrating Facial Cleanser
+                <br>
+                <small>صبح و شب جهت شستشو</small>
+            </div>
 
-                <div class="col-md-3 text-md-end mt-2 mt-md-0">
-                    <button class="btn btn-outline-primary btn-sm"
-                            data-bs-toggle="modal"
-                            data-bs-target="#editPasswordModal">
-                        تغییر رمز
-                    </button>
-                </div>
+            <div class="routine-item">
+                <strong>6.</strong>
+                Cerave Hyaluronic Acid Serum
+                <br>
+                <small>صبح و شب قبل از مرطوب کننده</small>
+            </div>
+
+            <div class="routine-item">
+                <strong>7.</strong>
+                Cerave Facial Moisturizing Lotion SPF50
+                <br>
+                <small>در طول روز</small>
+            </div>
+
+            <div class="routine-item">
+                <strong>8.</strong>
+                Cerave PM Moisturizing Lotion
+                <br>
+                <small>شب‌ها</small>
             </div>
 
 
+            <h4 class="section-title mt-5">
+                نکات مهم
+            </h4>
 
-            <div class="card-body p-4">
-            <div class="text-center mt-4">
-                <a href="dashboard.php" class="btn btn-primary px-5">
-                 داشبورد
+            <div class="note-box">
+
+                <ul>
+
+                    <li>استفاده منظم و کامل از تمامی محصولات روتین باعث افزایش اثربخشی درمان خواهد شد.</li>
+
+                    <li>نتایج اولیه معمولاً بین ۶ تا ۸ هفته پس از استفاده منظم قابل مشاهده است.</li>
+
+                    <li>سرم‌ها و تونرها محصولات تکمیلی هستند و در صورت نیاز به روتین اضافه می‌شوند.</li>
+
+                    <li>در صورت بروز قرمزی شدید، سوزش، التهاب یا خارش مصرف محصول را متوقف کرده و با پزشک مشورت نمایید.</li>
+
+                    <li>در صورت عدم دریافت نتیجه مناسب، بعد از هشت هفته جهت بررسی مجدد با پزشک مشورت کنید.</li>
+
+                    <li>از شما دعوت می‌شود پس از هشت هفته تجربه استفاده از روتین خود را ثبت نمایید.</li>
+
+                    <li>
+                        ترتیب استفاده از محصولات:
+                        <br><br>
+
+                        <strong>روز:</strong>
+                        شستشو ← تونر ← سرم ← کرم روز ← ضدآفتاب
+
+                        <br><br>
+
+                        <strong>شب:</strong>
+                        شستشو ← تونر ← سرم ← کرم شب
+                    </li>
+
+                    <li>این نسخه به عنوان راهنمای عمومی مراقبت از پوست ارائه شده است.</li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="text-center mt-5">
+
+                <a href="dashboard.php" class="btn btn-dashboard">
+                    بازگشت به داشبورد
                 </a>
+
             </div>
 
         </div>
 
+    </div>
 
+</div>
 
-        <?php
-require 'config.php';
-is_login();
-$user_id = $_SESSION['user_id'];
-
-function getForm($pdo, $table)
-{
-
-$stmt = $pdo->prepare("
-        SELECT `first_name`, `last_name`, `phone`, `password`, `id`
-        FROM `$table`
-        ORDER BY id DESC
-        LIMIT 1
-    ");
-    $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
-$users = getForm($pdo, "users");
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $stmt = $pdo->prepare("
-        UPDATE users 
-        SET first_name = :first_name,
-            last_name = :last_name,
-            phone = :phone,
-            password = :password
-        WHERE id = :id
-    ");
-
-    $stmt->execute([
-        ':first_name' => $_POST['first_name'],
-        ':last_name'  => $_POST['last_name'],
-        ':phone'      => $_POST['phone'],
-        ':password'   => password_hash($_POST['password'], PASSWORD_DEFAULT),
-        ':id'         => $_POST['id']
-    ]);
-
-    echo "آپدیت با موفقیت انجام شد";
-}
+</body>
+</html>

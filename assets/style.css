@@ -489,3 +489,28 @@ input[type="radio"] {
     border: solid 1px;
 }
 
+/* استایل داشبورد */
+
+.intro-card{
+max-width: 950px;
+margin: 20px auto;
+border: none;
+border-radius: 18px;
+box-shadow: 0 8px 25px rgba(0,0,0,.08);
+}
+
+.intro-title{
+color:#49108B;
+font-weight:700;
+}
+
+.intro-text{
+line-height:2.2;
+font-size:1.05rem;
+color:#555;
+text-align:justify;
+}
+
+.intro-text strong{
+color:#49108B;
+}
