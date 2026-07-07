@@ -128,7 +128,7 @@ if (!$prescription) {
             </span>
             <h2>توضیح وضعیت پوست</h2>
         </div>
-        <div class="text-muted-custom d-flex flex-column gap-3" style="font-size:16px; line-height:1.7;">
+        <div class="text-muted-custom d-flex flex-column gap-3" style="font-size:16px; line-height:1.7 text-align: justify;;">
             <p>
                <span class="text-primary-custom fw-bold">تیپ پوستی <?= $skinCode ?></span>
                 <span class="text fw-bold"><?= $prescription['full_description'] ?></span>
@@ -208,43 +208,43 @@ if (!$prescription) {
             <div class="col-12 col-md-4">
                 <div class="note-box note-primary">
                     <span class="text-primary-custom fw-bold fs-5">📌</span>
-                    <p class="text-muted-custom mb-0" style="font-size:15px;">اقلام اشاره شده در روتین پوستی، در کنار یکدیگر به سلامت پوست شما کمک می‌کنند.استفاده ناقص یا نامنظم از روتین ممکن است باعث کاهش اثر بخشی شود.</p>
+                    <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">اقلام اشاره شده در روتین پوستی، در کنار یکدیگر به سلامت پوست شما کمک می‌کنند.استفاده ناقص یا نامنظم از روتین ممکن است باعث کاهش اثر بخشی شود.</p>
                 </div>
             </div>
             <div class="col-12 col-md-4">
                 <div class="note-box note-warning">
                     <span class="fw-bold fs-5" style="color:#F59E0B;">📌</span>
-                    <p class="text-muted-custom mb-0" style="font-size:15px;">در صورت استفاده منظم طبق دستور، نتایج اولیه معمولا بعد از ۶تا۸ هفته قابل مشاهده است.این زمان بسته به نوع پوست و شرایط فردی ممکن است متفاوت باشد.</p>
+                    <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">در صورت استفاده منظم طبق دستور، نتایج اولیه معمولا بعد از ۶تا۸ هفته قابل مشاهده است.این زمان بسته به نوع پوست و شرایط فردی ممکن است متفاوت باشد.</p>
                 </div>
             </div>
             <div class="col-12 col-md-4">
                 <div class="note-box note-error">
                     <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                    <p class="text-muted-custom mb-0" style="font-size:15px;">سرم ها  و تونر ها مرحله تکمیلی روتین پوستی هستند و براساس نیاز پوست مانند لک و جای جوش،خشکی پوست،کدری یا ناهمواری پوست اضافه می‌شوند.این محصولات در صورت نیاز و پس از ارزیابی روتین پایه توصیه میشود.</p>
+                    <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">سرم ها  و تونر ها مرحله تکمیلی روتین پوستی هستند و براساس نیاز پوست مانند لک و جای جوش،خشکی پوست،کدری یا ناهمواری پوست اضافه می‌شوند.این محصولات در صورت نیاز و پس از ارزیابی روتین پایه توصیه میشود.</p>
                 </div>
             </div>
              <div class="col-12 col-md-4">
                 <div class="note-box note-error">
                     <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                    <p class="text-muted-custom mb-0" style="font-size:15px;">هر محصول پوستی ممکن است در برخی افراد باعث واکنش حساسیتی شود . در صورت مشاهده علائم:قرمزی شدید،خارش،سوزش،التهاب مصرف محصولات را متوقف کرده و با پزشک مشورت نمایید.  </p>
+                    <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">هر محصول پوستی ممکن است در برخی افراد باعث واکنش حساسیتی شود . در صورت مشاهده علائم:قرمزی شدید،خارش،سوزش،التهاب مصرف محصولات را متوقف کرده و با پزشک مشورت نمایید.  </p>
                 </div>
             </div>
              <div class="col-12 col-md-4">
                 <div class="note-box note-error">
                     <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                    <p class="text-muted-custom mb-0" style="font-size:15px;">در صورت عدم مشاهده نتیجه یا نیاز به تنظیم مجدد روتین توصیه میشود،پس از هشت هفته استفاده منظم نتیجه را ارزیابی کرده و در صورت نیاز با متخصص پوست مشاوره انجام شود.</p>
+                    <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">در صورت عدم مشاهده نتیجه یا نیاز به تنظیم مجدد روتین توصیه میشود،پس از هشت هفته استفاده منظم نتیجه را ارزیابی کرده و در صورت نیاز با متخصص پوست مشاوره انجام شود.</p>
                 </div>
             </div>
              <div class="col-12 col-md-4">
                 <div class="note-box note-error">
                     <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                    <p class="text-muted-custom mb-0" style="font-size:15px;">از شما دعوت میشود پس از هشت هفته استفاده منظم از روتین تجربه خود را ثبت کنید.در صورت نیاز به بررسی دقیق تر امکان ویزیت آنلاین با پزشک از طریق پروفایل فراهم است.</p>
+                    <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">از شما دعوت میشود پس از هشت هفته استفاده منظم از روتین تجربه خود را ثبت کنید.در صورت نیاز به بررسی دقیق تر امکان ویزیت آنلاین با پزشک از طریق پروفایل فراهم است.</p>
                 </div>
             </div>
              <div class="col-12 col-md-4">
                 <div class="note-box note-error">
                     <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                    <p class="text-muted-custom mb-0" style="font-size:15px;">کلیت استفاده از محصولات روتین پوستی به ترتیب زیر است:
+                    <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">کلیت استفاده از محصولات روتین پوستی به ترتیب زیر است:
  روتین روز:شست و شو، تونر،سرم روزانه طبق دستور،کرم روز، کرم ضد آفتاب 
 روتین شب:شست و شو،تونر، سرم طبق دستور ،کرم شب
 این روتین به عنوان راهنمای عمومی مراقبت از پوست ارایه شده.
@@ -266,7 +266,7 @@ if (!$prescription) {
         </div>
         <div class="row g-5">
             <!-- Day Routine -->
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-4">
                 <div class="timeline-heading day">
                     <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
@@ -299,7 +299,7 @@ if (!$prescription) {
                 </div>
             </div>
             <!-- Night Routine -->
-            <div class="col-12 col-lg-6">
+            <div class="col-12 col-lg-4">
                 <div class="timeline-heading night">
                     <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
@@ -328,6 +328,41 @@ if (!$prescription) {
                     </div>
                 </div>
             </div>
+             
+<!-- Day Night Routine -->
+            <div class="col-12 col-lg-4">
+                <div class="timeline-heading day">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-brightness-high-fill" viewBox="0 0 16 16">
+  <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"/>
+</svg>
+                    </span>
+                    <span>روتین روز و شب</span>
+                </div>
+                <div class="timeline-list">
+                    <div class="timeline-item">
+                        <span class="timeline-dot dot-active-primary"></span>
+                        <div class="timeline-label label-active-primary">شستشو</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot dot-inactive"></span>
+                        <div class="timeline-label label-inactive">تونر (اختیاری)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot dot-inactive"></span>
+                        <div class="timeline-label label-inactive">سرم</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot dot-active-primary"></span>
+                        <div class="timeline-label label-active-primary">مرطوب‌کننده</div>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-dot dot-active-primary"></span>
+                        <div class="timeline-label label-solid-primary">ضد آفتاب</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
