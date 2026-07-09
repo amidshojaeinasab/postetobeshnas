@@ -1,4 +1,5 @@
-﻿$routines = [
+﻿<?php 
+return [
 
 'DSPT' => [
 
@@ -35,9 +36,7 @@
 
     ],
 
-],
-
-'Day_and_night' => [
+    'Day_and_night' => [
 
         [
             'product' => 'Vitalayer Sensivit face wash Gel gel ',
@@ -57,6 +56,10 @@
     ],
 
 ],
+
+
+
+
 
 
 'DSNT' => [
@@ -94,9 +97,7 @@
 
     ],
 
-],
-
-'Day_and_night' => [
+    'Day_and_night' => [
 
         [
             'product' => 'Vitalayer Sensivit Face wash Gel',
@@ -123,11 +124,13 @@
             'usage' => 'قبل از مرطوب کننده ',
         ],
 
-    ],
+],
 
 ],
 
-];
+
+
+
 
 'DSPW' => [
 
@@ -168,8 +171,6 @@
         ],
 
     ],
-
-],
 
 'Day_and_night' => [
 
@@ -227,8 +228,6 @@
 
     ],
 
-],
-
 'Day_and_night' => [
 
         [
@@ -277,10 +276,7 @@
             'product' => 'Cerave Pm Facial Moisturizing Lotion',
             'usage' => 'شب ها',
         ],
-
     ],
-
-],
 
 'Day_and_night' => [
 
@@ -328,8 +324,6 @@
         ],
 
     ],
-
-],
 
 'Day_and_night' => [
 
@@ -392,8 +386,6 @@
 
     ],
 
-],
-
 'Day_and_night' => [
 
         [
@@ -454,8 +446,6 @@
         ],
 
     ],
-
-],
 
 'Day_and_night' => [
 
@@ -518,8 +508,6 @@
 
     ],
 
-],
-
 'Day_and_night' => [
 
         [
@@ -565,8 +553,6 @@
         ],
 
     ],
-
-],
 
 'Day_and_night' => [
 
@@ -633,8 +619,6 @@
         ],
 
     ],
-
-],
 
 'Day_and_night' => [
 
@@ -703,8 +687,6 @@
 
     ],
 
-],
-
 'Day_and_night' => [
 
         [
@@ -756,8 +738,6 @@
         ],
 
     ],
-
-],
 
 'Day_and_night' => [
 
@@ -821,8 +801,6 @@
 
     ],
 
-],
-
 'Day_and_night' => [
 
         [
@@ -884,8 +862,6 @@
         ],
 
     ],
-
-],
 
 'Day_and_night' => [
 
@@ -949,8 +925,6 @@
 
     ],
 
-],
-
 'Day_and_night' => [
 
         [
@@ -970,3 +944,5 @@
 
 
 ];
+
+?>

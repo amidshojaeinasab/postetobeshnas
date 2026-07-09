@@ -266,7 +266,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                 </p>
 
             </div>
-<a href="dashboard.php" class="btn btn-outline-custom btn-lg px-5 w-100">
+<a href="medicalprescription.php" class="btn btn-outline-custom btn-lg px-5 w-100">
             ورود به نسخه پزشکی
         </a>
         </div>
