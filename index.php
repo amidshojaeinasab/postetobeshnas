@@ -36,7 +36,7 @@
             <a class="nav-link text-secondary-custom" href="#">تماس با ما</a>
           </li>
         </ul>
-          <a href="login.php" class="btn btn-primary-custom px-4 py-3">
+          <a href="login.php" class="btn btn-primary-custom px-4 py-3 fs-6">
               ورود | ثبت نام
           </a>
         
@@ -64,12 +64,12 @@
 
         <div class="d-flex flex-wrap gap-3">
           
-          <a href="login.php" class="btn btn-primary-custom px-5 py-3">
+          <a href="login.php" class="btn btn-primary-custom px-5 py-3 fs-6">
                 شروع آنالیز پوست
           </a>
 
-          <a href="login.php" class="btn btn-outline-custom px-5 py-3">
-                ورود
+          <a href="dashboard.php" class="btn btn-outline-custom px-5 py-3 fs-6">
+            داشبورد
           </a>
         </div>
       </div>
@@ -84,10 +84,8 @@
         <div class="col-md-6 col-lg-3">
           <div class="h-100 bg-surface p-4 rounded-lg-custom shadow-sm transition-soft hover-lift border-soft">
             <div class="icon-circle bg-primary-container mb-4">
-              <span class="text-primary-custom">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-activity" viewBox="0 0 16 16">
-                  <path fill-rule="evenodd" d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
-                </svg>
+              <span class="icon">
+                <?= file_get_contents('assets/icons/activity.svg'); ?>
               </span>
             </div>
             <h3 class="headline-md text-primary-custom mb-3">آنالیز اختصاصی پوست</h3>
@@ -100,9 +98,9 @@
         <div class="col-md-6 col-lg-3">
           <div class="h-100 bg-surface p-4 rounded-lg-custom shadow-sm transition-soft hover-lift border-soft">
             <div class="icon-circle bg-tertiary-container mb-4">
-              <span class="material-symbols-outlined" style="color: var(--tertiary);"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-clock-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71z"/>
-</svg></span>
+              <span class="icon" style="color: var(--tertiary);">
+                <?= file_get_contents('assets/icons/clock-fill.svg'); ?>
+              </span>
             </div>
             <h3 class="headline-md text-primary-custom mb-3">مشاوره هوشمند</h3>
             <p class="body-md text-surface-variant mb-0">
@@ -114,10 +112,8 @@
         <div class="col-md-6 col-lg-3">
           <div class="h-100 bg-surface p-4 rounded-lg-custom shadow-sm transition-soft hover-lift border-soft">
             <div class="icon-circle bg-secondary-container mb-4">
-              <span class="material-symbols-outlined text-secondary-custom">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-flask-fill" viewBox="0 0 16 16">
-  <path d="M11.5 0a.5.5 0 0 1 0 1H11v5.358l4.497 7.36c.099.162.16.332.192.503l.013.063.008.083q.006.053.007.107l-.003.09q-.001.047-.005.095-.006.053-.017.106l-.016.079q-.012.049-.028.096l-.028.086a1.5 1.5 0 0 1-.17.322 1.5 1.5 0 0 1-.395.394q-.04.028-.082.054-.045.026-.095.049l-.073.035-.09.033q-.05.02-.103.034-.04.01-.08.017-.053.012-.108.021l-.006.002-.202.013H1.783l-.214-.015a1.503 1.503 0 0 1-1.066-2.268L5 6.359V1h-.5a.499.499 0 0 1-.354-.854A.5.5 0 0 1 4.5 0zm.5 12a.5.5 0 0 0 0 1h1.885l-.61-1zm-1-2a.5.5 0 0 0 0 1h1.664l-.612-1zm-1-2a.5.5 0 0 0 0 1h1.441l-.61-1zM9 6a.5.5 0 0 0 0 1h1.22l-.147-.24A.5.5 0 0 1 10 6.5V6zm0-2a.5.5 0 0 0 0 1h1V4zm0-2a.5.5 0 0 0 0 1h1V2z"/>
-</svg>
+              <span class="icon text-secondary-custom">
+                <?= file_get_contents('assets/icons/flask-fill.svg'); ?>
               </span>
             </div>
             <h3 class="headline-md text-primary-custom mb-3">علم در خدمت زیبایی شما</h3>
@@ -130,9 +126,9 @@
         <div class="col-md-6 col-lg-3">
           <div class="h-100 bg-surface p-4 rounded-lg-custom shadow-sm transition-soft hover-lift border-soft">
             <div class="icon-circle bg-primary-fixed mb-4">
-              <span class="material-symbols-outlined" style="color: #271816;"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gift-fill" viewBox="0 0 16 16">
-  <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A3 3 0 0 1 3 2.506zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43zM9 3h2.932l.023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0zm6 4v7.5a1.5 1.5 0 0 1-1.5 1.5H9V7zM2.5 16A1.5 1.5 0 0 1 1 14.5V7h6v9z"/>
-</svg></span>
+              <span class="icon" style="color: #271816;">
+                <?= file_get_contents('assets/icons/gift-fill.svg'); ?>
+              </span>
             </div>
             <h3 class="headline-md text-primary-custom mb-3">آنالیز اولیه، کاملاً رایگان</h3>
             <p class="body-md text-surface-variant mb-0">
@@ -169,9 +165,9 @@
               <p class="body-md text-secondary-custom mb-4">
                 نوع پوست خود را شناسایی کنید و بفهمید پوست شما به مراقبت‌های مخصوص پوست چرب نیاز دارد یا پوست خشک.
               </p>
-              <button class="btn btn-outline-custom px-4 py-2">
+              <a href="Oilyform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
                 شروع
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -186,9 +182,9 @@
               <p class="body-md text-secondary-custom mb-4">
                 میزان حساسیت پوست خود را بسنجید و محصولات سازگار با پوستتان را بهتر انتخاب کنید.
               </p>
-              <button class="btn btn-outline-custom px-4 py-2">
-                 شروع
-              </button>
+              <a href="sensitiveform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
+                شروع
+              </a>
             </div>
           </div>
         </div>
@@ -203,9 +199,9 @@
               <p class="body-md text-secondary-custom mb-4">
                 بررسی کنید پوست شما تا چه اندازه مستعد لک، تیرگی و تغییرات رنگدانه‌ای است.
               </p>
-              <button class="btn btn-outline-custom px-4 py-2">
+               <a href="pigmentedform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
                 شروع
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -220,9 +216,9 @@
               <p class="body-md text-secondary-custom mb-4">
                میزان استحکام و علائم پیری پوست خود را ارزیابی کنید و نیازهای مراقبتی آن را بشناسید.
               </p>
-              <button class="btn btn-outline-custom px-4 py-2">
-                 شروع
-              </button>
+              <a href="wrinkledform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
+                شروع
+              </a>
             </div>
           </div>
         </div>
@@ -309,16 +305,22 @@
           <div class="brand headline-md text-primary-custom mb-3">
              پوستتو بشناس
           </div>
-          <p class="body-md text-on-secondary-container mb-4" style="max-width: 380px;">
-تعریفی نو از مراقبت از پوست؛
-ترکیبی از دقت علمی، تحلیل هوشمند و توصیه‌های شخصی‌سازی‌شده.          </p>
-
+          <div>
+            <p class="body-md text-on-secondary-container mb-4" style="max-width: 380px;">
+              تعریفی نو از مراقبت از پوست؛ ترکیبی از دقت علمی، تحلیل هوشمند و توصیه‌های شخصی‌سازی‌شده.
+            </p>
+          </div>
+          
           <div class="d-flex gap-3">
             <a class="social-link" href="#">
-              <span class="material-symbols-outlined fs-6">public</span>
+              <span class="material-symbols-outlined fs-6">
+                <?= file_get_contents('assets/icons/telegram.svg'); ?>
+              </span>
             </a>
             <a class="social-link" href="#">
-              <span class="material-symbols-outlined fs-6">alternate_email</span>
+              <span class="material-symbols-outlined fs-6">
+                <?= file_get_contents('assets/icons/instagram.svg'); ?>
+              </span>
             </a>
           </div>
         </div>
@@ -329,18 +331,17 @@
             <div class="col-6">
               <h5 class="label-caps text-primary-custom mb-4">دسترسی سریع</h5>
               <ul class="list-unstyled d-flex flex-column gap-3 body-md mb-0">
-                <li><a class="footer-link text-decoration-underline" href="#">Privacy Policy</a></li>
-                <li><a class="footer-link text-decoration-underline" href="#">Terms of Service</a></li>
-                <li><a class="footer-link text-decoration-underline" href="#">Contact Us</a></li>
-                <li><a class="footer-link text-decoration-underline" href="#">Ingredients Glossary</a></li>
+                <li><a class="footer-link text-decoration" href="#">درباره ما</a></li>
+                <li><a class="footer-link text-decoration" href="#">تماس با ما</a></li>
               </ul>
             </div>
 
             <div class="col-6">
               <h5 class="label-caps text-primary-custom mb-4">اطلاعات تماس</h5>
-              <p class="body-md text-on-secondary-container">
-                Join our newsletter for curated science-based skincare rituals.
-              </p>
+              <ul class="list-unstyled d-flex flex-column gap-3 body-md mb-0">
+                  <li class="footer-link text-decoration">تهران خیابان شریعتی</li>
+                  <li class="footer-link text-decoration">09123456789</li>
+              </ul>
 
               <div class="d-flex gap-2 mt-3">
                 <input class="form-control rounded-pill border-0 bg-surface" placeholder="Email Address" type="email">
