@@ -22,16 +22,20 @@ if (isset($_POST["submit"])) {
     $q18 = $_POST["q18"];
     $q19 = $_POST["q19"];
     $q20 = $_POST["q20"];
+    $q21 = $_POST["q21"];
 
- $res=0;
-    for($i=1;$i<=11;$i++){
-        if($_POST["q$i"] == 5){
-            $res +=2.5; 
-        }
-        else{
-            $res+=$_POST["q$i"];
-        }
+  $res = 0;
+
+for ($i = 1; $i <= 21; $i++) {
+
+    $value = (int)$_POST["q$i"];
+
+    if ($i != 21 && $value == 5) {
+        $res += 2.5;
+    } else {
+        $res += $value;
     }
+}
 
 $description = "";
 if ($res >= 20 && $res <= 40) {
@@ -43,7 +47,7 @@ if ($res >= 20 && $res <= 40) {
 
 $type = ($res >= 40) ? "W" : "T";
 
-    $insert = $pdo-> prepare("INSERT INTO wrinkledform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, q14=?, q15=?, q16=?, q17=?, q18=?, q19=?, q20=?, res=?, type=?, user_id=?");
+    $insert = $pdo-> prepare("INSERT INTO wrinkledform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, q14=?, q15=?, q16=?, q17=?, q18=?, q19=?, q20=?, q21=?, res=?, type=?, user_id=?");
     $insert->bindValue(1,$q1);
     $insert->bindValue(2,$q2);
     $insert->bindValue(3,$q3);
@@ -64,10 +68,13 @@ $type = ($res >= 40) ? "W" : "T";
     $insert->bindValue(18,$q18);
     $insert->bindValue(19,$q19);
     $insert->bindValue(20,$q20);
-    $insert->bindValue(21,$res);
-    $insert->bindValue(22,$type);
-    $insert->bindValue(23,$_SESSION["user_id"]);
+    $insert->bindValue(21,$q21);
+    $insert->bindValue(22,$res);
+    $insert->bindValue(23,$type);
+    $insert->bindValue(24,$_SESSION["user_id"]);
     $insert->execute();
+
+    header("Location: resultwrinkledform.php");
 };
 ?>
 
@@ -755,24 +762,25 @@ $type = ($res >= 40) ? "W" : "T";
                             </div>
                         </div>
 
-                        <!-- سوال 20 -->
+                        
+                        <!-- سوال 21 -->
                         <div class="card question-card shadow-sm mb-4">
                             <div class="card-body p-4">
 
                                 <h4 class="mb-4 lh-base fw-bold" style="text-align: justify;">
-                                    سن شما:
+                                    بالای ۶۵ سال دارید؟
                                 </h4>
-
                                 <label class="answer-item d-block">
-                                    <input type="radio" name="q20" value="1" required>
-                                    ۶۵ سال یا بیشتر
-                                </label>
+    <input type="radio" name="q21" value="0" required>
+    خیر
+</label>
 
-                                <label class="answer-item d-block">
-                                    <input type="radio" name="q20" value="2">
-                                    کمتر از ۶۵ سال
-                                </label>
+<label class="answer-item d-block">
+    <input type="radio" name="q21" value="5">
+    بله
+</label>
                             </div>
+                            
                         </div>
 
                         <div class="d-grid">

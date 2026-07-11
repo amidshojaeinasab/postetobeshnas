@@ -15,11 +15,16 @@ function getForm($pdo, $table, $user_id)
     ");
 
     $stmt->execute([$user_id]);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    // return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
 }
 
 function getSkinType($code)
 {
+    if (empty($code)) {
+        return 'نتیجه‌ای ثبت نشده است';
+    }
+
     $types = [
         'O' => 'چرب',
         'D' => 'خشک',
@@ -29,7 +34,6 @@ function getSkinType($code)
         'N' => 'غیررنگدانه‌دار',
         'T' => 'سفت',
         'W' => 'چروکیده',
-
     ];
 
     return $types[strtoupper($code)] ?? 'نامشخص';
@@ -144,7 +148,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                                 <div>
                                     <span class="text-success">
                                         
-                                        <i class="bx bxs-up-arrow fs-32">نوع پوست <?= getSkinType($oilyform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></i>
+                                        <i class="bx bxs-up-arrow fs-32">نوع پوست <?= getSkinType($oilyform['type'] ?? '') ?></i>
                                     </span>
                                 </div>
                                 <a href="resultOilyform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
@@ -164,7 +168,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="text-success">
-                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($sensitiveform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></i>
+                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($sensitiveform['type'] ?? '') ?></i>
                                     </span>
                                 </div>
                                 <a href="resultsensitiveform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
@@ -184,7 +188,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="text-success"> 
-                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($pigmentedform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></i>
+                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($pigmentedform['type'] ?? '') ?></i>
                                     </span>
                                 </div>
                                 <a href="resultpigmentedform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
@@ -204,7 +208,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="text-success">
-                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($wrinkledform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></i>
+                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($wrinkledform['type'] ?? '') ?></i>
                                     </span>
                                 </div>
                                 <a href="resultwrinkledform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
@@ -266,7 +270,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                 </p>
 
             </div>
-<a href="medicalprescription.php" class="btn btn-outline-custom btn-lg px-5 w-100">
+<a href="medicalprescription.php" class="btn btn-outline-custom btn-lg px-5 w-100 fs-6">
             ورود به نسخه پزشکی
         </a>
         </div>

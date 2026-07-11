@@ -20,16 +20,20 @@ if (isset($_POST["submit"])) {
     $q16 = $_POST["q16"];
     $q17 = $_POST["q17"];
     $q18 = $_POST["q18"];
+    $q19 = $_POST["q19"];
 
-   $res=0;
-    for($i=1;$i<=11;$i++){
-        if($_POST["q$i"] == 5){
-            $res +=2.5; 
-        }
-        else{
-            $res+=$_POST["q$i"];
-        }
+  $res = 0;
+
+for ($i = 1; $i <= 19; $i++) {
+
+    $value = (int)$_POST["q$i"];
+
+    if ($i != 19 && $value == 5) {
+        $res += 2.5;
+    } else {
+        $res += $value;
     }
+}
 
 $description = "";
 if ($res >= 34 && $res <= 72) {
@@ -45,7 +49,7 @@ if ($res >= 34 && $res <= 72) {
 
 $type = ($res >= 30) ? "S" : "R";
 
-    $insert = $pdo-> prepare("INSERT INTO sensitiveform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, q14=?, q15=?, q16=?, q17=?, q18=?, res=?, type=?, user_id=?");
+    $insert = $pdo-> prepare("INSERT INTO sensitiveform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, q14=?, q15=?, q16=?, q17=?, q18=?, q19=?, res=?, type=?, user_id=?");
     $insert->bindValue(1,$q1);
     $insert->bindValue(2,$q2);
     $insert->bindValue(3,$q3);
@@ -64,10 +68,13 @@ $type = ($res >= 30) ? "S" : "R";
     $insert->bindValue(16,$q16);
     $insert->bindValue(17,$q17);
     $insert->bindValue(18,$q18);
-    $insert->bindValue(19,$res);
-    $insert->bindValue(20,$type);
-    $insert->bindValue(21,$_SESSION["user_id"]);
+    $insert->bindValue(19,$q19);
+    $insert->bindValue(20,$res);
+    $insert->bindValue(21,$type);
+    $insert->bindValue(22,$_SESSION["user_id"]);
     $insert->execute();
+
+    header("Location: resultsensitiveform.php");
 };
 ?>
 
@@ -735,6 +742,33 @@ $type = ($res >= 30) ? "S" : "R";
                         <span>توجه: اگر دلیل عدم استفاده شما قرمزی، خارش یا تورم است، گزینه «همیشه» را انتخاب کنید.</span>
                     </div>
                         </div>
+
+                        <!-- سوال 19 -->
+                        <div class="card question-card shadow-sm mb-4">
+                            <div class="card-body p-4">
+
+                                <h4 class="mb-4 lh-base fw-bold" style="text-align: justify;">
+ تاکنون توسط یک متخصص پوست، آکنه، روزاسه، درماتیت تماسی یا اگزما برای شما تشخیص داده شده است.
+                                </h4>
+                                <label class="answer-item d-block">
+    <input type="radio" name="q19" value="0" required>
+    هیچ‌کدام
+</label>
+
+<label class="answer-item d-block">
+    <input type="radio" name="q19" value="5">
+    توسط یک متخصص پوست
+</label>
+
+<label class="answer-item d-block">
+    <input type="radio" name="q19" value="2">
+    توسط پزشک دیگر
+</label>
+                            </div>
+                            
+                        </div>
+
+                        
 
                         <div class="d-grid">
                             <button type="submit" class="submit-btn" name="submit">
