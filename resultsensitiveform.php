@@ -29,8 +29,11 @@ function getSkinType($code)
         'N' => 'غیررنگدانه‌دار',
         'T' => 'سفت',
         'W' => 'چروکیده',
-
     ];
+
+    if (empty($code)) {
+        return 'نامشخص';
+    }
 
     return $types[strtoupper($code)] ?? 'نامشخص';
 }
@@ -58,7 +61,7 @@ $sensitiveform = getForm($pdo, "sensitiveform", $user_id);
 
         <!-- نوع پوست -->
         <div class="mb-4">
-            <div class="skin-type">نوع پوست شما: <?= getSkinType($sensitiveform['type']) ?? 'نتیجه‌ای ثبت نشده است' ?></div>
+            <div class="skin-type">نوع پوست شما: <?= getSkinType($sensitiveform['type'] ?? '') ?></div>
             <!-- <small class="text-muted">نوع پوست شما</small> -->
         </div>
 

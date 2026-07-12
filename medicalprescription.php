@@ -85,7 +85,7 @@ if (isset($medicines[$skinCode])) {
             <span class="icon" style="font-size:20px;">
                  <?= file_get_contents('assets/icons/box-arrow.svg'); ?>
             </span>
-            ورود به نسخه پزشکی
+            ورود به داشبورد
         </a>
     </div>
 </header>

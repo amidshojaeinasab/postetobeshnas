@@ -1,5 +1,6 @@
 ﻿<?php
 require_once 'config.php';
+is_login();
 
 if (isset($_POST["submit"])) {
     $q1 = $_POST["q1"];
@@ -55,6 +56,8 @@ $type = ($res >= 29) ? "P" : "N";
     $insert->bindValue(15,$type);
     $insert->bindValue(16,$_SESSION["user_id"]);
     $insert->execute();
+
+    header("Location: resultpigmentedform.php");
 };
 ?>
 

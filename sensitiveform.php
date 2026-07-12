@@ -1,5 +1,6 @@
 ﻿<?php
 require_once 'config.php';
+is_login();
 
 if (isset($_POST["submit"])) {
     $q1 = $_POST["q1"];
