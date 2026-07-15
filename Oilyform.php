@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once 'config.php';
 is_login();
 
@@ -14,50 +14,49 @@ if (isset($_POST["submit"])) {
     $q9 = $_POST["q9"];
     $q10 = $_POST["q10"];
     $q11 = $_POST["q11"];
-    
-    $res=0;
-    for($i=1;$i<=11;$i++){
-        if($_POST["q$i"] == 5){
-            $res +=2.5; 
-        }
-        else{
-            $res+=$_POST["q$i"];
+
+    $res = 0;
+    for ($i = 1; $i <= 11; $i++) {
+        if ($_POST["q$i"] == 5) {
+            $res += 2.5;
+        } else {
+            $res += $_POST["q$i"];
         }
     }
 
-$description = "";
-if ($res >= 34 && $res <= 44) {
-    $description = "پوست شما بسیار چرب است.";
-} elseif ($res >= 27 && $res <= 33) {
-    $description = "پوست شما کمی چرب است.";
-} elseif ($res >= 17 && $res <= 26) {
-    $description = "پوست شما کمی خشک است.";
-} elseif ($res >= 11 && $res <= 16) {
-    $description = "پوست شما خشک است.";
-}
+    $description = "";
+    if ($res >= 34 && $res <= 44) {
+        $description = "پوست شما بسیار چرب است.";
+    } elseif ($res >= 27 && $res <= 33) {
+        $description = "پوست شما کمی چرب است.";
+    } elseif ($res >= 17 && $res <= 26) {
+        $description = "پوست شما کمی خشک است.";
+    } elseif ($res >= 11 && $res <= 16) {
+        $description = "پوست شما خشک است.";
+    }
 
 
-$type = ($res >= 27) ? "O" : "D";
+    $type = ($res >= 27) ? "O" : "D";
 
-    $insert = $pdo-> prepare("INSERT INTO oilyform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, res=?, type=?, user_id=?");
-    $insert->bindValue(1,$q1);
-    $insert->bindValue(2,$q2);
-    $insert->bindValue(3,$q3);
-    $insert->bindValue(4,$q4);
-    $insert->bindValue(5,$q5);
-    $insert->bindValue(6,$q6);
-    $insert->bindValue(7,$q7);
-    $insert->bindValue(8,$q8);
-    $insert->bindValue(9,$q9);
-    $insert->bindValue(10,$q10);
-    $insert->bindValue(11,$q11);
-    $insert->bindValue(12,$res);
-    $insert->bindValue(13,$type);
-    $insert->bindValue(14,$_SESSION["user_id"]);
+    $insert = $pdo->prepare("INSERT INTO oilyform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, res=?, type=?, user_id=?");
+    $insert->bindValue(1, $q1);
+    $insert->bindValue(2, $q2);
+    $insert->bindValue(3, $q3);
+    $insert->bindValue(4, $q4);
+    $insert->bindValue(5, $q5);
+    $insert->bindValue(6, $q6);
+    $insert->bindValue(7, $q7);
+    $insert->bindValue(8, $q8);
+    $insert->bindValue(9, $q9);
+    $insert->bindValue(10, $q10);
+    $insert->bindValue(11, $q11);
+    $insert->bindValue(12, $res);
+    $insert->bindValue(13, $type);
+    $insert->bindValue(14, $_SESSION["user_id"]);
     $insert->execute();
-    
+
     header("Location: resultOilyform.php");
-exit();
+    exit();
 };
 ?>
 
@@ -74,7 +73,7 @@ exit();
 
 </head>
 
-<body >
+<body>
 
     <div class="container py-5">
 
@@ -84,7 +83,7 @@ exit();
                 <div class="text-center mb-5 text-white">
                     <h1 class="fw-bold">تست نوع پوست</h1>
                     <p class="text-white">
-                       چرب/خشک
+                        چرب/خشک
                     </p>
                 </div>
 

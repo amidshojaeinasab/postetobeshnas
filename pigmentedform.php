@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once 'config.php';
 is_login();
 
@@ -16,45 +16,51 @@ if (isset($_POST["submit"])) {
     $q11 = $_POST["q11"];
     $q12 = $_POST["q12"];
     $q13 = $_POST["q13"];
+    $q14 = $_POST["q14"];
 
- $res=0;
-    for($i=1;$i<=11;$i++){
-        if($_POST["q$i"] == 5){
-            $res +=2.5; 
-        }
-        else{
-            $res+=$_POST["q$i"];
+
+    $res = 0;
+    for ($i = 1; $i <= 14; $i++) {
+
+        $value = (int)$_POST["q$i"];
+
+        if ($i != 14 && $value == 5) {
+            $res += 2.5;
+        } else {
+            $res += $value;
         }
     }
 
-$description = "";
-if ($res >= 13 && $res <= 28) {
-    $description = "نوع پوست شما رنگدانه دار است.";
-} elseif ($res >= 29 && $res <= 52) {
-    $description = "نوع پوست شما غیر رنگدانه دار است.";}
+    $description = "";
+    if ($res >= 13 && $res <= 28) {
+        $description = "نوع پوست شما رنگدانه دار است.";
+    } elseif ($res >= 29 && $res <= 52) {
+        $description = "نوع پوست شما غیر رنگدانه دار است.";
+    }
 
 
 
 
-$type = ($res >= 29) ? "P" : "N";
+    $type = ($res >= 29) ? "P" : "N";
 
-    $insert = $pdo-> prepare("INSERT INTO pigmentedform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, res=?, type=?, user_id=?");
-    $insert->bindValue(1,$q1);
-    $insert->bindValue(2,$q2);
-    $insert->bindValue(3,$q3);
-    $insert->bindValue(4,$q4);
-    $insert->bindValue(5,$q5);
-    $insert->bindValue(6,$q6);
-    $insert->bindValue(7,$q7);
-    $insert->bindValue(8,$q8);
-    $insert->bindValue(9,$q9);
-    $insert->bindValue(10,$q10);
-    $insert->bindValue(11,$q11);
-    $insert->bindValue(12,$q12);
-    $insert->bindValue(13,$q13);
-    $insert->bindValue(14,$res);
-    $insert->bindValue(15,$type);
-    $insert->bindValue(16,$_SESSION["user_id"]);
+    $insert = $pdo->prepare("INSERT INTO pigmentedform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, q14=?, res=?, type=?, user_id=?");
+    $insert->bindValue(1, $q1);
+    $insert->bindValue(2, $q2);
+    $insert->bindValue(3, $q3);
+    $insert->bindValue(4, $q4);
+    $insert->bindValue(5, $q5);
+    $insert->bindValue(6, $q6);
+    $insert->bindValue(7, $q7);
+    $insert->bindValue(8, $q8);
+    $insert->bindValue(9, $q9);
+    $insert->bindValue(10, $q10);
+    $insert->bindValue(11, $q11);
+    $insert->bindValue(12, $q12);
+    $insert->bindValue(13, $q13);
+    $insert->bindValue(14, $q14);
+    $insert->bindValue(15, $res);
+    $insert->bindValue(16, $type);
+    $insert->bindValue(17, $_SESSION["user_id"]);
     $insert->execute();
 
     header("Location: resultpigmentedform.php");
@@ -84,7 +90,7 @@ $type = ($res >= 29) ? "P" : "N";
                 <div class="text-center mb-5 text-white">
                     <h1 class="fw-bold">تست نوع پوست</h1>
                     <p class="text-white">
-                       پوست رنگ دانه دار در مقابل غیر رنگدانه دار
+                        پوست رنگ دانه دار در مقابل غیر رنگدانه دار
                     </p>
                 </div>
 
@@ -528,8 +534,26 @@ $type = ($res >= 29) ? "P" : "N";
                                 </label>
                             </div>
 
-                            <div class="alert alert-warning py-2">
-                                <span>توجه: اگر لکه‌های تیره در مناطق معرض آفتاب دارید، ۵ امتیاز به مجموع امتیازات اضافه کنید.</span>
+                        </div>
+
+
+                        <!-- سوال 14 -->
+                        <div class="card question-card shadow-sm mb-4">
+                            <div class="card-body p-4">
+
+                                <h4 class="mb-4 lh-base fw-bold" style="text-align: justify;">
+                                    لکه‌های تیره در مناطق معرض آفتاب دارید
+                                </h4>
+
+                                <label class="answer-item d-block">
+                                    <input type="radio" name="q14" value="0" required>
+                                    خیر
+                                </label>
+
+                                <label class="answer-item d-block">
+                                    <input type="radio" name="q14" value="5">
+                                    بله
+                                </label>
                             </div>
                         </div>
 

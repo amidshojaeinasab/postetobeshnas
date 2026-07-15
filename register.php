@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 require 'config.php';
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
 
     // echo "ثبت نام با موفقیت انجام شد";
-    header("Location: /postetobeshnas/index.php");
+    header("Location: index.php");
     exit;
 }
 

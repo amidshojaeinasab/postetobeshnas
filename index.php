@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl" class="scroll-smooth">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>پوست و مو خود را بشناسید | اولین سایت مراقیت پوست و مو تحت نظر پزشک
-</title>
+  </title>
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
@@ -36,10 +37,10 @@
             <a class="nav-link text-secondary-custom" href="#">تماس با ما</a>
           </li>
         </ul>
-          <a href="login.php" class="btn btn-primary-custom px-4 py-3 fs-6">
-              ورود | ثبت نام
-          </a>
-        
+        <a href="login.php" class="btn btn-primary-custom px-4 py-3 fs-6">
+          ورود | ثبت نام
+        </a>
+
       </div>
     </div>
   </nav>
@@ -54,7 +55,7 @@
       <div class="col-lg-6">
 
         <h1 class="headline-display text-primary-custom mb-4">
-         در کمتر از چند دقیقه،  <br>
+          در کمتر از چند دقیقه، <br>
           <span class="fst-italic fw-normal">نوع پوست و نیازهای واقعی آن را بشناس</span>
         </h1>
 
@@ -63,9 +64,9 @@
         </p>
 
         <div class="d-flex flex-wrap gap-3">
-          
+
           <a href="login.php" class="btn btn-primary-custom px-5 py-3 fs-6">
-                شروع آنالیز پوست
+            شروع آنالیز پوست
           </a>
 
           <a href="dashboard.php" class="btn btn-outline-custom px-5 py-3 fs-6">
@@ -90,7 +91,7 @@
             </div>
             <h3 class="headline-md text-primary-custom mb-3">آنالیز اختصاصی پوست</h3>
             <p class="body-md text-surface-variant mb-0">
-             با تکیه بر استانداردهای علمی و تخصصی، جزئیات منحصربه‌فرد پوست‌تان را موشکافی می‌کنیم تا روتینی که دریافت می‌کنید، دقیقاً با نیازهای ساختاری پوست شما همخوانی داشته باشد.
+              با تکیه بر استانداردهای علمی و تخصصی، جزئیات منحصربه‌فرد پوست‌تان را موشکافی می‌کنیم تا روتینی که دریافت می‌کنید، دقیقاً با نیازهای ساختاری پوست شما همخوانی داشته باشد.
             </p>
           </div>
         </div>
@@ -132,7 +133,7 @@
             </div>
             <h3 class="headline-md text-primary-custom mb-3">آنالیز اولیه، کاملاً رایگان</h3>
             <p class="body-md text-surface-variant mb-0">
-             ما معتقدیم شناخت پوست، حق هر کسی است. بدون هیچ هزینه‌ای، نوع پوست خود را بشناسید و اولین قدم را برای مراقبت از چهره خود بردارید.
+              ما معتقدیم شناخت پوست، حق هر کسی است. بدون هیچ هزینه‌ای، نوع پوست خود را بشناسید و اولین قدم را برای مراقبت از چهره خود بردارید.
             </p>
           </div>
         </div>
@@ -149,7 +150,7 @@
           مسیر مشاوره خود را انتخاب کنید
         </h2>
         <p class="body-lg text-secondary-custom mx-auto" style="max-width: 576px;">
-         برای رسیدن به بهترین نتیجه، هوشمندانه شروع کنید. اگر دغدغه خاصی دارید، آزمون‌های تخصصی ما را انتخاب کنید؛ یا برای درکی کامل از وضعیت پوست‌تان، با ارزیابی جامع ما آغاز کنید.
+          برای رسیدن به بهترین نتیجه، هوشمندانه شروع کنید. اگر دغدغه خاصی دارید، آزمون‌های تخصصی ما را انتخاب کنید؛ یا برای درکی کامل از وضعیت پوست‌تان، با ارزیابی جامع ما آغاز کنید.
         </p>
       </div>
 
@@ -199,7 +200,7 @@
               <p class="body-md text-secondary-custom mb-4">
                 بررسی کنید پوست شما تا چه اندازه مستعد لک، تیرگی و تغییرات رنگدانه‌ای است.
               </p>
-               <a href="pigmentedform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
+              <a href="pigmentedform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
                 شروع
               </a>
             </div>
@@ -214,7 +215,7 @@
             <div class="py-4 pe-md-4">
               <h4 class="headline-md text-primary-custom mb-2">پوست چروکیده یا سفت؟</h4>
               <p class="body-md text-secondary-custom mb-4">
-               میزان استحکام و علائم پیری پوست خود را ارزیابی کنید و نیازهای مراقبتی آن را بشناسید.
+                میزان استحکام و علائم پیری پوست خود را ارزیابی کنید و نیازهای مراقبتی آن را بشناسید.
               </p>
               <a href="wrinkledform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
                 شروع
@@ -303,14 +304,14 @@
 
         <div class="col-md-6">
           <div class="brand headline-md text-primary-custom mb-3">
-             پوستتو بشناس
+            پوستتو بشناس
           </div>
           <div>
             <p class="body-md text-on-secondary-container mb-4" style="max-width: 380px;">
               تعریفی نو از مراقبت از پوست؛ ترکیبی از دقت علمی، تحلیل هوشمند و توصیه‌های شخصی‌سازی‌شده.
             </p>
           </div>
-          
+
           <div class="d-flex gap-3">
             <a class="social-link" href="#">
               <span class="material-symbols-outlined fs-6">
@@ -339,8 +340,8 @@
             <div class="col-6">
               <h5 class="label-caps text-primary-custom mb-4">اطلاعات تماس</h5>
               <ul class="list-unstyled d-flex flex-column gap-3 body-md mb-0">
-                  <li class="footer-link text-decoration">تهران خیابان شریعتی</li>
-                  <li class="footer-link text-decoration">09123456789</li>
+                <li class="footer-link text-decoration">تهران خیابان شریعتی</li>
+                <li class="footer-link text-decoration">09123456789</li>
               </ul>
 
               <div class="d-flex gap-2 mt-3">
@@ -386,4 +387,5 @@
   </script>
 
 </body>
+
 </html>

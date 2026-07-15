@@ -15,7 +15,7 @@ function getForm($pdo, $table, $user_id)
     ");
 
     $stmt->execute([$user_id]);
-    
+
     return $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
 }
 
@@ -72,7 +72,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
                     <li class="nav-item mb-2">
                         <ul class="nav flex-column p-3">
-                           <span>پرسشنامه ها</span>
+                            <span>پرسشنامه ها</span>
                             <li class="nav-item mb-2 dashboard-btn"><a class="nav-link text-white " href="Oilyform.php">پوست چرب/خشک</a></li>
                             <li class="nav-item mb-2 dashboard-btn"><a class="nav-link text-white" href="pigmentedform.php">پوست رنگ دانه دار</a></li>
                             <li class="nav-item mb-2 dashboard-btn"><a class="nav-link text-white" href="sensitiveform.php">پوست حساس</a></li>
@@ -85,7 +85,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                             class="nav-link text-white">
 
                             <i class="bi bi-gear ms-2"></i>
-                           پروفایل
+                            پروفایل
 
                         </a>
                     </li>
@@ -147,7 +147,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
                                     <span class="text-success">
-                                        
+
                                         <i class="bx bxs-up-arrow fs-32">نوع پوست <?= getSkinType($oilyform['type'] ?? '') ?></i>
                                     </span>
                                 </div>
@@ -187,7 +187,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span class="text-success"> 
+                                    <span class="text-success">
                                         <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($pigmentedform['type'] ?? '') ?></i>
                                     </span>
                                 </div>
@@ -221,62 +221,62 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                 </div>
                 <div class="container py-5">
 
-    <div class="card intro-card">
-        <div class="card-body p-2">
+                    <div class="card intro-card">
+                        <div class="card-body p-2">
 
-            <h2 class="intro-title text-center mb-4">
-                پوست خود را بشناسید
-            </h2>
+                            <h2 class="intro-title text-center mb-4">
+                                پوست خود را بشناسید
+                            </h2>
 
-            <div class="intro-text">
+                            <div class="intro-text">
 
-                <p>
-                    پوست هر فرد ویژگی‌ها، نیازها و واکنش‌های منحصر‌به‌فردی دارد؛
-                    به همین دلیل یک روتین مراقبتی مؤثر باید متناسب با شرایط واقعی
-                    پوست همان فرد طراحی شود.
-                </p>
+                                <p>
+                                    پوست هر فرد ویژگی‌ها، نیازها و واکنش‌های منحصر‌به‌فردی دارد؛
+                                    به همین دلیل یک روتین مراقبتی مؤثر باید متناسب با شرایط واقعی
+                                    پوست همان فرد طراحی شود.
+                                </p>
 
-                <p>
-                    در این سامانه، با پاسخ به مجموعه‌ای از پرسش‌های کوتاه و
-                    هدفمند، و بر پایه یکی از جامع‌ترین و به‌روزترین رویکردهای
-                    طبقه‌بندی پوست، پوست شما بر اساس چهار ویژگی کلیدی شامل
-                    <strong>میزان چربی یا خشکی</strong>،
-                    <strong>حساسیت‌پذیری</strong>،
-                    <strong>استعداد ایجاد لک</strong> و
-                    <strong>روند پیری پوست</strong>
-                    ارزیابی می‌شود.
-                </p>
+                                <p>
+                                    در این سامانه، با پاسخ به مجموعه‌ای از پرسش‌های کوتاه و
+                                    هدفمند، و بر پایه یکی از جامع‌ترین و به‌روزترین رویکردهای
+                                    طبقه‌بندی پوست، پوست شما بر اساس چهار ویژگی کلیدی شامل
+                                    <strong>میزان چربی یا خشکی</strong>،
+                                    <strong>حساسیت‌پذیری</strong>،
+                                    <strong>استعداد ایجاد لک</strong> و
+                                    <strong>روند پیری پوست</strong>
+                                    ارزیابی می‌شود.
+                                </p>
 
-                <p>
-                    پس از تکمیل ارزیابی، پروفایل تخصصی پوست شما به همراه
-                    <strong>دو روتین شخصی‌سازی‌شده مراقبت از پوست (روز و شب)</strong>
-                    ارائه خواهد شد؛ یک روتین بر پایه محصولات منتخب ایرانی و یک
-                    روتین بر اساس برندهای معتبر بین‌المللی.
-                </p>
+                                <p>
+                                    پس از تکمیل ارزیابی، پروفایل تخصصی پوست شما به همراه
+                                    <strong>دو روتین شخصی‌سازی‌شده مراقبت از پوست (روز و شب)</strong>
+                                    ارائه خواهد شد؛ یک روتین بر پایه محصولات منتخب ایرانی و یک
+                                    روتین بر اساس برندهای معتبر بین‌المللی.
+                                </p>
 
-                <p>
-                    این سامانه توسط تیم تخصصی
-                    <strong>دکتر شهره دلاور</strong>
-                    و بر پایه پژوهش‌های علمی طراحی شده است. مبنای این ارزیابی در
-                    قالب یک مطالعه پژوهشی با همکاری
-                    <strong>مرکز تحقیقات پوست و جذام دانشگاه علوم پزشکی تهران</strong>
-                    مورد بررسی قرار گرفته و ارتباط نتایج آن با شاخص‌های عینی و
-                    بیومتریک پوست ارزیابی شده است.
-                </p>
+                                <p>
+                                    این سامانه توسط تیم تخصصی
+                                    <strong>دکتر شهره دلاور</strong>
+                                    و بر پایه پژوهش‌های علمی طراحی شده است. مبنای این ارزیابی در
+                                    قالب یک مطالعه پژوهشی با همکاری
+                                    <strong>مرکز تحقیقات پوست و جذام دانشگاه علوم پزشکی تهران</strong>
+                                    مورد بررسی قرار گرفته و ارتباط نتایج آن با شاخص‌های عینی و
+                                    بیومتریک پوست ارزیابی شده است.
+                                </p>
 
-                <p class="mb-0">
-                    هدف ما کمک به شما برای انتخاب آگاهانه‌تر محصولات مراقبت از
-                    پوست و دستیابی به پوستی سالم‌تر، شفاف‌تر و جوان‌تر است.
-                </p>
+                                <p class="mb-0">
+                                    هدف ما کمک به شما برای انتخاب آگاهانه‌تر محصولات مراقبت از
+                                    پوست و دستیابی به پوستی سالم‌تر، شفاف‌تر و جوان‌تر است.
+                                </p>
 
-            </div>
-<a href="medicalprescription.php" class="btn btn-outline-custom btn-lg px-5 w-100 fs-6">
-            ورود به نسخه پزشکی
-        </a>
-        </div>
-    </div>
+                            </div>
+                            <a href="medicalprescription.php" class="btn btn-outline-custom btn-lg px-5 w-100 fs-6">
+                                ورود به نسخه پزشکی
+                            </a>
+                        </div>
+                    </div>
 
-</div>
+                </div>
 
             </div>
 

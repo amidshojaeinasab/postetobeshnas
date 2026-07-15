@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 require_once 'config.php';
 is_login();
 
@@ -25,54 +25,54 @@ if (isset($_POST["submit"])) {
     $q20 = $_POST["q20"];
     $q21 = $_POST["q21"];
 
-  $res = 0;
+    $res = 0;
 
-for ($i = 1; $i <= 21; $i++) {
+    for ($i = 1; $i <= 21; $i++) {
 
-    $value = (int)$_POST["q$i"];
+        $value = (int)$_POST["q$i"];
 
-    if ($i != 21 && $value == 5) {
-        $res += 2.5;
-    } else {
-        $res += $value;
+        if ($i != 21 && $value == 5) {
+            $res += 2.5;
+        } else {
+            $res += $value;
+        }
     }
-}
 
-$description = "";
-if ($res >= 20 && $res <= 40) {
-    $description = "نوع پوست شما سفت است.";
-} elseif ($res >= 41 && $res <= 85) {
-    $description = "نوع پوست شما چروکیده است.";
-}
+    $description = "";
+    if ($res >= 20 && $res <= 40) {
+        $description = "نوع پوست شما سفت است.";
+    } elseif ($res >= 41 && $res <= 85) {
+        $description = "نوع پوست شما چروکیده است.";
+    }
 
 
-$type = ($res >= 40) ? "W" : "T";
+    $type = ($res >= 40) ? "W" : "T";
 
-    $insert = $pdo-> prepare("INSERT INTO wrinkledform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, q14=?, q15=?, q16=?, q17=?, q18=?, q19=?, q20=?, q21=?, res=?, type=?, user_id=?");
-    $insert->bindValue(1,$q1);
-    $insert->bindValue(2,$q2);
-    $insert->bindValue(3,$q3);
-    $insert->bindValue(4,$q4);
-    $insert->bindValue(5,$q5);
-    $insert->bindValue(6,$q6);
-    $insert->bindValue(7,$q7);
-    $insert->bindValue(8,$q8);
-    $insert->bindValue(9,$q9);
-    $insert->bindValue(10,$q10);
-    $insert->bindValue(11,$q11);
-    $insert->bindValue(12,$q12);
-    $insert->bindValue(13,$q13);
-    $insert->bindValue(14,$q14);
-    $insert->bindValue(15,$q15);
-    $insert->bindValue(16,$q16);
-    $insert->bindValue(17,$q17);
-    $insert->bindValue(18,$q18);
-    $insert->bindValue(19,$q19);
-    $insert->bindValue(20,$q20);
-    $insert->bindValue(21,$q21);
-    $insert->bindValue(22,$res);
-    $insert->bindValue(23,$type);
-    $insert->bindValue(24,$_SESSION["user_id"]);
+    $insert = $pdo->prepare("INSERT INTO wrinkledform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, q14=?, q15=?, q16=?, q17=?, q18=?, q19=?, q20=?, q21=?, res=?, type=?, user_id=?");
+    $insert->bindValue(1, $q1);
+    $insert->bindValue(2, $q2);
+    $insert->bindValue(3, $q3);
+    $insert->bindValue(4, $q4);
+    $insert->bindValue(5, $q5);
+    $insert->bindValue(6, $q6);
+    $insert->bindValue(7, $q7);
+    $insert->bindValue(8, $q8);
+    $insert->bindValue(9, $q9);
+    $insert->bindValue(10, $q10);
+    $insert->bindValue(11, $q11);
+    $insert->bindValue(12, $q12);
+    $insert->bindValue(13, $q13);
+    $insert->bindValue(14, $q14);
+    $insert->bindValue(15, $q15);
+    $insert->bindValue(16, $q16);
+    $insert->bindValue(17, $q17);
+    $insert->bindValue(18, $q18);
+    $insert->bindValue(19, $q19);
+    $insert->bindValue(20, $q20);
+    $insert->bindValue(21, $q21);
+    $insert->bindValue(22, $res);
+    $insert->bindValue(23, $type);
+    $insert->bindValue(24, $_SESSION["user_id"]);
     $insert->execute();
 
     header("Location: resultwrinkledform.php");
@@ -763,7 +763,7 @@ $type = ($res >= 40) ? "W" : "T";
                             </div>
                         </div>
 
-                        
+
                         <!-- سوال 21 -->
                         <div class="card question-card shadow-sm mb-4">
                             <div class="card-body p-4">
@@ -772,16 +772,16 @@ $type = ($res >= 40) ? "W" : "T";
                                     بالای ۶۵ سال دارید؟
                                 </h4>
                                 <label class="answer-item d-block">
-    <input type="radio" name="q21" value="0" required>
-    خیر
-</label>
+                                    <input type="radio" name="q21" value="0" required>
+                                    خیر
+                                </label>
 
-<label class="answer-item d-block">
-    <input type="radio" name="q21" value="5">
-    بله
-</label>
+                                <label class="answer-item d-block">
+                                    <input type="radio" name="q21" value="5">
+                                    بله
+                                </label>
                             </div>
-                            
+
                         </div>
 
                         <div class="d-grid">
