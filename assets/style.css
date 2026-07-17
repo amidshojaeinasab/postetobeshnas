@@ -760,10 +760,10 @@ height: 100%;
 .timeline-heading {
 display: flex;
 align-items: center;
-gap: 12px;
-margin-bottom: 2rem;
+gap: 6px;
 font-weight: 700;
 font-size: 18px;
+margin-top: 4rem; 
 }
 .timeline-heading.day { color: var(--color-primary); }
 .timeline-heading.night { color: var(--color-secondary); }

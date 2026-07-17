@@ -206,75 +206,118 @@ if (isset($medicines[$skinCode])) {
                 </span>
                 <h2>ترتیب صحیح استفاده از محصولات</h2>
             </div>
-            <div class="row g-5">
-                <!-- Day Routine -->
-                <div class="timeline-list d-flex flex-wrap gap-3">
+            <div class="row gy-5">
+                <div class="col-lg-6">
                     <div class="timeline-heading day">
                         <span class="icon" style="font-variation-settings: 'FILL' 1;">
                             <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
                         </span>
-                        <span>روتین روز</span>
+                        <span>نسخه اول </span>
                     </div>
-                    <div class="timeline-list">
-                        <?php foreach ($medicine['morning'] as $item) { ?>
-                            <div class="timeline-item">
-                                <span class="timeline-dot dot-active-primary"></span>
-                                <div class="timeline-label label-solid-primary">
-                                    <?= htmlspecialchars($item['product']) ?>
+                    <!-- Day Routine -->
+                    <div class="timeline-list d-flex flex-wrap gap-3">
+                        <div class="timeline-heading day">
+                            <span class="icon" style="font-variation-settings: 'FILL' 1;">
+                                <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
+                            </span>
+                            <span>روتین روز</span>
+                        </div>
+                        <div class="timeline-list">
+                            <?php foreach ($medicine['version_1']['morning'] as $item) { ?>
+                                <div class="timeline-item">
+                                    <span class="timeline-dot dot-active-primary"></span>
+                                    <div class="timeline-label label-solid-primary">
+                                        <?= htmlspecialchars($item['product']) ?>
+                                    </div>
+                                    <div class="timeline-label label-inactive">
+                                        <?= htmlspecialchars($item['usage']) ?>
+                                    </div>
                                 </div>
-                                <div class="timeline-label label-inactive">
-                                    <?= htmlspecialchars($item['usage']) ?>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <!-- Night Routine -->
+                    <div class="timeline-list d-flex flex-wrap gap-3">
+                        <div class="timeline-heading night">
+                            <span class="icon" style="font-variation-settings: 'FILL' 1;">
+                                <?= file_get_contents('assets/icons/moon-stars-fill.svg'); ?>
+                            </span>
+                            <span>روتین شب</span>
+                        </div>
+
+                        <div class="timeline-list">
+                            <?php foreach ($medicine['version_1']['night'] as $item) { ?>
+                                <div class="timeline-item">
+                                    <span class="timeline-dot dot-active-primary"></span>
+                                    <div class="timeline-label label-solid-primary">
+                                        <?= htmlspecialchars($item['product']) ?>
+                                    </div>
+                                    <div class="timeline-label label-inactive">
+                                        <?= htmlspecialchars($item['usage']) ?>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php } ?>
+                            <?php } ?>
+                        </div>
+
                     </div>
                 </div>
-                <!-- Night Routine -->
-                <div class="timeline-list d-flex flex-wrap gap-3">
-                    <div class="timeline-heading night">
-                        <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                            <?= file_get_contents('assets/icons/moon-stars-fill.svg'); ?>
-                        </span>
-                        <span>روتین شب</span>
-                    </div>
 
-                    <div class="timeline-list">
-                        <?php foreach ($medicine['night'] as $item) { ?>
-                            <div class="timeline-item">
-                                <span class="timeline-dot dot-active-primary"></span>
-                                <div class="timeline-label label-solid-primary">
-                                    <?= htmlspecialchars($item['product']) ?>
-                                </div>
-                                <div class="timeline-label label-inactive">
-                                    <?= htmlspecialchars($item['usage']) ?>
-                                </div>
-                            </div>
-                        <?php } ?>
-                    </div>
-
-                </div>
-                <!-- Day Night Routine -->
-                <div class="timeline-list d-flex flex-wrap gap-3">
+                <div class="col-lg-6">
                     <div class="timeline-heading day">
                         <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                            <?= file_get_contents('assets/icons/circle-half.svg'); ?>
+                            <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
                         </span>
-                        <span>روتین روز و شب</span>
+                        <span>نسخه دوم </span>
                     </div>
-                    <div class="timeline-list">
-                        <?php foreach ($medicine['Day_and_night'] as $item) { ?>
-                            <div class="timeline-item">
-                                <span class="timeline-dot dot-active-primary"></span>
-                                <div class="timeline-label label-solid-primary">
-                                    <?= htmlspecialchars($item['product']) ?>
+                    <!-- Day Routine -->
+                    <div class="timeline-list d-flex flex-wrap gap-3">
+                        <div class="timeline-heading day">
+                            <span class="icon" style="font-variation-settings: 'FILL' 1;">
+                                <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
+                            </span>
+                            <span>روتین روز</span>
+                        </div>
+                        <div class="timeline-list">
+                            <?php foreach ($medicine['version_2']['morning'] as $item) { ?>
+                                <div class="timeline-item">
+                                    <span class="timeline-dot dot-active-primary"></span>
+                                    <div class="timeline-label label-solid-primary">
+                                        <?= htmlspecialchars($item['product']) ?>
+                                    </div>
+                                    <div class="timeline-label label-inactive">
+                                        <?= htmlspecialchars($item['usage']) ?>
+                                    </div>
                                 </div>
-                                <div class="timeline-label label-inactive">
-                                    <?= htmlspecialchars($item['usage']) ?>
+                            <?php } ?>
+                        </div>
+                    </div>
+                    <!-- Night Routine -->
+                    <div class="timeline-list d-flex flex-wrap gap-3">
+                        <div class="timeline-heading night">
+                            <span class="icon" style="font-variation-settings: 'FILL' 1;">
+                                <?= file_get_contents('assets/icons/moon-stars-fill.svg'); ?>
+                            </span>
+                            <span>روتین شب</span>
+                        </div>
+
+                        <div class="timeline-list">
+                            <?php foreach ($medicine['version_2']['night'] as $item) { ?>
+                                <div class="timeline-item">
+                                    <span class="timeline-dot dot-active-primary"></span>
+                                    <div class="timeline-label label-solid-primary">
+                                        <?= htmlspecialchars($item['product']) ?>
+                                    </div>
+                                    <div class="timeline-label label-inactive">
+                                        <?= htmlspecialchars($item['usage']) ?>
+                                    </div>
                                 </div>
-                            </div>
-                        <?php } ?>
+                            <?php } ?>
+                        </div>
+
                     </div>
                 </div>
+
+            </div>
 
             </div>
         </section>
