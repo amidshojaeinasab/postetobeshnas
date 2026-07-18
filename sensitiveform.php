@@ -426,7 +426,7 @@ if (isset($_POST["submit"])) {
                                 </label>
 
                                 <label class="answer-item d-block">
-                                    <input type="radio" name="q9" value="4">
+                                    <input type="radio" name="q9" value="5">
                                     من صابون خودم را می‌آورم، بنابراین مطمئن نیستم
                                 </label>
 
@@ -462,7 +462,7 @@ if (isset($_POST["submit"])) {
                                 </label>
 
                                 <label class="answer-item d-block">
-                                    <input type="radio" name="q10" value="4">
+                                    <input type="radio" name="q10" value="5">
                                     نمیدانم
                                 </label>
                             </div>

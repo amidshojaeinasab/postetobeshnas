@@ -175,12 +175,6 @@ if (isset($medicines[$skinCode])) {
                 <div class="col-12 col-md-4">
                     <div class="note-box note-error">
                         <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                        <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">در صورت عدم مشاهده نتیجه یا نیاز به تنظیم مجدد روتین توصیه میشود،پس از هشت هفته استفاده منظم نتیجه را ارزیابی کرده و در صورت نیاز با متخصص پوست مشاوره انجام شود.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="note-box note-error">
-                        <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
                         <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">از شما دعوت میشود پس از هشت هفته استفاده منظم از روتین تجربه خود را ثبت کنید.در صورت نیاز به بررسی دقیق تر امکان ویزیت آنلاین با پزشک از طریق پروفایل فراهم است.</p>
                     </div>
                 </div>
@@ -212,7 +206,7 @@ if (isset($medicines[$skinCode])) {
                         <span class="icon" style="font-variation-settings: 'FILL' 1;">
                             <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
                         </span>
-                        <span>نسخه اول </span>
+                        <span>نسخه اول: نسخه  پوستی شما با برند های ایرانی</span>
                     </div>
                     <!-- Day Routine -->
                     <div class="timeline-list d-flex flex-wrap gap-3">
@@ -267,7 +261,7 @@ if (isset($medicines[$skinCode])) {
                         <span class="icon" style="font-variation-settings: 'FILL' 1;">
                             <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
                         </span>
-                        <span>نسخه دوم </span>
+                        <span>نسخه دوم:نسخه پوستی شما با برند منتخب بین الملی</span>
                     </div>
                     <!-- Day Routine -->
                     <div class="timeline-list d-flex flex-wrap gap-3">

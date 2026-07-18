@@ -77,12 +77,12 @@ return [
 
             [
                 'product' => 'Vitalayer Sensivit Face wash Gel',
-                'usage'   => 'صبح ها و شب ها قبل از استفاده تونر و سایر کرم ها',
+                'usage'   => 'صبح ها و شب ها قبل از استفاده  و سایر کرم ها',
             ],
 
             [
                 'product' => 'Vitalayer Hyaluronic Acid serum',
-                'usage'   => 'سرم ابرسان صبح و شب بعد از تونر',
+                'usage'   => 'سرم ابرسان صبح و شب بعد از ',
             ],
 
             [
@@ -101,7 +101,7 @@ return [
 
             [
                 'product' => 'Prime Repair night cream',
-                'usage'   => 'شب ها بعد از شست و شو و تونر استفاده شود',
+                'usage'   => 'شب ها بعد از شست و شو استفاده شود',
             ],
 
         ],
@@ -133,7 +133,7 @@ return [
 
             [
                 'product' => 'Cerave PM Facial Moisturizing Lotion',
-                'usage'   => 'شب ها بعد از شست و شو و تونر ',
+                'usage'   => 'شب ها بعد از شست و شو و ',
             ],
 
         ],
@@ -169,7 +169,7 @@ return [
 
             [
                 'product' => 'Prime Repair night cream',
-                'usage'   => 'شب ها بعد از شست و شو و تونر استفاده شود',
+                'usage'   => 'شب ها بعد از شست و شواستفاده شود',
             ],
 
         ],
