@@ -1,391 +1,98 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl" class="scroll-smooth">
+<!doctype html>
+<html lang="fa" dir="rtl">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>پوست و مو خود را بشناسید | اولین سایت مراقیت پوست و مو تحت نظر پزشک
-  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>پوست خود را بشناسید</title>
 
-  <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="assets/style.css">
+
 </head>
 
-<body>
-
-  <!-- Top Navigation Bar -->
-  <nav class="navbar navbar-expand-md fixed-top navbar-blur shadow-sm">
-    <div class="container container-custom py-3">
-      <a class="navbar-brand brand headline-md tracking-widest text-primary-custom" href="index.php">
-        postetobeshnas
-      </a>
-
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav mx-auto gap-md-4 my-3 my-md-0">
-          <li class="nav-item">
-            <a class="nav-link text-primary-custom border-bottom border-secondary-subtle pb-1" href="#">خانه</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-secondary-custom" href="#">درباره ما</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-secondary-custom" href="#">تماس با ما</a>
-          </li>
-        </ul>
-        <a href="login.php" class="btn btn-primary-custom px-4 py-3 fs-6">
-          ورود | ثبت نام
-        </a>
-
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero position-relative d-flex align-items-center">
-    <div class="hero-bg">
-      <img src="./assets/images/hero.png" alt="Luxurious skincare texture">
-    </div>
-
-    <div class="container container-custom position-relative z-1">
-      <div class="col-lg-6">
-
-        <h1 class="headline-display text-primary-custom mb-4">
-          در کمتر از چند دقیقه، <br>
-          <span class="fst-italic fw-normal">نوع پوست و نیازهای واقعی آن را بشناس</span>
-        </h1>
-
-        <p class="body-lg text-secondary-custom mb-5">
-          زیبایی شما، فرمولی منحصر‌به‌فرد دارد. با پاسخ به چند پرسش کوتاه، نقشه راه علمی ما برای سلامت و درخشش پوست‌تان ترسیم خواهد شد؛ مسیری که دقیقاً برای نیازهای خاص شما طراحی شده است.
-        </p>
-
-        <div class="d-flex flex-wrap gap-3">
-
-          <a href="login.php" class="btn btn-primary-custom px-5 py-3 fs-6">
-            شروع آنالیز پوست
-          </a>
-
-          <a href="dashboard.php" class="btn btn-outline-custom px-5 py-3 fs-6">
-            داشبورد
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Beauty Benefits -->
-  <section class="section-padding bg-surface-low reveal">
-    <div class="container container-custom">
-      <div class="row g-3">
-
-        <div class="col-md-6 col-lg-3">
-          <div class="h-100 bg-surface p-4 rounded-lg-custom shadow-sm transition-soft hover-lift border-soft">
-            <div class="icon-circle bg-primary-container mb-4">
-              <span class="icon">
-                <?= file_get_contents('assets/icons/activity.svg'); ?>
-              </span>
-            </div>
-            <h3 class="headline-md text-primary-custom mb-3">آنالیز اختصاصی پوست</h3>
-            <p class="body-md text-surface-variant mb-0">
-              با تکیه بر استانداردهای علمی و تخصصی، جزئیات منحصربه‌فرد پوست‌تان را موشکافی می‌کنیم تا روتینی که دریافت می‌کنید، دقیقاً با نیازهای ساختاری پوست شما همخوانی داشته باشد.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="h-100 bg-surface p-4 rounded-lg-custom shadow-sm transition-soft hover-lift border-soft">
-            <div class="icon-circle bg-tertiary-container mb-4">
-              <span class="icon" style="color: var(--tertiary);">
-                <?= file_get_contents('assets/icons/clock-fill.svg'); ?>
-              </span>
-            </div>
-            <h3 class="headline-md text-primary-custom mb-3">مشاوره هوشمند</h3>
-            <p class="body-md text-surface-variant mb-0">
-              یک ارزیابی سریع و دقیق که برای زندگی پرمشغله شما طراحی شده است. تنها چند لحظه زمان بگذارید و راهنمایی‌های تخصصی پوست‌تان را دریافت کنید.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="h-100 bg-surface p-4 rounded-lg-custom shadow-sm transition-soft hover-lift border-soft">
-            <div class="icon-circle bg-secondary-container mb-4">
-              <span class="icon text-secondary-custom">
-                <?= file_get_contents('assets/icons/flask-fill.svg'); ?>
-              </span>
-            </div>
-            <h3 class="headline-md text-primary-custom mb-3">علم در خدمت زیبایی شما</h3>
-            <p class="body-md text-surface-variant mb-0">
-              ما دانش متخصصان پوست را به تکنولوژی دقیق تبدیل کرده‌ایم. هر پیشنهاد روتین، نتیجه‌ی بررسی‌های علمی و استانداردهای پزشکی است تا شما به دقیق‌ترین نتیجه برای پوست خود برسید.
-            </p>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-3">
-          <div class="h-100 bg-surface p-4 rounded-lg-custom shadow-sm transition-soft hover-lift border-soft">
-            <div class="icon-circle bg-primary-fixed mb-4">
-              <span class="icon" style="color: #271816;">
-                <?= file_get_contents('assets/icons/gift-fill.svg'); ?>
-              </span>
-            </div>
-            <h3 class="headline-md text-primary-custom mb-3">آنالیز اولیه، کاملاً رایگان</h3>
-            <p class="body-md text-surface-variant mb-0">
-              ما معتقدیم شناخت پوست، حق هر کسی است. بدون هیچ هزینه‌ای، نوع پوست خود را بشناسید و اولین قدم را برای مراقبت از چهره خود بردارید.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Skin Test Section -->
-  <section class="section-padding reveal">
-    <div class="container container-custom">
-      <div class="text-center mb-5">
-        <h2 class="headline-lg text-primary-custom mb-3">
-          مسیر مشاوره خود را انتخاب کنید
-        </h2>
-        <p class="body-lg text-secondary-custom mx-auto" style="max-width: 576px;">
-          برای رسیدن به بهترین نتیجه، هوشمندانه شروع کنید. اگر دغدغه خاصی دارید، آزمون‌های تخصصی ما را انتخاب کنید؛ یا برای درکی کامل از وضعیت پوست‌تان، با ارزیابی جامع ما آغاز کنید.
-        </p>
-      </div>
-
-      <div class="row g-4">
-
-        <div class="col-lg-6">
-          <div class="assessment-card bg-surface rounded-xl-custom p-2 d-flex flex-column flex-md-row align-items-center gap-4 shadow-sm border-soft transition-soft h-100">
-            <div class="assessment-img rounded-lg-custom w-100" style="max-width: 220px;">
-              <img class="transition-soft" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZOTS14b5QhlTBs7yIRgLnrxAT4W5XxVZS00PbHSvyuOazlpXZvcLyeTrRwHoSga_3bHKwL9FEhb3qSBaZ01vR5hkkWd2bUKPVg7Hmp97kwZXj1YXn99CvW8HpjJyH2xj5VgbQ9Fh3iYoDLhYAvlqPN_P5R7Av670CRzGjLqDscOkvV32qXgu9QU1JoVHiwYtVR-QYv61Vwspyhlbm35WekANiOrtMTBAVeMlYsh5v_vESiFl7_h8H48KAQAe4lWIcwf4QPtTCuDU" alt="Skincare cream texture">
-            </div>
-            <div class="py-4 pe-md-4">
-              <h4 class="headline-md text-primary-custom mb-2">پوست چرب یا خشک؟</h4>
-              <p class="body-md text-secondary-custom mb-4">
-                نوع پوست خود را شناسایی کنید و بفهمید پوست شما به مراقبت‌های مخصوص پوست چرب نیاز دارد یا پوست خشک.
-              </p>
-              <a href="Oilyform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
-                شروع
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="assessment-card bg-surface rounded-xl-custom p-2 d-flex flex-column flex-md-row align-items-center gap-4 shadow-sm border-soft transition-soft h-100">
-            <div class="assessment-img rounded-lg-custom w-100" style="max-width: 220px;">
-              <img class="transition-soft" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3CnKGuBqViXG9CkwfEd1k6SrWr2dZKVqA3hZIkeKR9StA2xODdqtlTa6SMXDGh_aYC-9Hlmg3bT9g4IWEoHH_thlwlTPTc-3Ruw1_87DgqR9lccB1l602pSszko38ttnXBnr_1v0M33Cpdczx9gW1aAQqMqkLl6B5ynE7QW_EhQzp10frlzAMHc9HK6soHP-1BWEz-w-ljyZmfziR3LbYr9MSzwswBLtUu21oCwPrGfd2eDY8-ZXmZXlNAutbY1-qm50Zb-3wL9E" alt="Laboratory skincare setup">
-            </div>
-            <div class="py-4 pe-md-4">
-              <h4 class="headline-md text-primary-custom mb-2">پوست حساس یا مقاوم؟</h4>
-              <p class="body-md text-secondary-custom mb-4">
-                میزان حساسیت پوست خود را بسنجید و محصولات سازگار با پوستتان را بهتر انتخاب کنید.
-              </p>
-              <a href="sensitiveform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
-                شروع
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="assessment-card bg-surface rounded-xl-custom p-2 d-flex flex-column flex-md-row align-items-center gap-4 shadow-sm border-soft transition-soft h-100">
-            <div class="assessment-img rounded-lg-custom w-100" style="max-width: 220px;">
-              <img class="transition-soft" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXBXpfT0xY0ntX-WlNlGmkT_7V6d_Ml4y4qduH9Rj8-Oe_RtqkL0Dklk0ANoU6_rMIS8VHHZyNBnDiEW62o1mA7LVcBreWFy0z9O9iBbAwAJ7sZXT4Kf7pk3BFm-y59AHiiZFjuY7rXm37EmkN450upLEtyVt8wcl_PLjZDkCeOZtyBbX4fVpir96O6C6J3GJvNX6O33kSe5OyYlbx8I9rfiojc_Numk66ykzJMfGVqvxgCy_2K8owumFjuy4cj_yk7RRjPEynwIk" alt="Water droplets skincare texture">
-            </div>
-            <div class="py-4 pe-md-4">
-              <h4 class="headline-md text-primary-custom mb-2">پوست رنگدانه‌دار یا غیررنگدانه‌دار؟</h4>
-              <p class="body-md text-secondary-custom mb-4">
-                بررسی کنید پوست شما تا چه اندازه مستعد لک، تیرگی و تغییرات رنگدانه‌ای است.
-              </p>
-              <a href="pigmentedform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
-                شروع
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="assessment-card bg-surface rounded-xl-custom p-2 d-flex flex-column flex-md-row align-items-center gap-4 shadow-sm border-soft transition-soft h-100">
-            <div class="assessment-img rounded-lg-custom w-100" style="max-width: 220px;">
-              <img class="transition-soft" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgX8sQdGlpAfm4TPCKEqzVBZMIdWtvDpWKD3sH65o_Ev0cf0wlU9qbvlj2jw_LGq9OS7hHSM3C6VYNj-uOLgZCqXf0RU79Ys-PTCkALsRudn4AEKbpXvx091UXcKfjLnFnX9YH44FTbtJqUJcspopK-tgy76GfLFSFLnMO3etmQ-g1L0bG7clAYhHIlID01aPgRPgbNRv11cIJjcjMn4npSJysI-XdkS3kX-UkcVzQ81ySLHMevxeK9Y2uZdxVfL9rMNzG1HR7C_c" alt="Woman with natural skincare glow">
-            </div>
-            <div class="py-4 pe-md-4">
-              <h4 class="headline-md text-primary-custom mb-2">پوست چروکیده یا سفت؟</h4>
-              <p class="body-md text-secondary-custom mb-4">
-                میزان استحکام و علائم پیری پوست خود را ارزیابی کنید و نیازهای مراقبتی آن را بشناسید.
-              </p>
-              <a href="wrinkledform.php" class="btn btn-outline-custom px-4 py-2 fs-6">
-                شروع
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section class="section-padding bg-secondary-soft reveal">
-    <div class="container container-custom">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <h2 class="headline-lg text-primary-custom mb-5">
-            فرآیند پوستتو بشناس
-          </h2>
-
-          <div class="d-flex flex-column gap-5">
-
-            <div class="d-flex gap-4 align-items-start">
-              <span class="step-number">01</span>
-              <div>
-                <h4 class="headline-md text-primary-custom mb-2">تکمیل ارزیابی</h4>
-                <p class="body-md text-surface-variant mb-0">
-                  به مجموعه‌ای از پرسش‌های هدفمند درباره پوست و سبک زندگی خود پاسخ دهید.
-                </p>
-              </div>
-            </div>
-
-            <div class="d-flex gap-4 align-items-start">
-              <span class="step-number">02</span>
-              <div>
-                <h4 class="headline-md text-primary-custom mb-2">آنالیز تخصصی</h4>
-                <p class="body-md text-surface-variant mb-0">
-                  سیستم هوشمند پوستتو بشناس داده‌های شما را تحلیل کرده و ویژگی‌های کلیدی پوستتان را شناسایی می‌کند.
-                </p>
-              </div>
-            </div>
-
-            <div class="d-flex gap-4 align-items-start">
-              <span class="step-number">03</span>
-              <div>
-                <h4 class="headline-md text-primary-custom mb-2">کشف نیازهای پوست</h4>
-                <p class="body-md text-surface-variant mb-0">
-                  نتایج شخصی‌سازی‌شده، توصیه‌های مراقبتی و راهکارهای مناسب برای حفظ سلامت و زیبایی پوست خود را دریافت کنید.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="col-lg-6 position-relative">
-          <div class="blur-circle"></div>
-          <img class="position-relative z-1 w-100 rounded-lg-custom shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7ZruIBRpYCYzIAhE_otqGBlhw-pK4p86jOHz7NAvKztimAAdPaKhcG286tmPTvsHelUVYgj_HJq4pAp-P4OxhOSm4OIPaPTio_cxiChHjiBNA8BcbFLBMgcHm65QukAepacXsK9PtwGPbjPH_mW2bzI6lg7mPfqa_hqj98C-2hR3SnjfK_u7I4BiFA_Js0XFmUdzt5sM9Nw_thOi2oGZfWzymH-pxvl7ongAOxoFfWgZhH1ZqqEoyagTw_oGAwpy-UFipwYrkCDg" alt="Digital skincare analysis interface">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="py-5 bg-primary-container text-center reveal">
-    <div class="container" style="max-width: 720px;">
-      <div class="py-5">
-        <h2 class="headline-lg text-on-primary-container mb-4">
-          زیبایی پوست از شناخت آن آغاز می‌شود.
-        </h2>
-        <p class="body-lg text-on-primary-container mb-5 opacity-75">
-          با ارزیابی تخصصی پوستتو بشناس، تصویری دقیق از وضعیت پوست خود دریافت کنید و مسیر مراقبت شخصی‌سازی‌شده‌تان را آغاز کنید.
-        </p>
-        <button class="btn btn-primary-custom px-5 py-3 headline-md text-uppercase">
-          شروع آنالیز هوشمند پوست
+<body class="body-landing">
+  <main class="page-shell">
+    <header class="site-header">
+      <nav class="navbar navbar-expand-md p-0">
+        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Open menu">
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
-    </div>
-  </section>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav nav-left">
+            <li class="nav-item"><a href="index.php" class="nav-link">صفحه اصلی</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">مجله</a></li>
+            <li class="nav-item"><a href="dashboard.php" class="nav-link">داشبورد</a></li>
 
-  <!-- Footer -->
-  <footer class="bg-secondary-container pt-5">
-    <div class="container container-custom py-4">
-      <div class="row g-5 align-items-start">
+          </ul>
+          <a class="brand" href="#" aria-label="postetobeshnas"><span></span><b>postetobeshnas</b></a>
+          <ul class="navbar-nav nav-right">
+            <li class="nav-item"><a href="#" class="nav-link">درباره ما</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">تماس یا ما</a></li>
+            <li class="nav-item"><a href="login.php" class="nav-link">ورود/ ثبت نام</a></li>
 
-        <div class="col-md-6">
-          <div class="brand headline-md text-primary-custom mb-3">
-            پوستتو بشناس
-          </div>
-          <div>
-            <p class="body-md text-on-secondary-container mb-4" style="max-width: 380px;">
-              تعریفی نو از مراقبت از پوست؛ ترکیبی از دقت علمی، تحلیل هوشمند و توصیه‌های شخصی‌سازی‌شده.
-            </p>
-          </div>
-
-          <div class="d-flex gap-3">
-            <a class="social-link" href="#">
-              <span class="material-symbols-outlined fs-6">
-                <?= file_get_contents('assets/icons/telegram.svg'); ?>
-              </span>
-            </a>
-            <a class="social-link" href="#">
-              <span class="material-symbols-outlined fs-6">
-                <?= file_get_contents('assets/icons/instagram.svg'); ?>
-              </span>
-            </a>
-          </div>
+          </ul>
         </div>
+      </nav>
+    </header>
 
-        <div class="col-md-6">
-          <div class="row g-4">
+    <section class="row g-4 top-grid">
+      <div class="col-lg-5">
+        <img class="feature-image" src="./assets/images/Gemini_Generated_Image_1a06311a06311a06.png" alt="Musicians in an Icelandic landscape">
+      </div>
+      <div class="col-lg-7">
+        <article class="tile tile-blue earth-card">
+          <p class="eyebrow">پستتو بشناس</p><i class="line"></i>
+          <h1>تیپ پوستی خود را بشناسید</h1>
+          <p class="intro">در کمتر از چند دقیقه تیپ پوستی خود را مشخص کنید</p>
+          <a class="action" href="#">ورود به پرسشنامه</a>
+        </article>
+      </div>
+    </section>
 
-            <div class="col-6">
-              <h5 class="label-caps text-primary-custom mb-4">دسترسی سریع</h5>
-              <ul class="list-unstyled d-flex flex-column gap-3 body-md mb-0">
-                <li><a class="footer-link text-decoration" href="#">درباره ما</a></li>
-                <li><a class="footer-link text-decoration" href="#">تماس با ما</a></li>
-              </ul>
-            </div>
-
-            <div class="col-6">
-              <h5 class="label-caps text-primary-custom mb-4">اطلاعات تماس</h5>
-              <ul class="list-unstyled d-flex flex-column gap-3 body-md mb-0">
-                <li class="footer-link text-decoration">تهران خیابان شریعتی</li>
-                <li class="footer-link text-decoration">09123456789</li>
-              </ul>
-
-              <div class="d-flex gap-2 mt-3">
-                <input class="form-control rounded-pill border-0 bg-surface" placeholder="Email Address" type="email">
-                <button class="btn btn-primary-custom px-3">
-                  Send
-                </button>
-              </div>
-            </div>
-
-          </div>
+    <section class="row g-4 second-grid">
+      <div class="col-lg-8">
+        <article class="tile tile-orange friends-card">
+          <p class="eyebrow">تیپ مو</p><i class="line"></i>
+          <h2>تیپ مو خود را بشناسید</h2>
+          <p>در کمتر از چند دقیقه نوع مو خود را بشناسی</p>
+          <a class="action" href="#">ورود به پرسشنامه</a>
+        </article>
+      </div>
+      <div class="col-lg-4">
+        <div class="poster">
+          <div class="poster-top">مشاوره <small>تخصصی</small></div>
+          <div class="poster-title">دکتر دلاور</div>
+          <div class="poster-sub">متخصص پوست و مو</div>
+          <img src="./assets/images/landing1 (1).png" alt="Yo-Yo Ma">
+          <!-- <div class="poster-names">JEREMY<br>DUTCHER &nbsp; • &nbsp; JONI IVE</div> -->
         </div>
-
       </div>
+    </section>
 
-      <div class="mt-5 pt-4 border-top text-center" style="border-color: rgba(129, 116, 115, 0.1) !important;">
-        <p class="body-md text-on-secondary-container opacity-50 mb-0">
-          © . تمامی حقوق محفوظ است.
-        </p>
+    <section class="quote-block">
+      <div class="quote-mark">“</div>
+      <blockquote>به راحتی پوست و مو خود را بشناسید.....................</blockquote>
+      <div class="quote-line"></div>
+      <p>Posteto Beshnas</p>
+    </section>
+
+    <!-- <section class="contact">
+      <h2>Stay in touch</h2>
+      <form><input type="email" aria-label="Email address" placeholder=""><button type="submit">Subscribe</button></form>
+      <div class="waves"><span></span><span></span><span></span></div>
+    </section> -->
+
+    <footer>
+      <div class="footer-links">
+        <a href="#">f</a><a href="#">◎</a><a href="#">▶</a><a href="#">♥</a>
+        <!-- <span class="divider"></span><a href="#">Bookings</a>
+        <span class="divider"></span><a href="#">Sound Postings</a> -->
       </div>
-    </div>
-  </footer>
-
-  <!-- Bootstrap JS -->
+      <small>Privacy policy</small>
+    </footer>
+  </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    const observerOptions = {
-      threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.reveal').forEach(section => {
-      observer.observe(section);
-    });
-  </script>
-
 </body>
 
 </html>
