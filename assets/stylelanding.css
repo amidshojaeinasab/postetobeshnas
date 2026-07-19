@@ -1,0 +1,106 @@
+﻿:root{--blue:#273252;--orange:#d84929;--yellow:#f3c61b;--ink:#293452}*{box-sizing:border-box}
+
+@font-face {
+    font-family: YekanBakh;
+    font-style: normal;
+    font-weight: 900;
+    src: url('../assets/fonts/YekanBakh-Medium.f7360956.woff') format('woff');
+}
+
+html{overflow-x:hidden}
+img{max-width:100%;display:block}
+.body-landing{margin:0;background:#fff;color:var(--ink);font-family:"YekanBakh",sans-serif;overflow-x:hidden}
+.page-shell{width:min(100% - 32px,1280px);margin:auto;padding:clamp(20px,4vw,42px) 0 26px}
+.site-header{min-height:76px}
+.navbar{width:100%}
+.navbar-collapse{justify-content:space-between;position:relative}
+.navbar-toggler{border-color:rgba(39,50,82,.25)}
+.navbar-toggler:focus{box-shadow:0 0 0 3px rgba(39,50,82,.16)}
+.navbar-toggler-icon{width:1.25em;height:1.25em;background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2839, 50, 82, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+.navbar-nav{gap:clamp(18px,3vw,44px)}
+.nav-link{text-transform:uppercase;color:#a8b0bf;font-size:13px;padding:0!important;white-space:nowrap}
+.brand{position:absolute;left:50%;top:-2px;transform:translateX(-50%);text-align:center;color:var(--blue);text-decoration:none;font-size:15px}
+.brand span{display:block;width:89px;height:28px;margin:auto auto 7px;background:linear-gradient(171deg,#ffd873 0 31%,#ed9b45 33% 62%,#dd5830 64%);clip-path:polygon(0 25%,26% 7%,49% 0,75% 8%,100% 32%,100% 100%,0 100%)}
+.top-grid,.second-grid{margin-bottom:31px}
+.feature-image{height:200px;min-height:334px;width:100%;object-fit:cover}
+.tile{height:100%;padding:clamp(34px,6vw,61px) clamp(24px,7vw,90px);color:#fff}
+.tile-blue{background:var(--blue)}
+.tile-orange{background:var(--orange)}
+.earth-card{min-height:334px}
+.eyebrow{color:#ffcf22;text-transform:uppercase;font-size:14px;font-weight:700;margin:0 0 13px}
+.line{display:block;background:#f6c91a;width:66px;height:2px;margin-bottom:28px}
+.tile h1,.tile h2,.quote-block blockquote,.contact h2{font-family:"YekanBakh",serif}
+.tile h1{font-size:clamp(25px,3vw,28px);line-height:1.35;margin:0}
+.intro{font-family:"YekanBakh",serif;font-size:clamp(17px,2.4vw,19px);line-height:1.55;max-width:530px;margin:10px 0 14px}
+.action{color:#ffce20;text-decoration:none;text-transform:uppercase;font-size:14px;font-weight:700;display:block;text-align:right;margin-top:8px}
+.action span{font-size:28px;line-height:0;margin-left:8px}
+.friends-card{min-height:442px;padding-top:61px}
+.friends-card h2{font-size:clamp(26px,3.5vw,34px);line-height:1.35;margin:30px 0 8px}
+.friends-card>p:not(.eyebrow){font-family:"YekanBakh",serif;font-size:clamp(17px,2.4vw,20px);line-height:1.55;margin:0}
+.friends-card .action{text-align:left;margin-top:8px}
+.poster{height:100%;min-height:446px;position:relative;overflow:hidden;text-align:center;background:#f1d9a8;color:#182d4f;padding-top:10px;font-weight:700}
+.poster-top{font-size:clamp(27px,4vw,34px);line-height:1}
+.poster-top small{font-size:clamp(20px,3vw,25px)}
+.poster-title{font-family:"YekanBakh",serif;font-size:clamp(25px,3.5vw,31px);color:#056086;margin-top:6px}
+.poster-title em{font-style:italic}
+.poster-sub{font:700 12px/1.05 "YekanBakh",serif;color:#d64a2b}
+.poster img{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);height:min(64%,280px);width:min(66%,300px);object-fit:cover;object-position:50% 25%;filter:grayscale(1) contrast(1.15);mix-blend-mode:multiply}
+.poster-names{position:absolute;bottom:23px;left:19px;font-size:12px;text-align:left;transform:rotate(-7deg)}
+.quote-block{background:#ccc;min-height:clamp(340px,42vw,494px);margin-bottom:30px;text-align:center;padding:clamp(35px,5vw,52px) 9% 35px}
+.quote-mark{font:64px/1 Georgia,serif;color:#273252;margin-bottom:15px}
+.quote-block blockquote{font-size:clamp(22px,4vw,36px);line-height:1.45;font-weight:700;max-width:1010px;margin:0 auto 48px;overflow-wrap:anywhere}
+.quote-line{background:#273252;height:2px;width:74px;margin:auto}
+.quote-block p{font-size:13px;color:#273252;margin-top:10px}
+.contact{height:369px;position:relative;overflow:hidden;background:#f6f6f6;text-align:center;padding-top:44px}
+.contact h2{font-size:32px}
+.contact form{position:relative;z-index:1;width:min(540px,75%);margin:40px auto;border-bottom:2px solid #bec8da}
+.contact input{background:none;border:0;outline:0;width:80%;padding:7px}
+.contact button{border:0;background:transparent;color:#69758b;text-transform:uppercase;font-size:13px;padding:7px}
+.waves{position:absolute;bottom:0;width:100%;height:180px}
+.waves span{position:absolute;display:block;width:120%;left:-10%;border-radius:50% 50% 0 0}
+.waves span:nth-child(1){height:125px;bottom:20px;background:#ffe05b;transform:rotate(3deg)}
+.waves span:nth-child(2){height:150px;bottom:-12px;background:#efa82f;transform:rotate(-3deg);opacity:.9}
+.waves span:nth-child(3){height:100px;bottom:-42px;background:#dd6628;transform:rotate(2deg);opacity:.9}footer{display:flex;justify-content:space-between;align-items:center;padding-top:17px;color:#68738a;font-size:13px;text-transform:uppercase}
+.footer-links{display:flex;align-items:center;gap:14px}
+.footer-links a{color:#68738a;text-decoration:none}
+.footer-links b{color:var(--ink)}
+.divider{height:25px;border-left:1px solid #7d8799}footer small{text-transform:none;font-size:9px}@media(max-width:991px){.tile{padding:45px}
+.feature-image{height:340px}
+.poster{height:440px}
+.second-grid .col-lg-4{width:100%;max-width:none}
+.quote-block blockquote{font-size:30px}}@media(max-width:767px){.page-shell{padding:25px 16px}
+.site-header{height:auto;margin-bottom:26px}
+.navbar{align-items:flex-start;justify-content:flex-end}
+.navbar-collapse{flex-basis:100%;width:100%;padding:16px 0 0}
+.navbar-collapse.show,.navbar-collapse.collapsing{display:flex;flex-direction:column;align-items:stretch}
+.brand{position:relative;left:auto;top:auto;transform:none;order:-1;margin:0 0 18px;text-align:right}
+.navbar-nav{width:100%;gap:0;margin:0;align-items:stretch}
+.nav-item{width:100%}
+.nav-link{display:block;width:100%;padding:12px 0!important;border-bottom:1px solid rgba(39,50,82,.08);font-size:14px}
+.nav-right{margin-top:0}
+.tile{padding:38px 28px}
+.earth-card,.friends-card{min-height:300px}
+.quote-block{padding:35px 18px;min-height:400px}
+.quote-block blockquote{font-size:24px}
+.contact{height:310px}
+.footer-links{gap:10px;flex-wrap:wrap}footer{align-items:flex-end}
+.poster{height:420px}}
+@media(max-width:575px){.page-shell{width:min(100% - 24px,1280px);padding-top:18px}
+.navbar-toggler{padding:5px 8px}
+.brand{font-size:13px}
+.brand span{width:72px;height:23px;margin-bottom:5px}
+.feature-image{min-height:240px;height:240px}
+.top-grid,.second-grid{margin-bottom:22px}
+.tile{padding:30px 20px}
+.earth-card,.friends-card{min-height:auto}
+.eyebrow{font-size:12px}
+.line{margin-bottom:20px}
+.action{font-size:13px}
+.friends-card h2{margin-top:22px}
+.second-grid .col-lg-4{max-width:none}
+.poster{min-height:360px;height:360px}
+.poster img{height:220px;width:70%;bottom:-14px}
+.quote-block{padding-left:18px;padding-right:18px;min-height:300px}
+.quote-block blockquote{font-size:22px;margin-bottom:34px}
+footer{display:block;text-align:center}
+.footer-links{justify-content:center;margin-bottom:12px}}

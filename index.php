@@ -7,7 +7,7 @@
   <title>پوست خود را بشناسید</title>
 
   <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="./assets/stylelanding.css">
 
 </head>
 
@@ -25,7 +25,7 @@
             <li class="nav-item"><a href="dashboard.php" class="nav-link">داشبورد</a></li>
 
           </ul>
-          <a class="brand" href="#" aria-label="postetobeshnas"><span></span><b>postetobeshnas</b></a>
+          <a class="brand" href="#" aria-label="postetobeshnas"><b>postetobeshnas</b></a>
           <ul class="navbar-nav nav-right">
             <li class="nav-item"><a href="#" class="nav-link">درباره ما</a></li>
             <li class="nav-item"><a href="#" class="nav-link">تماس یا ما</a></li>
@@ -38,14 +38,14 @@
 
     <section class="row g-4 top-grid">
       <div class="col-lg-5">
-        <img class="feature-image" src="./assets/images/Gemini_Generated_Image_1a06311a06311a06.png" alt="Musicians in an Icelandic landscape">
+        <img class="feature-image" src="./assets/images/landing2.jpg" alt="Musicians in an Icelandic landscape">
       </div>
       <div class="col-lg-7">
         <article class="tile tile-blue earth-card">
-          <p class="eyebrow">پستتو بشناس</p><i class="line"></i>
-          <h1>تیپ پوستی خود را بشناسید</h1>
-          <p class="intro">در کمتر از چند دقیقه تیپ پوستی خود را مشخص کنید</p>
-          <a class="action" href="#">ورود به پرسشنامه</a>
+          <p class="eyebrow">تست آنلاین تیپ پوست</p><i class="line"></i>
+          <h1>اولین قدم برای مراقبت صحیح از پوست</h1>
+          <p class="intro">با پاسخ به چند سؤال علمی، نوع پوست خود را شناسایی کنید و روتین مراقبت روزانه متناسب با نیاز پوستتان را دریافت نمایید.</p>
+          <a class="action" href="dashboard.php">شروع تست پوست</a>
         </article>
       </div>
     </section>
@@ -53,18 +53,18 @@
     <section class="row g-4 second-grid">
       <div class="col-lg-8">
         <article class="tile tile-orange friends-card">
-          <p class="eyebrow">تیپ مو</p><i class="line"></i>
-          <h2>تیپ مو خود را بشناسید</h2>
-          <p>در کمتر از چند دقیقه نوع مو خود را بشناسی</p>
-          <a class="action" href="#">ورود به پرسشنامه</a>
+          <p class="eyebrow">تست آنلاین تیپ مو</p><i class="line"></i>
+          <h2>انتخاب روتین مناسب مو</h2>
+          <p>نوع موی خود را بشناسید و بهترین روش مراقبت، شستشو و محصولات مناسب برای سلامت و زیبایی موهایتان را پیدا کنید.</p>
+          <a class="action" href="#">شروع تست مو</a>
         </article>
       </div>
       <div class="col-lg-4">
         <div class="poster">
-          <div class="poster-top">مشاوره <small>تخصصی</small></div>
-          <div class="poster-title">دکتر دلاور</div>
-          <div class="poster-sub">متخصص پوست و مو</div>
-          <img src="./assets/images/landing1 (1).png" alt="Yo-Yo Ma">
+          <!-- <div class="poster-top">مشاوره <small>تخصصی</small></div> -->
+          <div class="poster-title">دکتر شهره دلاور</div>
+          <div class="poster-sub">پزشک و پژوهشگر مرکز تحقیقات پوست و جذام دانشگاه تهران</div>
+          <img src="./assets/images/landing1.jpg" alt="postetobeshnas">
           <!-- <div class="poster-names">JEREMY<br>DUTCHER &nbsp; • &nbsp; JONI IVE</div> -->
         </div>
       </div>
@@ -72,7 +72,7 @@
 
     <section class="quote-block">
       <div class="quote-mark">“</div>
-      <blockquote>به راحتی پوست و مو خود را بشناسید.....................</blockquote>
+      <blockquote>شناخت نوع پوست و مو، مهم‌ترین قدم برای انتخاب محصولات مناسب و داشتن یک روتین مراقبتی مؤثر است. با تست‌های علمی پوستتوبشناس، در چند دقیقه اطلاعات دقیقی از ویژگی‌های پوست و موی خود به دست آورید.</blockquote>
       <div class="quote-line"></div>
       <p>Posteto Beshnas</p>
     </section>
@@ -92,7 +92,8 @@
       <small>Privacy policy</small>
     </footer>
   </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/css/bootstrap.bundle.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 
 </html>
