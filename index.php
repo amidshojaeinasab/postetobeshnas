@@ -21,14 +21,14 @@
         <div class="collapse navbar-collapse" id="navMenu">
           <ul class="navbar-nav nav-left">
             <li class="nav-item"><a href="index.php" class="nav-link">صفحه اصلی</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">مجله</a></li>
+            <li class="nav-item"><a href="coming-soon.php" class="nav-link">مجله</a></li>
             <li class="nav-item"><a href="dashboard.php" class="nav-link">داشبورد</a></li>
 
           </ul>
           <a class="brand" href="#" aria-label="postetobeshnas"><b>postetobeshnas</b></a>
           <ul class="navbar-nav nav-right">
-            <li class="nav-item"><a href="#" class="nav-link">درباره ما</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">تماس یا ما</a></li>
+            <li class="nav-item"><a href="coming-soon.php" class="nav-link">درباره ما</a></li>
+            <li class="nav-item"><a href="coming-soon.php" class="nav-link">تماس یا ما</a></li>
             <li class="nav-item"><a href="login.php" class="nav-link">ورود/ ثبت نام</a></li>
 
           </ul>
@@ -56,7 +56,7 @@
           <p class="eyebrow">تست آنلاین تیپ مو</p><i class="line"></i>
           <h2>انتخاب روتین مناسب مو</h2>
           <p>نوع موی خود را بشناسید و بهترین روش مراقبت، شستشو و محصولات مناسب برای سلامت و زیبایی موهایتان را پیدا کنید.</p>
-          <a class="action" href="#">شروع تست مو</a>
+          <a class="action" href="coming-soon.php">شروع تست مو</a>
         </article>
       </div>
       <div class="col-lg-4">

@@ -36,7 +36,9 @@ if (isset($_POST["login"])) {
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
+    
+     <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
+      <link rel="stylesheet" href="./assets/style.css">
 
 
     <title>صفحه ثبت نام</title>
@@ -126,8 +128,17 @@ if (isset($_POST["login"])) {
                 </form>
 
                 <!-- Register Link -->
-                <div class="text-center mt-4">
 
+                 <div class="text-center mt-4">
+
+                <a href="index.php"
+                        class="text-decoration-none fw-bold">
+                        بازگشت
+                </a>
+
+                </div>
+
+                <div class="text-center mt-4">
                     <span class="text-muted">
                         حساب کاربری ندارید؟
                     </span>

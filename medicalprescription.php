@@ -69,9 +69,7 @@ if (isset($medicines[$skinCode])) {
 
     <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
     <link rel="stylesheet" href="assets/style.css">
-    <!-- Material Symbols -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
-
+   
 </head>
 
 <body class="medicalprescription">
@@ -116,9 +114,9 @@ if (isset($medicines[$skinCode])) {
                     <?= $prescription['short_description'] ?>
                 </p>
             </div>
-            <div class="w-100" style="max-width: 320px;">
+            <div class="w-100  border border-1 border-secondary rounded-3" style="max-width: 320px;">
                 <div class="skin-image-wrap">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2pV4gMzJEkIizWN1Bb5BrtxkCPPcMvqLuAbz9N9nlArjYMycM00Du-4ZtG4LKWZNAgrijOdWNLFPMTqWY3pRpoKE8Hwhb4fdJyeoH-8GTspwtxU7OvUUUiLV1RKfkdtcvOGynXvl58DzNv_h1DSp6qSwGEYPfUGqClw39AAKMCUXJk1wZfpvcP5E1QYxdCmAb8fqIB4DbHz-1r7x8JeNS5-E8hwKX60BE93OusiYqs2xgt6Je1o-3cvsfRtvY7fsMjWU2dJWn79w" alt="skincare bottle">
+                    <img src="./assets/images/Medical prescription.png" alt="skincare bottle">
                 </div>
             </div>
         </section>
@@ -204,7 +202,7 @@ if (isset($medicines[$skinCode])) {
                 <div class="col-lg-6">
                     <div class="timeline-heading day">
                         <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                            <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
+                            <?= file_get_contents('assets/icons/card-checklist.svg'); ?>
                         </span>
                         <span>نسخه اول: نسخه  پوستی شما با برند های ایرانی</span>
                     </div>
@@ -259,7 +257,7 @@ if (isset($medicines[$skinCode])) {
                 <div class="col-lg-6">
                     <div class="timeline-heading day">
                         <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                            <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
+                            <?= file_get_contents('assets/icons/card-checklist.svg'); ?>
                         </span>
                         <span>نسخه دوم:نسخه پوستی شما با برند منتخب بین الملی</span>
                     </div>
