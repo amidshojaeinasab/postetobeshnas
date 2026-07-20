@@ -2,6 +2,8 @@
 
 require 'config.php';
 
+$error = "";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $first_name = trim($_POST['first_name'] ?? '');
@@ -17,37 +19,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         empty($password) ||
         empty($confirm_password)
     ) {
-        die("تمام فیلدها الزامی هستند");
+        $error = "تمام فیلدها الزامی هستند.";
+    } elseif ($password !== $confirm_password) {
+        $error = "گذرواژه و تکرار آن یکسان نیست.";
+    } else {
+
+        $stmt = $pdo->prepare("SELECT id FROM users WHERE phone = ?");
+        $stmt->execute([$phone]);
+
+        if ($stmt->rowCount() > 0) {
+            $error = "این شماره تماس قبلاً ثبت شده است.";
+        } else {
+
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+            $stmt = $pdo->prepare("
+                INSERT INTO users(first_name, last_name, phone, password)
+                VALUES (?, ?, ?, ?)
+            ");
+
+            $stmt->execute([
+                $first_name,
+                $last_name,
+                $phone,
+                $hashedPassword
+            ]);
+
+            header("Location: index.php");
+            exit;
+        }
     }
-
-    if ($password !== $confirm_password) {
-        die("گذرواژه و تکرار آن یکسان نیست");
-    }
-
-    $stmt = $pdo->prepare("SELECT id FROM users WHERE phone = ?");
-    $stmt->execute([$phone]);
-
-    if ($stmt->rowCount() > 0) {
-        die("این شماره تماس قبلا ثبت شده است");
-    }
-
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-    $stmt = $pdo->prepare("
-        INSERT INTO users(first_name, last_name, phone, password)
-        VALUES (?, ?, ?, ?)
-    ");
-
-    $stmt->execute([
-        $first_name,
-        $last_name,
-        $phone,
-        $hashedPassword
-    ]);
-
-    // echo "ثبت نام با موفقیت انجام شد";
-    header("Location: index.php");
-    exit;
 }
 
 ?>
@@ -75,10 +76,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card-header text-center text-white bg-dark bg-gradient py-4 rounded-top-4">
                 <h2 class="fw-bold mb-1">ثبت نام</h2>
                 <p class="mb-0 small">اطلاعات خود را وارد کنید</p>
+                <?php if (!empty($error)): ?>
             </div>
 
             <!-- Body -->
             <div class="card-body p-4">
+
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <?= htmlspecialchars($error) ?>
+</div>
+<?php endif; ?>
 
                 <form method="POST">
 

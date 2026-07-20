@@ -2,6 +2,8 @@
 
 require 'config.php';
 
+$error = "";
+
 if (isset($_POST["login"])) {
     $phone = trim($_POST['phone']);
     $password = $_POST['password'];
@@ -12,21 +14,17 @@ if (isset($_POST["login"])) {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$user) {
-        die("کاربری یافت نشد");
+        $error = "کاربری با این شماره موبایل یافت نشد.";
+    } elseif (!password_verify($password, $user['password'])) {
+        $error = "گذرواژه وارد شده اشتباه است.";
+    } else {
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_name'] = $user['first_name'];
+
+        header("Location: dashboard.php");
+        exit;
     }
-
-    if (!password_verify($password, $user['password'])) {
-        die("گذرواژه اشتباه است");
-    }
-
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['user_name'] = $user['first_name'];
-
-    header("Location: dashboard.php");
 }
-
-
-
 ?>
 
 
@@ -58,7 +56,11 @@ if (isset($_POST["login"])) {
 
             <!-- Body -->
             <div class="card-body p-4">
-
+<?php if (!empty($error)): ?>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <?= htmlspecialchars($error) ?>
+    </div>
+<?php endif; ?>
                 <form method="POST">
 
                     <!-- Phone -->
