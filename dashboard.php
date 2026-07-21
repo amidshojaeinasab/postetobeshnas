@@ -96,6 +96,15 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                     </li>
 
                     <li class="nav-item mb-2 dashboard-btn">
+                        <a href="medicalprescription.php"
+                            class="nav-link text-white">
+
+                            <i class="bi bi-gear ms-2"></i>
+                            نسخه پزشکی
+                        </a>
+                    </li>
+
+                    <li class="nav-item mb-2 dashboard-btn">
                         <a href="profile.php"
                             class="nav-link text-white">
 
@@ -285,19 +294,25 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                                 </p>
 
                             </div>
-                             <?php if($user['is_paid']==1){ ?>
+            <div class="d-flex justify-content-center align-items-center" style="min-height:15vh;">
 
-<a href="Oilyform.php">
-شروع پرسشنامه
-</a>
+    <?php if ($user['is_paid'] == 1) { ?>
 
-<?php }else{ ?>
+        <a href="Oilyform.php" class="btn btn-success btn-lg px-3 py-3 rounded-3 shadow-sm">
+            <i class="bi bi-play-circle me-2"></i>
+            شروع پرسشنامه
+        </a>
 
-<a href="payment.php">
-پرداخت و شروع آزمون
-</a>
+    <?php } else { ?>
 
-<?php } ?>
+        <a href="payment.php" class="btn btn-danger btn-lg px-3 py-3 rounded-3 shadow-sm">
+            <i class="bi bi-credit-card me-2"></i>
+            پرداخت و شروع آزمون
+        </a>
+
+    <?php } ?>
+
+</div>
                         </div>
                     </div>
 

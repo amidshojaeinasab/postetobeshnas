@@ -461,11 +461,20 @@ if (isset($_POST["submit"])) {
                             </div>
                         </div>
 
-                        <div class="d-grid">
+                        <div class="d-grid mt-4 mb-4">
                             <button type="submit" class="submit-btn" name="submit">
                                 مشاهده نتیجه
                             </button>
                         </div>
+
+                        <div class="text-center mt-4 mb-4 submit-btn">
+
+                <a href="dashboard.php"
+                        class="text-decoration-none fw-bold text-white">
+                        بازگشت
+                </a>
+
+                </div>
 
                 </form>
             </div>

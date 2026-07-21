@@ -606,3 +606,68 @@ transform: translate(-50%, 50%);
 @media (max-width: 767px) {
 .skin-type-row { flex-direction: column; }
 }
+
+/* callback */
+.body-callback{
+background:#f5f7fb;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:tahoma;
+}
+
+.card-callback{
+border:none;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.icon-callback{
+font-size:70px;
+}
+
+/* payment */
+
+.body-payment{
+background:linear-gradient(135deg,#f8f9fa,#eef3ff);
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:tahoma;
+}
+
+.payment-card{
+border:none;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+overflow:hidden;
+}
+
+.payment-header{
+background:var( --blue);
+color:#fff;
+padding:25px;
+text-align:center;
+}
+
+.payment-icon{
+font-size:70px;
+}
+
+.btn-pay{
+padding:12px;
+font-size:18px;
+border-radius:12px;
+background-color:var( --blue);
+}
+
+.card-payment{
+  font-family: "YekanBakh";
+}
+
+
+
+
+

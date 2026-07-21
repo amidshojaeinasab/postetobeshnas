@@ -8,40 +8,79 @@ $stmt->execute([$_SESSION['user_id']]);
 $user = $stmt->fetch();
 
 if ($user['is_paid'] == 1) {
-    header("Location: oilyform.php");
+    header("Location: Oilyform.php");
     exit;
 }
 ?>
 
 <!DOCTYPE html>
-
-<html>
+<html lang="fa" dir="rtl">
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>پرداخت</title>
+    <title>پرداخت آزمون</title>
+
+    <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+
 
 </head>
 
-<body>
+<body class="body-payment">
 
-    <h2>
+<div class="container">
 
-        برای شروع آزمون ابتدا هزینه را پرداخت کنید.
+    <div class="row justify-content-center">
 
-    </h2>
+        <div class="col-md-7 col-lg-5">
 
-    <form action="pay.php" method="post">
+            <div class="card payment-card">
 
-        <button type="submit">
+                <div class="payment-header">
 
-            پرداخت آزمون
+                    <h3 class="mt-3">
+                        پرداخت هزینه آزمون
+                    </h3>
 
-        </button>
+                </div>
 
-    </form>
+                <div class="card-body p-4 text-center card-payment">
+
+                    <p class="mb-4">
+
+                        برای شروع آزمون ابتدا لازم است هزینه آزمون را پرداخت کنید.
+                        پس از پرداخت موفق، دسترسی شما به پرسشنامه به صورت خودکار فعال خواهد شد.
+
+                    </p>
+
+                    <div class="alert alert-info card-payment">
+
+                         پرداخت از طریق درگاه امن زرین‌پال انجام می‌شود.
+
+                    </div>
+
+                    <form action="pay.php" method="post">
+
+                        <button class="btn btn-pay w-100 card-payment">
+
+                            پرداخت و شروع آزمون
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
 </body>
 
