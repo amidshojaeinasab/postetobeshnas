@@ -2,6 +2,16 @@
 require_once 'config.php';
 is_login();
 
+$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
+$stmt->execute([$_SESSION['user_id']]);
+
+$user = $stmt->fetch();
+
+if ($user['is_paid'] != 1) {
+    header("Location: payment.php");
+    exit;
+}
+
 if (isset($_POST["submit"])) {
     $q1 = $_POST["q1"];
     $q2 = $_POST["q2"];

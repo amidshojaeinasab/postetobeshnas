@@ -4,6 +4,21 @@ is_login();
 
 $user_id = $_SESSION['user_id'];
 
+$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id = ?");
+$stmt->execute([$user_id]);
+
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+
+
+$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
+$stmt->execute([$user_id]);
+
+$user = $stmt->fetch();
+
+$user_id = $_SESSION['user_id'];
+
 function getForm($pdo, $table, $user_id)
 {
     $stmt = $pdo->prepare("
@@ -270,9 +285,19 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                                 </p>
 
                             </div>
-                            <a href="medicalprescription.php" class="btn btn-outline-custom btn-lg px-5 w-100 fs-6">
-                                ورود به نسخه پزشکی
-                            </a>
+                             <?php if($user['is_paid']==1){ ?>
+
+<a href="Oilyform.php">
+شروع پرسشنامه
+</a>
+
+<?php }else{ ?>
+
+<a href="payment.php">
+پرداخت و شروع آزمون
+</a>
+
+<?php } ?>
                         </div>
                     </div>
 
