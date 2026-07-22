@@ -114,7 +114,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                         </a>
                     </li>
 
-                    <li class="nav-item mt-4 bg-danger border rounded-3">
+                    <li class="nav-item mt-4 dashboard-btn">
                         <a href="logout.php"
                             class="nav-link text-white">
 
@@ -170,7 +170,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span class="text-success">
+                                    <span class="text-result">
 
                                         <i class="bx bxs-up-arrow fs-32">نوع پوست <?= getSkinType($oilyform['type'] ?? '') ?></i>
                                     </span>
@@ -191,7 +191,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span class="text-success">
+                                    <span class="text-result">
                                         <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($sensitiveform['type'] ?? '') ?></i>
                                     </span>
                                 </div>
@@ -211,7 +211,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span class="text-success">
+                                    <span class="text-result">
                                         <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($pigmentedform['type'] ?? '') ?></i>
                                     </span>
                                 </div>
@@ -231,7 +231,7 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
                             <div class="card-footer bg-light d-flex justify-content-between align-items-center">
                                 <div>
-                                    <span class="text-success">
+                                    <span class="text-result">
                                         <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($wrinkledform['type'] ?? '') ?></i>
                                     </span>
                                 </div>
@@ -298,14 +298,14 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
     <?php if ($user['is_paid'] == 1) { ?>
 
-        <a href="Oilyform.php" class="btn btn-success btn-lg px-3 py-3 rounded-3 shadow-sm">
+        <a href="Oilyform.php" class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
             <i class="bi bi-play-circle me-2"></i>
             شروع پرسشنامه
         </a>
 
     <?php } else { ?>
 
-        <a href="payment.php" class="btn btn-danger btn-lg px-3 py-3 rounded-3 shadow-sm">
+        <a href="payment.php" class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
             <i class="bi bi-credit-card me-2"></i>
             پرداخت و شروع آزمون
         </a>

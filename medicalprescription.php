@@ -3,6 +3,16 @@ require 'config.php';
 $medicines = require 'medicines.php';
 is_login();
 
+$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
+$stmt->execute([$_SESSION['user_id']]);
+
+$user = $stmt->fetch();
+
+if ($user['is_paid'] != 1) {
+    header("Location: payment.php");
+    exit;
+}
+
 $user_id = $_SESSION['user_id'];
 
 function getForm($pdo, $table, $user_id)
@@ -25,10 +35,32 @@ $sensitiveform = getForm($pdo, "sensitiveform", $user_id);
 $pigmentedform = getForm($pdo, "pigmentedform", $user_id);
 $wrinkledform  = getForm($pdo, "wrinkledform", $user_id);
 
-// اگر یکی از فرم‌ها وجود نداشت
 if (!$oilyform || !$sensitiveform || !$pigmentedform || !$wrinkledform) {
-    die("ابتدا باید تمام پرسشنامه‌ها را تکمیل کنید.");
+    ?>
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
+    </head>
+    <body class="bg-light">
+
+    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+        <div class="card shadow border-0 rounded-4 p-4 text-center" style="max-width:500px;">
+            <h3 class="text-warning mb-3">⚠️ پرسشنامه‌ها کامل نشده‌اند</h3>
+            <p>ابتدا باید تمام پرسشنامه‌ها را تکمیل کنید.</p>
+            <a href="dashboard.php" class="btn btn-primary">
+                بازگشت به داشبورد
+            </a>
+        </div>
+    </div>
+
+    </body>
+    </html>
+    <?php
+    exit;
 }
+
 
 $skinCode =
     $oilyform['type'] .
@@ -75,6 +107,7 @@ if (isset($medicines[$skinCode])) {
 <body class="medicalprescription">
 
     <!-- Header -->
+    
     <header class="app-header">
         <div class="container-max mx-auto h-100 px-3 px-md-0 d-flex align-items-center justify-content-between" style="margin:auto;">
             <div class="d-flex flex-column">

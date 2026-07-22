@@ -7,14 +7,14 @@
   --orange:#d84929;
   --yellow:#f3c61b;
   --ink:#293452;
-  --primary: #49108B;
+  --primary: #273252;
   --primary-container: #DCC7FF;
   --primary-fixed: #E9DCFF;
   --primary-fixed-dim: #C6A5FF;
   --on-primary: #FFFFFF;
   --on-primary-container: #2D0057;
 
-  --secondary: #7E30E1;
+  --secondary: #d84929;
   --secondary-container: #E6D5FF;
   --secondary-fixed: #F0E5FF;
   --secondary-fixed-dim: #D0AEFF;
@@ -197,7 +197,7 @@ input[type="radio"] {
 .skin-type{
   font-size:2rem;
   font-weight:700;
-  color:#198754;
+  color:var(--secondary);
 }
 
 .score{
@@ -279,7 +279,24 @@ text-align:justify;
 }
 
 .intro-text strong{
-color:#49108B;
+color:var(--blue);
+}
+
+.text-result{
+  color: var(--secondary);
+}
+
+.btn-outline-custom {
+    color:var(--blue);
+    border: 2px solid #040404;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-custom:hover {
+    color: #fff;
+    background-color: var(--primary);
+    border-color: #0b0b0b;
 }
 
 /* استایل نسخه */
