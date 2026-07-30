@@ -8,7 +8,7 @@ $user_id = $_SESSION['user_id'];
 function getUser($pdo, $user_id)
 {
     $stmt = $pdo->prepare("
-        SELECT first_name, last_name, phone, password, id
+        SELECT first_name, last_name, phone, email, password, id
         FROM users
         WHERE id = :id
         LIMIT 1
@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         SET first_name = :first_name,
             last_name  = :last_name,
             phone      = :phone,
+            email      = :email,
             password   = :password
         WHERE id = :id
     ");
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ':first_name' => $_POST['first_name'],
         ':last_name'  => $_POST['last_name'],
         ':phone'      => $_POST['phone'],
+        ':email'      => $_POST['email'],
         ':password'   => password_hash($_POST['password'], PASSWORD_DEFAULT),
         ':id'         => $user_id
     ]);
@@ -109,6 +111,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     class="form-control form-control-lg rounded-3">
                             </div>
 
+                            <div class="mb-3">
+                                <label class="form-label">ایمیل</label>
+                                <input type="text" name="email"
+                                    value="<?= $users['email'] ?>"
+                                    class="form-control form-control-lg rounded-3">
+                            </div>
+
                             <div class="mb-4">
                                 <label class="form-label">رمز عبور جدید</label>
                                 <input type="password" name="password"
@@ -121,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             </button>
 
                         </form>
-                        <a href="dashboard.php" class="btn btn-outline-custom btn-lg px-5 w-100">
+                        <a href="dashboard.php" class="btn btn-outline-custom btn-lg px-5 w-100 mt-4">
                             داشبورد
                         </a>
 

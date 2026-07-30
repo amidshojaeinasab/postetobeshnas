@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $first_name = trim($_POST['first_name'] ?? '');
     $last_name = trim($_POST['last_name'] ?? '');
     $phone = trim($_POST['phone'] ?? '');
+    $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
 
@@ -16,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         empty($first_name) ||
         empty($last_name) ||
         empty($phone) ||
+        empty($email) ||
         empty($password) ||
         empty($confirm_password)
     ) {
@@ -34,18 +36,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
             $stmt = $pdo->prepare("
-                INSERT INTO users(first_name, last_name, phone, password)
-                VALUES (?, ?, ?, ?)
+                INSERT INTO users(first_name, last_name, phone,email, password)
+                VALUES (?, ?, ?, ?,?)
             ");
 
             $stmt->execute([
                 $first_name,
                 $last_name,
                 $phone,
+                $email,
                 $hashedPassword
             ]);
 
-            header("Location: index.php");
+            header("Location: login.php");
             exit;
         }
     }
@@ -122,6 +125,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             class="form-control"
                             placeholder="09xxxxxxxxx"
                             name="phone">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">ایمیل</label>
+
+                    <div class="input-group">
+                        <input type="email"
+                            class="form-control"
+                            placeholder="exampel@site.com"
+                            name="email">
                     </div>
                 </div>
 

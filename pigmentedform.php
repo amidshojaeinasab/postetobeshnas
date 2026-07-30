@@ -1,6 +1,27 @@
 <?php
 require_once 'config.php';
 is_login();
+$user_id = $_SESSION['user_id'];
+
+$filled = false;
+
+$stmt = $pdo->prepare("SELECT id FROM pigmentedform WHERE user_id = ?");
+$stmt->execute([$_SESSION['user_id']]);
+
+if ($stmt->fetch()) {
+    $filled = true;
+}
+
+$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
+$stmt->execute([$_SESSION['user_id']]);
+
+$user = $stmt->fetch();
+
+if ($user['is_paid'] != 1) {
+    header("Location: payment.php");
+    exit;
+}
+
 
 if (isset($_POST["submit"])) {
     $q1 = $_POST["q1"];
@@ -79,6 +100,18 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="assets/style.css">
 
 </head>
+
+<?php if ($filled): ?>
+
+<div class="alert-box">
+    <h3>⚠️ این پرسشنامه قبلاً تکمیل شده است.</h3>
+    <p>هر کاربر فقط یک بار مجاز به تکمیل این پرسشنامه است.</p>
+    <a href='dashboard.php'>
+                بازگشت به پنل
+            </a>
+</div>
+
+<?php else: ?>
 
 <body>
 
@@ -515,7 +548,7 @@ if (isset($_POST["submit"])) {
                             <div class="card-body p-4">
 
                                 <h4 class="mb-4 lh-base fw-bold" style="text-align: justify;">
-                                    آیا شما یا خانواده نزدیکتان سابقه ملانوما داشته‌اید؟
+                                    آیا شما یا خانواده نزدیکتان سابقه ملانوما(سرطان پوست) داشته‌اید؟
                                 </h4>
 
                                 <label class="answer-item d-block">
@@ -525,11 +558,21 @@ if (isset($_POST["submit"])) {
 
                                 <label class="answer-item d-block">
                                     <input type="radio" name="q13" value="2">
-                                    … (گزینه‌ها بسته به متن اصلی ادامه دارند)
+									یک نفر در خانواده
+                                </label>
+
+								<label class="answer-item d-block">
+                                    <input type="radio" name="q13" value="3">
+									بیشتر از یک نفر در خانواده
                                 </label>
 
                                 <label class="answer-item d-block">
-                                    <input type="radio" name="q13" value="3">
+                                    <input type="radio" name="q13" value="4">
+                                    خودم سابقه ملانوما داشته ام
+                                </label>
+
+								 <label class="answer-item d-block">
+                                    <input type="radio" name="q13" value="5">
                                     مطمئن نیستم
                                 </label>
                             </div>
@@ -557,7 +600,7 @@ if (isset($_POST["submit"])) {
                             </div>
                         </div>
 
-                        <div class="d-grid mt-4 mb-4">
+                       <div class="d-grid mt-4 mb-4">
                             <button type="submit" class="submit-btn" name="submit">
                                 مشاهده نتیجه
                             </button>
@@ -580,5 +623,7 @@ if (isset($_POST["submit"])) {
     </div>
 
 </body>
+
+<?php endif; ?>
 
 </html>

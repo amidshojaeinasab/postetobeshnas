@@ -2,6 +2,17 @@
 require_once 'config.php';
 is_login();
 
+$user_id = $_SESSION['user_id'];
+
+$filled = false;
+
+$stmt = $pdo->prepare("SELECT id FROM oilyform WHERE user_id = ?");
+$stmt->execute([$_SESSION['user_id']]);
+
+if ($stmt->fetch()) {
+    $filled = true;
+}
+
 $stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
 $stmt->execute([$_SESSION['user_id']]);
 
@@ -82,6 +93,19 @@ if (isset($_POST["submit"])) {
     <link rel="stylesheet" href="assets/style.css">
 
 </head>
+
+
+<?php if ($filled): ?>
+
+<div class="alert-box">
+    <h3>⚠️ این پرسشنامه قبلاً تکمیل شده است.</h3>
+    <p>هر کاربر فقط یک بار مجاز به تکمیل این پرسشنامه است.</p>
+    <a href='dashboard.php'>
+                بازگشت به پنل
+            </a>
+</div>
+
+<?php else: ?>
 
 <body>
 
@@ -484,5 +508,6 @@ if (isset($_POST["submit"])) {
 
 </body>
 
+<?php endif; ?>
 
 </html>

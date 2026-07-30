@@ -4,102 +4,247 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>پوست خود را بشناسید</title>
+  <title>پوستو بشناس | Skin Intelligence</title>
 
-  <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="./assets/css/bootstrap.rtl.min.css">
   <link rel="stylesheet" href="./assets/stylelanding.css">
 
 </head>
 
-<body class="body-landing">
-  <main class="page-shell">
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md p-0">
-        <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-label="Open menu">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navMenu">
-          <ul class="navbar-nav nav-left">
-            <li class="nav-item"><a href="index.php" class="nav-link">صفحه اصلی</a></li>
-            <li class="nav-item"><a href="coming-soon.php" class="nav-link">مجله</a></li>
-            <li class="nav-item"><a href="dashboard.php" class="nav-link">داشبورد</a></li>
-
-          </ul>
-          <a class="brand" href="#" aria-label="postetobeshnas"><b>postetobeshnas</b></a>
-          <ul class="navbar-nav nav-right">
-            <li class="nav-item"><a href="coming-soon.php" class="nav-link">درباره ما</a></li>
-            <li class="nav-item"><a href="coming-soon.php" class="nav-link">تماس یا ما</a></li>
-            <li class="nav-item"><a href="login.php" class="nav-link">ورود/ ثبت نام</a></li>
-
-          </ul>
-        </div>
-      </nav>
-    </header>
-
-    <section class="row g-4 top-grid">
-      <div class="col-lg-5">
-        <img class="feature-image" src="./assets/images/landing2.jpg" alt="Musicians in an Icelandic landscape">
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark site-nav">
+    <div class="container-fluid px-3 px-md-4 px-lg-5">
+      <a href="index.php" class="navbar-brand d-flex align-items-center gap-2">
+        <img src="./assets/images/logo1.jpg" alt="لوگوی سایت" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav mx-auto gap-lg-3">
+          <li class="nav-item"><a class="nav-link" href="index.php">خانه</a></li>
+          <li class="nav-item"><a class="nav-link" href="coming-soon.php">پرسشنامه</a></li>
+          <li class="nav-item"><a class="nav-link" href="medicalprescription.php">نسخه‌ها</a></li>
+          <li class="nav-item"><a class="nav-link" href="coming-soon.php">مقالات</a></li>
+          <li class="nav-item"><a class="nav-link" href="coming-soon.php">درباره ما</a></li>
+          <li class="nav-item"><a class="nav-link" href="coming-soon.php">تماس با ما</a></li>
+        </ul><a class="login-btn" href="login.php"><i class="bi bi-person-circle"></i> ورود / ثبت‌نام</a>
       </div>
-      <div class="col-lg-7">
-        <article class="tile tile-blue earth-card">
-          <p class="eyebrow">پوسستت رو بشناس</p><i class="line"></i>
-          <h1>روتین مناسب پوستت رو دریافت کن.</h1>
-          <p class="intro">تنها با چند دقیقه پاسخ به سوالات هدفمند، پوستت بر پایه معتبرترین ارزیابی علمی از چهار جنبه چربی یا خشکی، حساسیت، استعداد ایجاد لک و روند پیری برسی می شود.
-پس از تکمیل ارزیابی، پروفایل تخصصی پوست و دو روتین اختصاصی مراقبت از پوست (روز و شب) را دریافت می کنی. یکی بر پایه محصولات منتخب ایرانی و دیگری بر پایه برندهای معتبر بین المللی، تا مناسب با یودجه، دسترسی و نیاز پوستت بهترین انتخاب را داشته باشی.
-</p>
-          <a class="action" href="dashboard.php">ساخت پروفایل پوست من</a>
-        </article>
-      </div>
-    </section>
+    </div>
+  </nav>
 
-    <section class="row g-4 second-grid">
-      <div class="col-lg-8">
-        <article class="tile tile-orange friends-card">
-          <p class="eyebrow">موهات رو یشناس </p><i class="line"></i>
-          <h2>روتین اختصاصی موت رو دریافت کن</h2>
-          <p>امکان شناخت نوع مو و دریافت روتین اختصاصی مراقبت از مو، به زودی فعال می شود.</p>
-          <!-- <a class="action" href="coming-soon.php">شروع تست مو</a> -->
-        </article>
-      </div>
-      <div class="col-lg-4">
-        <div class="poster">
-          <!-- <div class="poster-top">مشاوره <small>تخصصی</small></div> -->
-          <div class="poster-title">دکتر شهره دلاور</div><i class="line" style="margin: auto;margin-bottom: 28px;"></i>
-          <div class="poster-sub">پزشک و پژوهشگر مرکز تحقیقات پوست و جذام دانشگاه تهران</div>
-          <img src="./assets/images/landing1.jpg" alt="postetobeshnas">
-          <!-- <div class="poster-names">JEREMY<br>DUTCHER &nbsp; • &nbsp; JONI IVE</div> -->
+  <main>
+    <section class="hero">
+      <div class="container-fluid px-3 px-md-4 px-lg-5">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-6 hero-copy"><span class="eyebrow">★ اولین سامانه تخصصی ایرانی</span>
+            <h1>پوستو بشناس</h1>
+            <h2>اولین سامانه هوشمند ارزیابی و مراقبت<br>از پوست و مو <em>تحت نظر پزشک</em></h2>
+            <p>با پاسخ به چهار پرسشنامه تخصصی، تیپ پوستی خود را زیر نظر پزشک بشناسید و بهترین اختصاصی روز و شب دریافت کنید.</p><a class="btn orange-btn" href="#quiz">شروع ارزیابی پوست <i class="bi bi-arrow-left"></i></a><small class="secure"><i class="bi bi-lock"></i> اطلاعات شما کاملاً محرمانه است</small>
+          </div>
+          <div class="col-12 col-lg-6 hero-art">
+            <div class="portrait-wrap"><img src="./assets/images/1 (2).png" alt="مراقبت پوست"></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="quote-block">
-      <div class="quote-mark">وب سایت تخصصی پوستتو بشناس</div>
-      <blockquote class="intro">دستیابی آسان تر به پوستی سالم، شفاف و جوان
-روتین پوستی تنها مجموعه ای از محصولات مراقبتی نیست، بلکه برنامه ای عملی و هدفمند برای حفظ سلامت و بهبود عملکرد طبیعی پوست است.
-یک روتین صحیح می تواند به بهبود و مدیریت مشکلاتی مانند آکنه، خشکی، حساسیت، لک، التهاب، قرمزی و نشانه های اولیه پیری کمک کند. در مقابل، انتخاب نادرست محصولات یا ترکیبات نامناسب ممکن است یه سد دفاعی پوست آسیب زده و مشکلات پوستی را تشدید کند.
-سامانه پوستتو بشناس با تکیه بر مطالعات علمی و تحت نظر دکتر شهره دلاور، به شما کمک کی کند ویژگی های پوست خود را بهتر بشناسید و روتینی شخصی سازی شده، متناسب با نیازهای واقعی پوستتان دریافت کنید.
-</blockquote>
-      <div class="quote-line"></div>
-      <p>Posteto Beshnas</p>
+    <section class="container-fluid px-3 px-md-4 px-lg-5 feature-wrap">
+      <div class="row g-0 feature-card">
+        <div class="col-12 col-sm-6 col-lg-3 feature">
+          <span class="icon">
+            <?= file_get_contents('assets/icons/shield-check.svg'); ?>
+          </span>
+          <h3>تحت نظر پزشک</h3>
+          <p>تمام توصیه‌ها و نسخه‌ها<br>تحت نظر پزشک تهیه می‌شود.</p>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 feature">
+          <span class="icon">
+            <?= file_get_contents('assets/icons/flask-florence.svg'); ?>
+          </span>
+          <h3>ارزیابی علمی دقیق</h3>
+          <p>بر پایه جدیدترین<br>پژوهش‌های روز دنیا</p>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 feature">
+          <span class="icon">
+            <?= file_get_contents('assets/icons/crosshair.svg'); ?>
+          </span>
+          <h3>شخصی‌سازی هوشمند</h3>
+          <p>نسخه اختصاصی برای نیازهای<br>منحصر به فرد پوست شما</p>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-3 feature">
+          <span class="icon">
+            <?= file_get_contents('assets/icons/leaf.svg'); ?>
+          </span>
+          <h3>محصولات ایرانی و بین‌المللی</h3>
+          <p>ارائه بهترین محصولات<br>ایرانی و برندهای معتبر جهانی</p>
+        </div>
+      </div>
     </section>
 
-    <!-- <section class="contact">
-      <h2>Stay in touch</h2>
-      <form><input type="email" aria-label="Email address" placeholder=""><button type="submit">Subscribe</button></form>
-      <div class="waves"><span></span><span></span><span></span></div>
-    </section> -->
+    <section class="container-fluid px-3 px-md-4 px-lg-5 cards-section" id="services">
+      <div class="row g-5">
 
-    <footer>
-      <div class="footer-links">
-        <a href="#">f</a><a href="#">◎</a><a href="#">▶</a><a href="#">♥</a>
-        <!-- <span class="divider"></span><a href="#">Bookings</a>
-        <span class="divider"></span><a href="#">Sound Postings</a> -->
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="service-card products">
+
+            <div class="content">
+              <span class="icon">
+                <?= file_get_contents('assets/icons/chat-square-text.svg'); ?>
+              </span>
+
+              <h2>دریافت نسخه اختصاصی</h2>
+
+              <p>
+                دریافت روتین کامل روز و شب برای پوست و موی شما از بهترین محصولات
+              </p>
+            </div>
+
+            <div class="products-image">
+              <img src="./assets/images/1 (3).png" alt="محصولات پوستی">
+            </div>
+
+            <a href="#">
+              مشاهده نمونه نسخه‌ها
+              <i class="bi bi-arrow-left"></i>
+            </a>
+
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="service-card quiz">
+
+            <div class="content">
+
+              <span class="icon">
+                <?= file_get_contents('assets/icons/person-bounding-box.svg'); ?>
+              </span>
+
+              <h2>ارزیابی نوع پوست</h2>
+
+              <p>
+                با تکمیل چهار ارزیابی تخصصی، تیپ پوستی خود را بشناسید و نسخه اختصاصی دریافت کنید.
+              </p>
+
+              <ul>
+                <li>چربی پوست</li>
+                <li>حساسیت پوست</li>
+                <li>لک و تیرگی</li>
+                <li>روند پیری و چروک</li>
+              </ul>
+
+            </div>
+
+            <a class="btn navy-btn" href="#">
+              شروع ارزیابی پوست
+              <i class="bi bi-arrow-left"></i>
+            </a>
+
+          </article>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+          <article class="service-card hair-card">
+
+            <div class="hair-content">
+
+              <span class="icon">
+                <?= file_get_contents('assets/icons/droplet-half.svg'); ?>
+              </span>
+
+              <h2>مراقبت از مو</h2>
+
+              <p>
+                به‌زودی سامانه ارزیابی و مراقبت از مو در دسترس شما خواهد بود.
+              </p>
+
+              <span class="coming-soon">به‌زودی</span>
+
+            </div>
+
+            <div class="hair-image">
+              <img src="./assets/images/1 (1).png" alt="موی سالم">
+            </div>
+
+          </article>
+        </div>
+
       </div>
-      <small>Privacy policy</small>
-    </footer>
+    </section>
+
+    <section class="container-fluid px-3 px-md-4 px-lg-5 doctor" id="doctor">
+
+      <div class="doctor-info">
+        <p>
+          <span class="icon">
+            <?= file_get_contents('assets/icons/person-check.svg'); ?>
+          </span>
+          پزشک عمومی
+        </p>
+        <p>
+          <span class="icon">
+            <?= file_get_contents('assets/icons/book-half.svg'); ?>
+          </span>
+          پژوهشگر حوزه پوست
+        </p>
+        <p>
+          <span class="icon">
+            <?= file_get_contents('assets/icons/file-richtext-fill.svg'); ?>
+          </span>
+          طراح و مسئول علمی سامانه پوستو بشناس
+        </p>
+      </div>
+
+      <div class="doctor-text">
+        <h2>دکتر شهره دلاور</h2>
+        <h6>پزشک عمومی و پژوهشگر حوزه پوست</h6>
+
+        <p>
+          با پشتوانه سال‌ها مطالعه و پژوهش در حوزه مراقبت پوستی و تجربه بالینی،
+          سامانه پوستو بشناس را با هدف کمک به انتخاب روتین صحیح مراقبت از پوست
+          و انتخاب آگاهانه محصولات مراقبتی طراحی کرده‌ام.
+        </p>
+      </div>
+
+      <div class="doctor-photo"><img src="./assets/images/landing1.jpg" alt="دکتر شهره دلاور"></div>
+
+
+    </section>
   </main>
-  <script src="assets/css/bootstrap.bundle.min.js"></script>
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
+
+  <footer id="footer">
+    <div class="container-fluid px-3 px-md-4 px-lg-5">
+      <div class="row gy-4">
+        <div class="col-md-4">
+          <a href="index.php" class="navbar-brand d-flex align-items-center gap-2">
+            <img src="./assets/images/logo1.jpg" alt="لوگوی سایت" class="logo">
+          </a>
+          <p>اولین سامانه هوشمند ارزیابی و مراقبت از پوست و مو تحت نظر پزشک</p>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5>خدمات</h5><a href="#">ارزیابی نوع پوست</a><a href="#">دریافت نسخه اختصاصی</a><a href="#">پرسشنامه مراقبت از مو</a><a href="#">مقالات علمی</a>
+        </div>
+        <div class="col-6 col-md-2">
+          <h5>دسترسی سریع</h5><a href="#">خانه</a><a href="#">پرسشنامه</a><a href="#">نسخه‌ها</a><a href="#">فروشگاه</a><a href="#">درباره ما</a>
+        </div>
+        <div class="col-md-4">
+          <h5>ارتباط با ما</h5>
+          <p>
+            <span class="icon">
+              <?= file_get_contents('assets/icons/envelope.svg'); ?>
+            </span>
+            shohreh.delavar@gmail.com
+          </p>
+          <p><span class="icon">
+              <?= file_get_contents('assets/icons/instagram.svg'); ?>
+            </span>
+            dr.shohrehdelavar</p>
+        </div>
+      </div>
+      <div class="copyright">© 2026 PostetoBeShnas. All Rights Reserved.<span>حریم خصوصی　 قوانین و مقررات</span></div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

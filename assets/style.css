@@ -102,7 +102,6 @@ h2,
 h3,
 h4,
 h5,
-.brand,
 .font-headline {
   font-family: "YekanBakh";
 }
@@ -165,7 +164,7 @@ color: #fff;
 }
 
 .submit-btn:hover{
-    background-color: var(--tertiary);
+    background-color: var(--orange) ;
     opacity: 0.8;
     border-radius: 10px;
     border: solid 1px;
@@ -660,6 +659,7 @@ border:none;
 border-radius:20px;
 box-shadow:0 15px 40px rgba(0,0,0,.08);
 overflow:hidden;
+color: #fff;
 }
 
 .payment-header{
@@ -674,16 +674,52 @@ font-size:70px;
 }
 
 .btn-pay{
-padding:12px;
-font-size:18px;
-border-radius:12px;
-background-color:var( --blue);
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all .3s ease;
+    box-shadow: 0 6px 18px rgba(13,110,253,.25);
+}
+
+.btn-pay:hover{
+    background: var(--primary);
+    transform: translateY(-3px);
+    color: #fff;
 }
 
 .card-payment{
   font-family: "YekanBakh";
 }
+.payment-text{
+  color: var(--primary);
+  font-family: "YekanBakh";
+}
 
+
+.alert-box{
+max-width:500px;
+margin:80px auto;
+padding:25px;
+background:#fff3cd;
+border:1px solid #ffeeba;
+border-radius:10px;
+text-align:center;
+font-family:"YekanBakh", sans-serif;
+}
+
+.alert-box a{
+ display:inline-block;
+ margin-top:15px;
+ padding:10px 20px;
+ background:var(--blue);
+ color:#fff;
+ text-decoration:none;
+ border-radius:5px;
+}
 
 
 

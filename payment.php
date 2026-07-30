@@ -47,7 +47,7 @@ if ($user['is_paid'] == 1) {
 
                 </div>
 
-                <div class="card-body p-4 text-center card-payment">
+                <div class="card-body p-4 text-center payment-text">
 
                     <p class="mb-4">
 
@@ -71,6 +71,15 @@ if ($user['is_paid'] == 1) {
                         </button>
 
                     </form>
+
+                    <div class="text-center mt-4 mb-4 submit-btn">
+
+                <a href="dashboard.php"
+                        class="text-decoration-none fw-bold text-white">
+                        بازگشت
+                </a>
+
+                </div>
 
                 </div>
 
