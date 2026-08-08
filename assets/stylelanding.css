@@ -31,9 +31,9 @@ body {
   display: block;
 }
 
-.icon {
+/* .icon {
   color: var(--color-primary);
-}
+} */
 
 .icon svg {
   width: 34px;

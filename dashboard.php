@@ -21,7 +21,7 @@ $user_id = $_SESSION['user_id'];
 
 function getForm($pdo, $table, $user_id)
 {
-    $stmt = $pdo->prepare("
+  $stmt = $pdo->prepare("
         SELECT `res`, `type`
         FROM `$table`
         WHERE user_id = ?
@@ -29,29 +29,29 @@ function getForm($pdo, $table, $user_id)
         LIMIT 1
     ");
 
-    $stmt->execute([$user_id]);
+  $stmt->execute([$user_id]);
 
-    return $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
+  return $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
 }
 
 function getSkinType($code)
 {
-    if (empty($code)) {
-        return 'نتیجه‌ای ثبت نشده است';
-    }
+  if (empty($code)) {
+    return 'نتیجه‌ای ثبت نشده است';
+  }
 
-    $types = [
-        'O' => 'چرب',
-        'D' => 'خشک',
-        'S' => 'حساس',
-        'R' => 'مقاوم',
-        'P' => 'رنگدانه‌دار',
-        'N' => 'غیررنگدانه‌دار',
-        'T' => 'سفت',
-        'W' => 'چروکیده',
-    ];
+  $types = [
+    'O' => 'چرب',
+    'D' => 'خشک',
+    'S' => 'حساس',
+    'R' => 'مقاوم',
+    'P' => 'رنگدانه‌دار',
+    'N' => 'غیررنگدانه‌دار',
+    'T' => 'سفت',
+    'W' => 'چروکیده',
+  ];
 
-    return $types[strtoupper($code)] ?? 'نامشخص';
+  return $types[strtoupper($code)] ?? 'نامشخص';
 }
 
 $oilyform = getForm($pdo, "oilyform", $user_id);
@@ -60,270 +60,293 @@ $pigmentedform = getForm($pdo, "pigmentedform", $user_id);
 $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="assets/style.css">
-    <title>داشبورد</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>داشبورد پوستتو بشناس</title>
+  <link rel="stylesheet" href="./assets/css/bootstrap.rtl.min.css">
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
 
-<body class="bg-light m-0 p-0">
-    <div class="container-fluid">
-        <div class="row min-vh-100">
-            <!-- Sidebar -->
-            <div class="col-12 col-md-3 col-lg-2 bg-dark text-white p-0">
-
-                <div class="p-4 border-bottom border-secondary text-center">
-                    <h4 class="fw-bold mb-0">
-                        پنل کاربری
-                    </h4>
-                </div>
-
-                <ul class="nav flex-column p-3">
-
-                    <li class="nav-item mb-2">
-                        <ul class="nav flex-column p-3">
-                            <span>پرسشنامه ها</span>
-                            <li class="nav-item mb-2 dashboard-btn"><a class="nav-link text-white " href="Oilyform.php">پوست چرب/خشک</a></li>
-                            <li class="nav-item mb-2 dashboard-btn"><a class="nav-link text-white" href="pigmentedform.php">پوست رنگ دانه دار</a></li>
-                            <li class="nav-item mb-2 dashboard-btn"><a class="nav-link text-white" href="sensitiveform.php">پوست حساس</a></li>
-                            <li class="nav-item mb-2 dashboard-btn"><a class="nav-link text-white" href="wrinkledform.php">پوست چروکیده</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item mb-2 dashboard-btn">
-                        <a href="medicalprescription.php"
-                            class="nav-link text-white">
-
-                            <i class="bi bi-gear ms-2"></i>
-                            نسخه پزشکی
-                        </a>
-                    </li>
-
-                    <li class="nav-item mb-2 dashboard-btn">
-                        <a href="profile.php"
-                            class="nav-link text-white">
-
-                            <i class="bi bi-gear ms-2"></i>
-                            پروفایل
-
-                        </a>
-                    </li>
-
-                    <li class="nav-item mt-4 dashboard-btn">
-                        <a href="logout.php"
-                            class="nav-link text-white">
-
-                            <i class="bi bi-box-arrow-right ms-2"></i>
-                            خروج
-
-                        </a>
-                    </li>
-
-                </ul>
-
-            </div>
-
-            <!-- Main Content -->
-            <div class="col-12 col-md-9 col-lg-10">
-
-                <!-- Navbar -->
-                <nav class="navbar navbar-expand-lg bg-white shadow-sm px-4">
-
-                    <div class="container-fluid">
-
-                        <span class="navbar-brand fw-bold">
-                            داشبورد
-                        </span>
-
-                        <div class="d-flex align-items-center">
-
-                            <span class="me-3 fw-semibold">
-                                <?= $_SESSION["user_name"] ?> خوش آمدید
-                            </span>
-
-                            <img src="./assets/images/profile.png"
-                                class="rounded-circle"
-                                width="40" height="40"
-                                alt="profile">
-
-                        </div>
-
-                    </div>
-
-                </nav>
-
-                <div class="row g-4 mt-4">
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body ">
-                                <div class="text-center d-flex justify-content-between align-items-center">
-                                    <p class="text-muted mb-1">پوست چرب/خشک</p>
-                                    <h4 class="mb-0"><?= $oilyform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></h4>
-                                </div>
-                            </div>
-
-                            <div class="card-footer bg-light d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="text-result">
-
-                                        <i class="bx bxs-up-arrow fs-32">نوع پوست <?= getSkinType($oilyform['type'] ?? '') ?></i>
-                                    </span>
-                                </div>
-                                <a href="resultOilyform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body ">
-                                <div class="text-center d-flex justify-content-between align-items-center">
-                                    <p class="text-muted mb-1">پوست حساس در مقابل مقاوم</p>
-                                    <h4 class="mb-0"><?= $sensitiveform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></h4>
-                                </div>
-                            </div>
-
-                            <div class="card-footer bg-light d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="text-result">
-                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($sensitiveform['type'] ?? '') ?></i>
-                                    </span>
-                                </div>
-                                <a href="resultsensitiveform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body ">
-                                <div class="text-center d-flex justify-content-between align-items-center">
-                                    <p class="text-muted mb-1">پوست رنگدانه‌دار در مقابل غیررنگدانه‌دار</p>
-                                    <h4 class="mb-0"><?= $pigmentedform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></h4>
-                                </div>
-                            </div>
-
-                            <div class="card-footer bg-light d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="text-result">
-                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($pigmentedform['type'] ?? '') ?></i>
-                                    </span>
-                                </div>
-                                <a href="resultpigmentedform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card border-0 shadow-sm h-100">
-                            <div class="card-body ">
-                                <div class="text-center d-flex justify-content-between align-items-center">
-                                    <p class="text-muted mb-1">پوست چروکیده در مقابل سفت</p>
-                                    <h4 class="mb-0"><?= $wrinkledform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></h4>
-                                </div>
-                            </div>
-
-                            <div class="card-footer bg-light d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="text-result">
-                                        <i class="bx bxs-up-arrow fs-12">نوع پوست <?= getSkinType($wrinkledform['type'] ?? '') ?></i>
-                                    </span>
-                                </div>
-                                <a href="resultwrinkledform.php" class="fw-semibold text-decoration-none btn btn-outline-custom">مشاهده</a>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-                <div class="container py-5">
-
-                    <div class="card intro-card">
-                        <div class="card-body p-2">
-
-                            <h2 class="intro-title text-center mb-4">
-                                پوست خود را بشناسید
-                            </h2>
-
-                            <div class="intro-text">
-
-                                <p>
-                                    پوست هر فرد ویژگی‌ها، نیازها و واکنش‌های منحصر‌به‌فردی دارد؛
-                                    به همین دلیل یک روتین مراقبتی مؤثر باید متناسب با شرایط واقعی
-                                    پوست همان فرد طراحی شود.
-                                </p>
-
-                                <p>
-                                    در این سامانه، با پاسخ به مجموعه‌ای از پرسش‌های کوتاه و
-                                    هدفمند، و بر پایه یکی از جامع‌ترین و به‌روزترین رویکردهای
-                                    طبقه‌بندی پوست، پوست شما بر اساس چهار ویژگی کلیدی شامل
-                                    <strong>میزان چربی یا خشکی</strong>،
-                                    <strong>حساسیت‌پذیری</strong>،
-                                    <strong>استعداد ایجاد لک</strong> و
-                                    <strong>روند پیری پوست</strong>
-                                    ارزیابی می‌شود.
-                                </p>
-
-                                <p>
-                                    پس از تکمیل ارزیابی، پروفایل تخصصی پوست شما به همراه
-                                    <strong>دو روتین شخصی‌سازی‌شده مراقبت از پوست (روز و شب)</strong>
-                                    ارائه خواهد شد؛ یک روتین بر پایه محصولات منتخب ایرانی و یک
-                                    روتین بر اساس برندهای معتبر بین‌المللی.
-                                </p>
-
-                                <p>
-                                    این سامانه توسط تیم تخصصی
-                                    <strong>دکتر شهره دلاور</strong>
-                                    و بر پایه پژوهش‌های علمی طراحی شده است. مبنای این ارزیابی در
-                                    قالب یک مطالعه پژوهشی با همکاری
-                                    <strong>مرکز تحقیقات پوست و جذام دانشگاه علوم پزشکی تهران</strong>
-                                    مورد بررسی قرار گرفته و ارتباط نتایج آن با شاخص‌های عینی و
-                                    بیومتریک پوست ارزیابی شده است.
-                                </p>
-
-                                <p class="mb-0">
-                                    هدف ما کمک به شما برای انتخاب آگاهانه‌تر محصولات مراقبت از
-                                    پوست و دستیابی به پوستی سالم‌تر، شفاف‌تر و جوان‌تر است.
-                                </p>
-
-                            </div>
-            <div class="d-flex justify-content-center align-items-center" style="min-height:15vh;">
-
-    <?php if ($user['is_paid'] == 1) { ?>
-
-        <a href="Oilyform.php" class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
-            <i class="bi bi-play-circle me-2"></i>
-            شروع پرسشنامه
-        </a>
-
-    <?php } else { ?>
-
-        <a href="payment.php" class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
-            <i class="bi bi-credit-card me-2"></i>
-            پرداخت و شروع آزمون
-        </a>
-
-    <?php } ?>
-
-</div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
+<body>
+  <div class="sidebar-overlay" id="sidebarOverlay" hidden></div>
+  <div class="dashboard-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="profile">
+        <div class="avatar">
+          <span class="icon-dash">
+            <?= file_get_contents('assets/icons/person.svg'); ?>
+          </span>
         </div>
+        <div>
+          <?= $_SESSION["user_name"] ?>
+          <span>خوش آمدید</span>
+        </div>
+      </div>
+      <nav class="menu">
+        <a class="active" href="dashboard.php">
+          <span class="icon-dash">
+            <?= file_get_contents('assets/icons/house-door.svg'); ?>
+          </span>
+          <span>داشبورد</span>
 
-    </div>
+        </a>
+        <a href="questionnaire.php">
+          <span class="icon-dash">
+            <?= file_get_contents('assets/icons/card-text.svg'); ?>
+          </span>
+          <span>پرسشنامه ها</span>
+        </a>
+        <a href="medicalprescription.php">
+          <span class="icon-dash">
+            <?= file_get_contents('assets/icons/grid.svg'); ?>
+          </span>
+          <span>نسخه من</span>
+        </a>
+        <a href="profile.php">
+          <span class=" icon-dash">
+          <?= file_get_contents('assets/icons/person-gear.svg'); ?>
+          </span>
+          <span>پروفایل من</span>
+        </a>
+        <a href="coming-soon.php">
+          <span class="icon-dash">
+            <?= file_get_contents('assets/icons/journal-text.svg'); ?>
+          </span>
+          <span>تاریخچه سفارشات</span>
+        </a>
+        <a href="coming-soon.php">
+          <span class="icon-dash">
+            <?= file_get_contents('assets/icons/headset.svg'); ?>
+          </span>
+          <span>پشتیبانی</span>
+        </a>
+      </nav>
+      <a class="logout" href="logout.php">
+        <span class="icon-dash">
+          <?= file_get_contents('assets/icons/box-arrow-right.svg'); ?>
+        </span>
+        <span>خروج</span>
 
+      </a>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <button class="sidebar-toggle" type="button" id="sidebarToggle" aria-label="باز کردن منو" aria-expanded="false" aria-controls="sidebar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="brand">
+          <a href="index.php" class="navbar-brand d-flex align-items-center gap-2">
+            <img src="./assets/images/logo1.jpg" alt="لوگوی سایت" class="logo">
+          </a>
+        </div>
+        <h1>داشبورد پوستتو بشناس</h1>
+      </header>
+
+      <section class="hero-dash">
+        <div class="hero-dash-art">
+          <div class="portrait-wrap"><img src="./assets/images/1 (2).png" alt="مراقبت پوست"></div>
+        </div>
+        <div class="intro-card">
+          <div class="leaf-icon">
+            <span>
+              <?= file_get_contents('assets/icons/leaf.svg'); ?>
+            </span>
+          </div>
+          <h2>ارزیابی جامع پوست</h2>
+          <p>با تکمیل چهار ارزیابی تخصصی پروفایل پوست شما<br>و روتین اختصاصی مراقبت از پوست طراحی می‌شود.</p>
+          <!-- <button>
+            <span class="icon">
+              
+            </span>
+            فعال‌سازی ارزیابی پوست</button> -->
+
+          <?php if ($user['is_paid'] == 1) { ?>
+
+            <a href="Oilyform.php" class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
+              شروع پرسشنامه
+            </a>
+
+          <?php } else { ?>
+
+            <a href="payment.php" class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
+              فعال سازی ارزیابی پوست
+            </a>
+
+          <?php } ?>
+          <small>پرداخت امن و سریع</small>
+        </div>
+      </section>
+
+      <section class="assessments">
+        <div class="section-title"><span></span>
+          <h2>چهار ارزیابی تخصصی</h2><span></span>
+        </div>
+        <div class="assessment-grid">
+          <article>
+            <div class="round peach">
+              <span>
+                <?= file_get_contents('assets/icons/activity.svg'); ?>
+              </span>
+            </div>
+            <h3>روند پیری پوست</h3>
+            <p>بررسی علائم پیری و<br>استعداد به پیری پوست</p>
+
+            <?php if ($user['is_paid'] == 1) { ?>
+
+              <a href="wrinkledform.php" class="btn btn-custom">
+                شروع پرسشنامه
+              </a>
+
+            <?php } else { ?>
+
+              <a href="payment.php" class="btn btn-custom">
+                پس از فعال سازی در دسترس خواهد بود.
+              </a>
+
+            <?php } ?>
+
+          </article>
+          <article>
+            <div class="round sun">
+              <span>
+                <?= file_get_contents('assets/icons/brightness-alt-low.svg'); ?>
+              </span>
+            </div>
+            <h3>لک و زردیگان</h3>
+            <p>بررسی آسیب ناشی از نور<br>و تیرگی پوست</p>
+
+            <?php if ($user['is_paid'] == 1) { ?>
+
+              <a href="pigmentedform.php" class="btn btn-custom">
+                شروع پرسشنامه
+              </a>
+
+            <?php } else { ?>
+
+              <a href="payment.php" class="btn btn-custom">
+                پس از فعال سازی در دسترس خواهد بود.
+              </a>
+
+            <?php } ?>
+          </article>
+          <article>
+            <div class="round green">
+              <span>
+                <?= file_get_contents('assets/icons/leaf.svg'); ?>
+              </span>
+            </div>
+            <h3>حساسیت پوست</h3>
+            <p>بررسی علائم حساسیت و<br>واکنش‌پذیری پوست</p>
+            <?php if ($user['is_paid'] == 1) { ?>
+
+              <a href="sensitiveform.php" class="btn btn-custom">
+                شروع پرسشنامه
+              </a>
+
+            <?php } else { ?>
+
+              <a href="payment.php" class="btn btn-custom">
+                پس از فعال سازی در دسترس خواهد بود.
+              </a>
+
+            <?php } ?>
+          </article>
+          <article>
+            <div class="round blue">
+              <span>
+                <?= file_get_contents('assets/icons/droplet-half.svg'); ?>
+              </span>
+            </div>
+            <h3>چربی یا خشکی پوست</h3>
+            <p>بررسی میزان چربی و<br>تعادل رطوبت پوست</p>
+            <?php if ($user['is_paid'] == 1) { ?>
+
+              <a href="Oilyform.php" class="btn btn-custom">
+                شروع پرسشنامه
+              </a>
+
+            <?php } else { ?>
+
+              <a href="payment.php" class="btn btn-custom">
+                پس از فعال سازی در دسترس خواهد بود.
+              </a>
+
+            <?php } ?>
+          </article>
+        </div>
+      </section>
+
+      <section class="results-lock">
+        <div class="lock-content">
+          <b>تایپ پوستی شما تنها پس از تکمیل هر چهار ارزیابی و تحلیل یکپارچه نتایج مشخص خواهد شد.</b>
+
+          <?php if (!$oilyform || !$sensitiveform || !$pigmentedform || !$wrinkledform) { ?>
+
+            <a class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
+              ابتدا هر چهار ارزیابی را تکمیل کنید
+            </a>
+
+          <?php } else { ?>
+
+            <a href="medicalprescription.php" class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
+              نسخه تایپ پوستی شما
+            </a>
+
+          <?php } ?>
+
+          <small>پس از تکمیل هر چهار ارزیابی، تحلیل نتایج و نسخه شخصی‌سازی شده آماده خواهد شد.</small>
+        </div>
+      </section>
+
+      <section class="doctor-card">
+        <div class="doctor-photo"><img src="./assets/images/landing1.jpg" alt="دکتر شهره دلاور"></div>
+        <div><small>تحت نظر</small>
+          <h3>دکتر شهره دادور</h3>
+        </div>
+        <p>پوست هر فرد ویژگی‌های خاص خود را دارد؛ به همین دلیل، یک روتین مراقبتی باید متناسب با شرایط پوستی شما طراحی شود. در پوستتو بشناس تلاش می‌کنیم با تکیه بر جدیدترین پژوهش‌ها و استانداردهای روز دنیا برای ارائه تحلیلی دقیق و روتین اختصاصی استفاده می‌کنیم.</p>
+      </section>
+    </main>
+  </div>
+  <script>
+    (function() {
+      var toggle = document.getElementById('sidebarToggle');
+      var sidebar = document.getElementById('sidebar');
+      var overlay = document.getElementById('sidebarOverlay');
+      if (!toggle || !sidebar || !overlay) return;
+
+      function setOpen(open) {
+        document.body.classList.toggle('sidebar-open', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.setAttribute('aria-label', open ? 'بستن منو' : 'باز کردن منو');
+        overlay.hidden = !open;
+      }
+
+      toggle.addEventListener('click', function() {
+        setOpen(!document.body.classList.contains('sidebar-open'));
+      });
+
+      overlay.addEventListener('click', function() {
+        setOpen(false);
+      });
+
+      sidebar.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() {
+          if (window.matchMedia('(max-width: 768px)').matches) setOpen(false);
+        });
+      });
+
+      window.addEventListener('resize', function() {
+        if (!window.matchMedia('(max-width: 768px)').matches) setOpen(false);
+      });
+    })();
+  </script>
 </body>
 
 </html>

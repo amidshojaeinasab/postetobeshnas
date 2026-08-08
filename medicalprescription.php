@@ -36,28 +36,31 @@ $pigmentedform = getForm($pdo, "pigmentedform", $user_id);
 $wrinkledform  = getForm($pdo, "wrinkledform", $user_id);
 
 if (!$oilyform || !$sensitiveform || !$pigmentedform || !$wrinkledform) {
-    ?>
+?>
     <!DOCTYPE html>
     <html lang="fa" dir="rtl">
+
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
     </head>
+
     <body class="bg-light">
 
-    <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-        <div class="card shadow border-0 rounded-4 p-4 text-center" style="max-width:500px;">
-            <h3 class="text-warning mb-3">⚠️ پرسشنامه‌ها کامل نشده‌اند</h3>
-            <p>ابتدا باید تمام پرسشنامه‌ها را تکمیل کنید.</p>
-            <a href="dashboard.php" class="btn btn-primary">
-                بازگشت به داشبورد
-            </a>
+        <div class="container min-vh-100 d-flex justify-content-center align-items-center">
+            <div class="card shadow border-0 rounded-4 p-4 text-center" style="max-width:500px;">
+                <h3 class="text-warning mb-3">⚠️ پرسشنامه‌ها کامل نشده‌اند</h3>
+                <p>ابتدا باید تمام پرسشنامه‌ها را تکمیل کنید.</p>
+                <a href="dashboard.php" class="btn btn-primary">
+                    بازگشت به داشبورد
+                </a>
+            </div>
         </div>
-    </div>
 
     </body>
+
     </html>
-    <?php
+<?php
     exit;
 }
 
@@ -91,288 +94,149 @@ if (isset($medicines[$skinCode])) {
 }
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نسخه مراقبت از پوست</title>
-
-    <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
-    <link rel="stylesheet" href="assets/style.css">
-   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>پوستوشناس | نسخه اختصاصی</title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="./assets/stylemedicalprescription.css">
+    <link rel="stylesheet" href="./assets/style.css">
 </head>
 
-<body class="medicalprescription">
-
-    <!-- Header -->
-    
-    <header class="app-header">
-        <div class="container-max mx-auto h-100 px-3 px-md-0 d-flex align-items-center justify-content-between" style="margin:auto;">
-            <div class="d-flex flex-column">
-                <h1>نسخه مراقبت از پوست</h1>
-                <p>نتیجه تحلیل پوست و روتین پیشنهادی</p>
-            </div>
-            <a href="dashboard.php" class="btn-outline-primary-custom">
-                <span class="icon" style="font-size:20px;">
-                    <?= file_get_contents('assets/icons/box-arrow.svg'); ?>
-                </span>
-                ورود به داشبورد
-            </a>
-        </div>
-    </header>
-
-    <main class="container-max flex-grow-1 mx-auto w-100 py-5 px-3 px-md-0 d-flex flex-column gap-4" style="margin:auto;">
-
-        <!-- نوع پوست -->
-        <section class="card-panel d-flex flex-column flex-md-row align-items-center gap-4 skin-type-row">
-            <div class="flex-grow-1 w-100">
-                <div class="section-title mb-4">
-                    <span class="icon">
-                        <?= file_get_contents('assets/icons/Heading.svg'); ?>
-                    </span>
-                    <h2>نوع پوست شما</h2>
-                </div>
-                <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
-                    <span class="skin-type-code">
-                        <?= $skinCode ?>
-                    </span>
-                    <div class="divider-vertical"></div>
-                    <div class="d-flex flex-wrap gap-2">
-                        <span class="pill pill-error"><?= $prescription['title'] ?></span>
+<body>
+    <?php include 'header.php'; ?>
+    <main class="container py-4 py-lg-5">
+        <section class="row g-4 align-items-stretch intro">
+            <div class=" order-lg-1 custom-row col-12">
+                <aside class="skin-card h-100">
+                    <div class="skin-type">نوع پوست شما</div><strong><?= $skinCode ?></strong>
+                    <p><?= $prescription['title'] ?></p>
+                    <div class="traits">
+                        <div>
+                            <span class="icon iconb">
+                                <?= file_get_contents('assets/icons/activity.svg'); ?>
+                            </span>
+                            <span>استعداد چروک<br><?= $wrinkledform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></span>
+                        </div>
+                        <div>
+                            <span class="icon iconb">
+                                <?= file_get_contents('assets/icons/brightness-alt-low.svg'); ?>
+                            </span>
+                            <span>لک و تیرگی<br><?= $pigmentedform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></span>
+                        </div>
+                        <div>
+                            <span class="icon iconb">
+                                <?= file_get_contents('assets/icons/leaf.svg'); ?>
+                            </span>
+                            <span>حساسیت<br><?= $sensitiveform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></span>
+                        </div>
+                        <div>
+                            <span class="icon iconb">
+                                <?= file_get_contents('assets/icons/droplet-half.svg'); ?>
+                            </span>
+                            <span>چربی<br><?= $oilyform['res'] ?? 'نتیجه‌ای ثبت نشده است' ?></span>
+                        </div>
                     </div>
-                </div>
-                <p class="text-muted-custom" style="font-size:18px; line-height:1.8;">
-                    <?= $prescription['short_description'] ?>
-                </p>
+                </aside>
             </div>
-            <div class="w-100  border border-1 border-secondary rounded-3" style="max-width: 320px;">
-                <div class="skin-image-wrap">
-                    <img src="./assets/images/Medical prescription.png" alt="skincare bottle">
-                </div>
-            </div>
-        </section>
-
-        <!-- توضیح پوست -->
-        <section class="card-panel">
-            <div class="section-title mb-4">
-                <span class="icon">
-                    <?= file_get_contents('assets/icons/file-text.svg'); ?>
-                </span>
-                <h2>توضیح وضعیت پوست</h2>
-            </div>
-            <div class="text-muted-custom d-flex flex-column gap-3" style="font-size:16px; line-height:1.7 text-align: justify;;">
-                <p>
-                    <span class="text-primary-custom fw-bold">تیپ پوستی <?= $skinCode ?></span>
-                    <span class="text fw-bold"><?= $prescription['full_description'] ?></span>
-                </p>
-            </div>
-        </section>
-
-        <!-- نکته ها-->
-        <section class="card-panel">
-            <div class="section-title mb-4">
-                <span class="icon">
-                    <?= file_get_contents('assets/icons/chat-square-text.svg'); ?>
-                </span>
-                <h2>نکات مهم</h2>
-            </div>
-            <div class="row g-3">
-                <div class="col-12 col-md-4">
-                    <div class="note-box note-primary">
-                        <span class="text-primary-custom fw-bold fs-5">📌</span>
-                        <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">اقلام اشاره شده در روتین پوستی، در کنار یکدیگر به سلامت پوست شما کمک می‌کنند.استفاده ناقص یا نامنظم از روتین ممکن است باعث کاهش اثر بخشی شود.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="note-box note-warning">
-                        <span class="fw-bold fs-5" style="color:#F59E0B;">📌</span>
-                        <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">در صورت استفاده منظم طبق دستور، نتایج اولیه معمولا بعد از ۶تا۸ هفته قابل مشاهده است.این زمان بسته به نوع پوست و شرایط فردی ممکن است متفاوت باشد.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="note-box note-error">
-                        <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                        <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">سرم ها و تونر ها مرحله تکمیلی روتین پوستی هستند و براساس نیاز پوست مانند لک و جای جوش،خشکی پوست،کدری یا ناهمواری پوست اضافه می‌شوند.این محصولات در صورت نیاز و پس از ارزیابی روتین پایه توصیه میشود.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="note-box note-error">
-                        <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                        <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">هر محصول پوستی ممکن است در برخی افراد باعث واکنش حساسیتی شود . در صورت مشاهده علائم:قرمزی شدید،خارش،سوزش،التهاب مصرف محصولات را متوقف کرده و با پزشک مشورت نمایید. </p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="note-box note-error">
-                        <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                        <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">از شما دعوت میشود پس از هشت هفته استفاده منظم از روتین تجربه خود را ثبت کنید.در صورت نیاز به بررسی دقیق تر امکان ویزیت آنلاین با پزشک از طریق پروفایل فراهم است.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="note-box note-error">
-                        <span class="fw-bold fs-5" style="color:var(--color-error);">📌</span>
-                        <p class="text-muted-custom mb-0" style="font-size:15px; text-align: justify;">
-                            کلیت استفاده از محصولات روتین پوستی به ترتیب زیر است:
-                            روتین روز:شست و شو، تونر،سرم روزانه طبق دستور،کرم روز، کرم ضد آفتاب
-                            روتین شب:شست و شو،تونر، سرم طبق دستور ،کرم شب
-                            این روتین به عنوان راهنمای عمومی مراقبت از پوست ارایه شده.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- روتین -->
-        <section class="card-panel">
-            <div class="section-title mb-5">
-                <span class="icon">
-                    <?= file_get_contents('assets/icons/postcard-heart.svg'); ?>
-                </span>
-                <h2>ترتیب صحیح استفاده از محصولات</h2>
-            </div>
-            <div class="row gy-5">
-                <div class="col-lg-6">
-                    <div class="timeline-heading day">
-                        <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                            <?= file_get_contents('assets/icons/card-checklist.svg'); ?>
+            <div class=" order-lg-2 col-12">
+                <article class="panel analysis h-100">
+                    <h1>
+                        <span class="icon">
+                            <?= file_get_contents('assets/icons/card-text.svg'); ?>
                         </span>
-                        <span>نسخه اول: نسخه  پوستی شما با برند های ایرانی</span>
-                    </div>
-                    <!-- Day Routine -->
-                    <div class="timeline-list d-flex flex-wrap gap-3">
-                        <div class="timeline-heading day">
-                            <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                                <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
-                            </span>
-                            <span>روتین روز</span>
-                        </div>
-                        <div class="timeline-list">
-                            <?php foreach ($medicine['version_1']['morning'] as $item) { ?>
-                                <div class="timeline-item">
-                                    <span class="timeline-dot dot-active-primary"></span>
-                                    <div class="timeline-label label-solid-primary">
-                                        <?= htmlspecialchars($item['product']) ?>
-                                    </div>
-                                    <div class="timeline-label label-inactive">
-                                        <?= htmlspecialchars($item['usage']) ?>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                    <!-- Night Routine -->
-                    <div class="timeline-list d-flex flex-wrap gap-3">
-                        <div class="timeline-heading night">
-                            <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                                <?= file_get_contents('assets/icons/moon-stars-fill.svg'); ?>
-                            </span>
-                            <span>روتین شب</span>
-                        </div>
-
-                        <div class="timeline-list">
-                            <?php foreach ($medicine['version_1']['night'] as $item) { ?>
-                                <div class="timeline-item">
-                                    <span class="timeline-dot dot-active-primary"></span>
-                                    <div class="timeline-label label-solid-primary">
-                                        <?= htmlspecialchars($item['product']) ?>
-                                    </div>
-                                    <div class="timeline-label label-inactive">
-                                        <?= htmlspecialchars($item['usage']) ?>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="timeline-heading day">
-                        <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                            <?= file_get_contents('assets/icons/card-checklist.svg'); ?>
-                        </span>
-                        <span>نسخه دوم:نسخه پوستی شما با برند منتخب بین الملی</span>
-                    </div>
-                    <!-- Day Routine -->
-                    <div class="timeline-list d-flex flex-wrap gap-3">
-                        <div class="timeline-heading day">
-                            <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                                <?= file_get_contents('assets/icons/brightness-high-fill.svg'); ?>
-                            </span>
-                            <span>روتین روز</span>
-                        </div>
-                        <div class="timeline-list">
-                            <?php foreach ($medicine['version_2']['morning'] as $item) { ?>
-                                <div class="timeline-item">
-                                    <span class="timeline-dot dot-active-primary"></span>
-                                    <div class="timeline-label label-solid-primary">
-                                        <?= htmlspecialchars($item['product']) ?>
-                                    </div>
-                                    <div class="timeline-label label-inactive">
-                                        <?= htmlspecialchars($item['usage']) ?>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-                    </div>
-                    <!-- Night Routine -->
-                    <div class="timeline-list d-flex flex-wrap gap-3">
-                        <div class="timeline-heading night">
-                            <span class="icon" style="font-variation-settings: 'FILL' 1;">
-                                <?= file_get_contents('assets/icons/moon-stars-fill.svg'); ?>
-                            </span>
-                            <span>روتین شب</span>
-                        </div>
-
-                        <div class="timeline-list">
-                            <?php foreach ($medicine['version_2']['night'] as $item) { ?>
-                                <div class="timeline-item">
-                                    <span class="timeline-dot dot-active-primary"></span>
-                                    <div class="timeline-label label-solid-primary">
-                                        <?= htmlspecialchars($item['product']) ?>
-                                    </div>
-                                    <div class="timeline-label label-inactive">
-                                        <?= htmlspecialchars($item['usage']) ?>
-                                    </div>
-                                </div>
-                            <?php } ?>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
+                        تحلیل وضعیت پوست شما
+                    </h1>
+                    <p><?= $prescription['full_description'] ?></p>
+                </article>
             </div>
         </section>
 
-        <!-- Footer -->
-        <footer class="app-footer">
-            <div class="d-flex flex-column align-items-center gap-3">
-                <div class="footer-badge">
-                    <span class="material-symbols-outlined" style="font-size:18px;">verified_user</span>
-                    <span>تاییدیه تیم پزشکی کلینیک</span>
-                </div>
-                <p class="text-muted-custom mb-0" style="font-size:13px; max-width:640px;">
-                    این نسخه صرفاً به عنوان راهنمای مراقبت از پوست بر اساس تحلیل‌های هوشمند ارائه شده است و جایگزین تشخیص حضوری پزشک در موارد خاص نمی‌باشد. کلیه محصولات معرفی شده دارای تاییدیه سازمان غذا و دارو هستند.
-                </p>
-                <div class="footer-divider"></div>
-                <div class="d-flex gap-4 footer-links">
-                    <a href="#">شرایط استفاده</a>
-                    <a href="#">حریم خصوصی</a>
-                    <a href="#">تماس با پشتیبانی</a>
-                </div>
-                <p class="mb-0 mt-2" style="font-size:13px; color: var(--color-outline); opacity:0.6;">© ۱۴۰۲ تمامی حقوق برای کلینیک تخصصی پوست محفوظ است.</p>
-            </div>
-        </footer>
+        <h2 class="section-title">نسخه اختصاصی شما</h2>
+        <section class="row g-3 prescriptions">
+            <div class="col-lg-6">
+                <article class="prescription international">
+                    <div class="card-head"><span>◎</span> نسخه برندهای بین‌المللی</div>
+                    <!-- <div class="products product-int">
+                        <div class="products-image">
+            <img src="./assets/images/1 (3).png" alt="محصولات پوستی">
+          </div>
+                    </div> -->
+                    <div class="routine">
+                        <div class="routine-row">
+                            <span class="icon period">
+                                <?= file_get_contents('assets/icons/sun.svg'); ?>
+                            </span>
 
+                            <ol>
+                                <?php foreach ($medicine['version_2']['morning'] as $item) { ?>
+                                    <li>
+                                        <strong><?= htmlspecialchars($item['product']) ?></strong>
+                                        <span><?= htmlspecialchars($item['usage']) ?></span>
+                                    </li>
+                                <?php } ?>
+                            </ol>
+                        </div>
+                        <div class="routine-row">
+                            <span class="icon period">
+                                <?= file_get_contents('assets/icons/moon.svg'); ?>
+                            </span>
+                            <ol>
+                                <?php foreach ($medicine['version_2']['night'] as $item) { ?>
+                                    <li>
+                                        <strong><?= htmlspecialchars($item['product']) ?></strong>
+                                        <span><?= htmlspecialchars($item['usage']) ?></span>
+                                    </li>
+                                <?php } ?>
+                            </ol>
+                        </div>
+                    </div><a href="#" class="details">مشاهده جزئیات محصولات <span>←</span></a>
+                </article>
+            </div>
+            <div class="col-lg-6">
+                <article class="prescription iranian">
+                    <div class="card-head"><span>🇮🇷</span> نسخه ایرانی</div>
+                    <!-- <div class="products product-ir"><i class="bottle pump">Vitalayer<small>Sensivit</small></i><i class="bottle tube green">PRIME<small>ACNEX</small></i><i class="bottle tube orange">PRIME<small>SPF 50</small></i><i class="bottle dropper">PRIME</i><i class="bottle jar">PRIME</i></div> -->
+                    <div class="routine">
+                        <div class="routine-row">
+                            <span class="icon period">
+                                <?= file_get_contents('assets/icons/sun.svg'); ?>
+                            </span>
+                            <ol>
+                                <?php foreach ($medicine['version_1']['morning'] as $item) { ?>
+                                    <li>
+                                        <strong><?= htmlspecialchars($item['product']) ?></strong>
+                                        <span><?= htmlspecialchars($item['usage']) ?></span>
+                                    </li>
+                                <?php } ?>
+                            </ol>
+                        </div>
+                        <div class="routine-row">
+                            <span class="icon period">
+                                <?= file_get_contents('assets/icons/moon.svg'); ?>
+                            </span>
+                            <ol>
+                                <?php foreach ($medicine['version_1']['night'] as $item) { ?>
+                                    <li>
+                                        <strong><?= htmlspecialchars($item['product']) ?></strong>
+                                        <span><?= htmlspecialchars($item['usage']) ?></span>
+                                    </li>
+                                <?php } ?>
+                            </ol>
+                        </div>
+                    </div><a href="#" class="details">مشاهده جزئیات محصولات <span>←</span></a>
+                </article>
+            </div>
+        </section>
+        <!-- <aside class="doctor-note"><span class="doctor">♙</span>
+            <div><strong>توجه دکتر داور</strong><br>این نسخه فقط بر اساس پرسشنامه و تحلیل علمی پوستتان تهیه شده است.<br>در صورت داشتن بیماری پوستی خاص یا بارداری، قبل از تغییر روتین با پزشک خود مشورت کنید.</div>
+        </aside> -->
     </main>
-
-    <div class="bg-blob blob-top-right"></div>
-    <div class="bg-blob blob-bottom-left"></div>
-
-
+    <?php include 'footer.php'; ?>
+    <script src="./assets/css/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
