@@ -12,8 +12,8 @@
                 <li class="nav-item"><a class="nav-link" href="coming-soon.php">مقالات</a></li>
                 <li class="nav-item"><a class="nav-link" href="coming-soon.php">درباره ما</a></li>
                 <li class="nav-item"><a class="nav-link" href="contactus.php">تماس با ما</a></li>
-            </ul>
-            <a class="login-btn" href="<?= !empty($_SESSION['user_id']) ? 'dashboard.php' : 'login.php'; ?>">   
+            </ul><a class="login-btn" href="<?= !empty($_SESSION['user_id']) ? 'dashboard.php' : 'login.php'; ?>">
+               
                 <?= !empty($_SESSION['user_id']) ? 'داشبورد' : 'ورود/ثبت نام'; ?>
             </a>
         </div>

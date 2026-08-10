@@ -125,12 +125,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     placeholder="در صورت تغییر وارد کنید">
                             </div>
 
-                            <button type="submit" class="btn btn-outline-custom btn-lg w-100 rounded-3">
+                            <button type="submit" class="btn submit-btn btn-lg w-100 rounded-3 submit-btn">
                                 ویرایش اطلاعات
                             </button>
 
                         </form>
-                        <a href="dashboard.php" class="btn btn-outline-custom btn-lg px-5 w-100 mt-4">
+                        <a href="dashboard.php" class="btn submit-btn btn-lg px-5 w-100 mt-4 submit-btn">
                             داشبورد
                         </a>
 

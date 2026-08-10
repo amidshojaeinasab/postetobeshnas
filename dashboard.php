@@ -1,63 +1,86 @@
 <?php
+
 require 'config.php';
+
 is_login();
 
 $user_id = $_SESSION['user_id'];
 
-$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id = ?");
+
+// ==============================================
+// دریافت اطلاعات پرداخت کاربر
+// ==============================================
+
+$stmt = $pdo->prepare("
+    SELECT is_paid
+    FROM users
+    WHERE id = ?
+");
+
 $stmt->execute([$user_id]);
 
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+if (!$user) {
+    header("Location: login.php");
+    exit;
+}
 
 
-$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
-$stmt->execute([$user_id]);
-
-$user = $stmt->fetch();
-
-$user_id = $_SESSION['user_id'];
+// ==============================================
+// دریافت آخرین نتیجه هر فرم
+// ==============================================
 
 function getForm($pdo, $table, $user_id)
 {
-  $stmt = $pdo->prepare("
-        SELECT `res`, `type`
+    $stmt = $pdo->prepare("
+        SELECT res, type
         FROM `$table`
         WHERE user_id = ?
         ORDER BY id DESC
         LIMIT 1
     ");
 
-  $stmt->execute([$user_id]);
+    $stmt->execute([$user_id]);
 
-  return $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
+    return $stmt->fetch(PDO::FETCH_ASSOC) ?: [];
 }
+
 
 function getSkinType($code)
 {
-  if (empty($code)) {
-    return 'نتیجه‌ای ثبت نشده است';
-  }
+    if (empty($code)) {
+        return 'نتیجه‌ای ثبت نشده است';
+    }
 
-  $types = [
-    'O' => 'چرب',
-    'D' => 'خشک',
-    'S' => 'حساس',
-    'R' => 'مقاوم',
-    'P' => 'رنگدانه‌دار',
-    'N' => 'غیررنگدانه‌دار',
-    'T' => 'سفت',
-    'W' => 'چروکیده',
-  ];
+    $types = [
+        'O' => 'چرب',
+        'D' => 'خشک',
+        'S' => 'حساس',
+        'R' => 'مقاوم',
+        'P' => 'رنگدانه‌دار',
+        'N' => 'غیررنگدانه‌دار',
+        'T' => 'سفت',
+        'W' => 'چروکیده',
+    ];
 
-  return $types[strtoupper($code)] ?? 'نامشخص';
+    return $types[strtoupper($code)] ?? 'نامشخص';
 }
 
+
+// ==============================================
+// دریافت آخرین فرم‌ها
+// ==============================================
+
 $oilyform = getForm($pdo, "oilyform", $user_id);
+
 $sensitiveform = getForm($pdo, "sensitiveform", $user_id);
+
 $pigmentedform = getForm($pdo, "pigmentedform", $user_id);
+
 $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
+
 ?>
 
 <!doctype html>
@@ -167,19 +190,22 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
             </span>
             فعال‌سازی ارزیابی پوست</button> -->
 
-          <?php if ($user['is_paid'] == 1) { ?>
+       <?php if ((int)$user['is_paid'] > 0) { ?>
 
-            <a href="Oilyform.php" class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
-              شروع پرسشنامه
-            </a>
+    <a href="Oilyform.php"
+       class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
+        شروع پرسشنامه
+    </a>
 
-          <?php } else { ?>
+<?php } else { ?>
 
-            <a href="payment.php" class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
-              فعال سازی ارزیابی پوست
-            </a>
+    <a href="payment.php"
+       class="btn btn-outline-custom btn-lg px-3 py-3 rounded-3 shadow-sm">
+        فعال سازی ارزیابی پوست
+    </a>
 
-          <?php } ?>
+<?php } ?>
+
           <small>پرداخت امن و سریع</small>
         </div>
       </section>
@@ -198,19 +224,19 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
             <h3>روند پیری پوست</h3>
             <p>بررسی علائم پیری و<br>استعداد به پیری پوست</p>
 
-            <?php if ($user['is_paid'] == 1) { ?>
+            <?php if ((int)$user['is_paid'] > 0) { ?>
 
-              <a href="wrinkledform.php" class="btn btn-custom">
-                شروع پرسشنامه
-              </a>
+				<a href="wrinkledform.php" class="btn btn-custom">
+			    شروع پرسشنامه
+				</a>
 
-            <?php } else { ?>
+			<?php } else { ?>
+				<a href="payment.php" class="btn btn-custom">
+  				  پس از فعال‌سازی در دسترس خواهد بود.
+				</a>
 
-              <a href="payment.php" class="btn btn-custom">
-                پس از فعال سازی در دسترس خواهد بود.
-              </a>
+			<?php } ?>
 
-            <?php } ?>
 
           </article>
           <article>
@@ -219,22 +245,23 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
                 <?= file_get_contents('assets/icons/brightness-alt-low.svg'); ?>
               </span>
             </div>
-            <h3>لک و زردیگان</h3>
+            <h3>لک و تیرگی</h3>
             <p>بررسی آسیب ناشی از نور<br>و تیرگی پوست</p>
 
-            <?php if ($user['is_paid'] == 1) { ?>
 
-              <a href="pigmentedform.php" class="btn btn-custom">
-                شروع پرسشنامه
-              </a>
+			<?php if ((int)$user['is_paid'] > 0) { ?>
 
-            <?php } else { ?>
+				<a href="pigmentedform.php" class="btn btn-custom">
+			    شروع پرسشنامه
+				</a>
 
-              <a href="payment.php" class="btn btn-custom">
-                پس از فعال سازی در دسترس خواهد بود.
-              </a>
+			<?php } else { ?>
+				<a href="payment.php" class="btn btn-custom">
+  				  پس از فعال‌سازی در دسترس خواهد بود.
+				</a>
 
-            <?php } ?>
+			<?php } ?>
+
           </article>
           <article>
             <div class="round green">
@@ -244,19 +271,20 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
             </div>
             <h3>حساسیت پوست</h3>
             <p>بررسی علائم حساسیت و<br>واکنش‌پذیری پوست</p>
-            <?php if ($user['is_paid'] == 1) { ?>
 
-              <a href="sensitiveform.php" class="btn btn-custom">
-                شروع پرسشنامه
-              </a>
+			<?php if ((int)$user['is_paid'] > 0) { ?>
 
-            <?php } else { ?>
+				<a href="sensitiveform.php" class="btn btn-custom">
+			    شروع پرسشنامه
+				</a>
 
-              <a href="payment.php" class="btn btn-custom">
-                پس از فعال سازی در دسترس خواهد بود.
-              </a>
+			<?php } else { ?>
+				<a href="payment.php" class="btn btn-custom">
+  				  پس از فعال‌سازی در دسترس خواهد بود.
+				</a>
 
-            <?php } ?>
+			<?php } ?>
+
           </article>
           <article>
             <div class="round blue">
@@ -266,19 +294,21 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
             </div>
             <h3>چربی یا خشکی پوست</h3>
             <p>بررسی میزان چربی و<br>تعادل رطوبت پوست</p>
-            <?php if ($user['is_paid'] == 1) { ?>
 
-              <a href="Oilyform.php" class="btn btn-custom">
-                شروع پرسشنامه
-              </a>
 
-            <?php } else { ?>
+			<?php if ((int)$user['is_paid'] > 0) { ?>
 
-              <a href="payment.php" class="btn btn-custom">
-                پس از فعال سازی در دسترس خواهد بود.
-              </a>
+				<a href="Oilyform.php" class="btn btn-custom">
+			    شروع پرسشنامه
+				</a>
 
-            <?php } ?>
+			<?php } else { ?>
+				<a href="payment.php" class="btn btn-custom">
+  				  پس از فعال‌سازی در دسترس خواهد بود.
+				</a>
+
+			<?php } ?>
+
           </article>
         </div>
       </section>
@@ -303,12 +333,20 @@ $wrinkledform = getForm($pdo, "wrinkledform", $user_id);
 
           <small>پس از تکمیل هر چهار ارزیابی، تحلیل نتایج و نسخه شخصی‌سازی شده آماده خواهد شد.</small>
         </div>
+		<div class="text-center mt-5 mb-5">
+
+			<a href="payment.php" class="btn btn-success btn-lg">
+   				 خرید و انجام آزمون جدید
+			</a>
+
+		</div>
+
       </section>
 
       <section class="doctor-card">
         <div class="doctor-photo"><img src="./assets/images/landing1.jpg" alt="دکتر شهره دلاور"></div>
         <div><small>تحت نظر</small>
-          <h3>دکتر شهره دادور</h3>
+          <h3>دکتر شهره دلاور</h3>
         </div>
         <p>پوست هر فرد ویژگی‌های خاص خود را دارد؛ به همین دلیل، یک روتین مراقبتی باید متناسب با شرایط پوستی شما طراحی شود. در پوستتو بشناس تلاش می‌کنیم با تکیه بر جدیدترین پژوهش‌ها و استانداردهای روز دنیا برای ارائه تحلیلی دقیق و روتین اختصاصی استفاده می‌کنیم.</p>
       </section>

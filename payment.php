@@ -1,16 +1,10 @@
-<?php
-require 'config.php';
-is_login();
-
-$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
-$stmt->execute([$_SESSION['user_id']]);
-
-$user = $stmt->fetch();
-
-if ($user['is_paid'] == 1) {
-    header("Location: Oilyform.php");
-    exit;
-}
+<?php require 'config.php';
+ is_login();
+	$stmt = $pdo->prepare(" SELECT is_paid FROM users WHERE id = ? ");
+ 	$stmt->execute([$_SESSION['user_id']]);
+	$user = $stmt->fetch(PDO::FETCH_ASSOC); 
+	if (!$user) { header("Location: login.php"); 
+	exit; }
 ?>
 
 <!DOCTYPE html>

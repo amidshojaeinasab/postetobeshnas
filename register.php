@@ -69,14 +69,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>صفحه ثبت نام</title>
 </head>
 
-<body class="bg-primary">
+<body class="login-body">
 
     <div class="container min-vh-100 d-flex justify-content-center align-items-center">
 
         <div class="card shadow-lg border-0 rounded-4 w-100" style="max-width: 450px;">
 
            <!-- Header -->
-<div class="card-header text-center text-white bg-dark bg-gradient py-4 rounded-top-4">
+<div class="card-header text-center text-white bg-header py-4 rounded-top-4">
     <h2 class="fw-bold mb-1">ثبت نام</h2>
     <p class="mb-0 small">اطلاعات خود را وارد کنید</p>
 </div>
@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <!-- Submit -->
                  
                 <button type="submit"
-                    class="btn btn-primary btn-lg w-100 rounded-3 fw-bold">
+                    class="btn submit-btn btn-lg w-100 rounded-3 fw-bold">
 
                     <i class="bi bi-check-circle ms-1"></i>
                     ثبت نام

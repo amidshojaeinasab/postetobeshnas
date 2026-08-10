@@ -1,4 +1,5 @@
 <?php
+
 require 'config.php';
 is_login();
 
@@ -17,7 +18,9 @@ $data = [
 
 $jsonData = json_encode($data);
 
-$ch = curl_init('https://payment.zarinpal.com/pg/v4/payment/request.json');
+$ch = curl_init(
+    'https://payment.zarinpal.com/pg/v4/payment/request.json'
+);
 
 curl_setopt($ch, CURLOPT_USERAGENT, 'ZarinPal Rest Api v4');
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
@@ -34,25 +37,45 @@ curl_close($ch);
 
 $result = json_decode($result, true);
 
-// اگر درخواست موفق بود
-if (isset($result['data']) && $result['data']['code'] == 100) {
+
+// اگر درخواست پرداخت موفق بود
+if (
+    isset($result['data']) &&
+    isset($result['data']['code']) &&
+    $result['data']['code'] == 100
+) {
 
     $authority = $result['data']['authority'];
 
-    // ذخیره در دیتابیس
+    // ثبت تراکنش جدید در دیتابیس
     $stmt = $pdo->prepare("
-        INSERT INTO payments (user_id, authority, amount, status)
+        INSERT INTO payments (
+            user_id,
+            authority,
+            amount,
+            status
+        )
         VALUES (?, ?, ?, 'pending')
     ");
 
-    $stmt->execute([$user_id, $authority, $amount]);
+    $stmt->execute([
+        $user_id,
+        $authority,
+        $amount
+    ]);
 
-    // انتقال به صفحه پرداخت زرین‌پال
-    header('Location: https://payment.zarinpal.com/pg/StartPay/' . $authority);
+
+    // انتقال کاربر به درگاه زرین‌پال
+    header(
+        'Location: https://payment.zarinpal.com/pg/StartPay/' . $authority
+    );
+
     exit;
+
 } else {
 
     echo '<h2>خطا در اتصال به زرین‌پال</h2>';
+
     echo '<pre>';
     print_r($result);
     echo '</pre>';

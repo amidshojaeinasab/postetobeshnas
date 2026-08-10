@@ -1,69 +1,184 @@
 <?php
+
 require 'config.php';
+
 $medicines = require 'medicines.php';
+
 is_login();
 
-$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
-$stmt->execute([$_SESSION['user_id']]);
-
-$user = $stmt->fetch();
-
-if ($user['is_paid'] != 1) {
-    header("Location: payment.php");
-    exit;
-}
 
 $user_id = $_SESSION['user_id'];
 
-function getForm($pdo, $table, $user_id)
+
+// =====================================================
+// دریافت تعداد خریدهای موفق کاربر
+// =====================================================
+
+$stmt = $pdo->prepare("
+    SELECT is_paid
+    FROM users
+    WHERE id = ?
+");
+
+$stmt->execute([$user_id]);
+
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+if (!$user) {
+
+    header("Location: login.php");
+    exit;
+
+}
+
+
+$purchase_count = (int) $user['is_paid'];
+
+
+// اگر هیچ خریدی انجام نداده است
+
+if ($purchase_count <= 0) {
+
+    header("Location: payment.php");
+    exit;
+
+}
+
+
+// =====================================================
+// دریافت فرم مربوط به دوره فعلی
+// =====================================================
+//
+// مثال:
+//
+// is_paid = 1
+// → اولین رکورد فرم
+//
+// is_paid = 2
+// → دومین رکورد فرم
+//
+// is_paid = 3
+// → سومین رکورد فرم
+//
+// =====================================================
+
+function getForm($pdo, $table, $user_id, $purchase_count)
 {
-    $stmt = $pdo->prepare("
+
+    $allowed_tables = [
+        'oilyform',
+        'sensitiveform',
+        'pigmentedform',
+        'wrinkledform'
+    ];
+
+
+    if (!in_array($table, $allowed_tables, true)) {
+        return false;
+    }
+
+
+    $offset = $purchase_count - 1;
+
+
+    $sql = "
         SELECT res, type
         FROM `$table`
         WHERE user_id = ?
-        ORDER BY id DESC
-        LIMIT 1
-    ");
+        ORDER BY id ASC
+        LIMIT 1 OFFSET $offset
+    ";
+
+
+    $stmt = $pdo->prepare($sql);
 
     $stmt->execute([$user_id]);
+
 
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-$oilyform      = getForm($pdo, "oilyform", $user_id);
-$sensitiveform = getForm($pdo, "sensitiveform", $user_id);
-$pigmentedform = getForm($pdo, "pigmentedform", $user_id);
-$wrinkledform  = getForm($pdo, "wrinkledform", $user_id);
 
-if (!$oilyform || !$sensitiveform || !$pigmentedform || !$wrinkledform) {
+// =====================================================
+// دریافت فرم‌های مربوط به دوره فعلی
+// =====================================================
+
+$oilyform = getForm(
+    $pdo,
+    "oilyform",
+    $user_id,
+    $purchase_count
+);
+
+
+$sensitiveform = getForm(
+    $pdo,
+    "sensitiveform",
+    $user_id,
+    $purchase_count
+);
+
+
+$pigmentedform = getForm(
+    $pdo,
+    "pigmentedform",
+    $user_id,
+    $purchase_count
+);
+
+
+$wrinkledform = getForm(
+    $pdo,
+    "wrinkledform",
+    $user_id,
+    $purchase_count
+);
+
+
+// =====================================================
+// بررسی کامل بودن ۴ فرم در دوره فعلی
+// =====================================================
+
+if (
+    !$oilyform ||
+    !$sensitiveform ||
+    !$pigmentedform ||
+    !$wrinkledform
+) {
 ?>
-    <!DOCTYPE html>
-    <html lang="fa" dir="rtl">
 
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
-    </head>
+<div class="container min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="card shadow border-0 rounded-4 p-4 text-center" style="max-width:500px;">
 
-    <body class="bg-light">
+```
+    <h3 class="text-warning mb-3">
+        ⚠️ پرسشنامه‌های دوره فعلی کامل نشده‌اند
+    </h3>
 
-        <div class="container min-vh-100 d-flex justify-content-center align-items-center">
-            <div class="card shadow border-0 rounded-4 p-4 text-center" style="max-width:500px;">
-                <h3 class="text-warning mb-3">⚠️ پرسشنامه‌ها کامل نشده‌اند</h3>
-                <p>ابتدا باید تمام پرسشنامه‌ها را تکمیل کنید.</p>
-                <a href="dashboard.php" class="btn btn-primary">
-                    بازگشت به داشبورد
-                </a>
-            </div>
-        </div>
+    <p>
+        ابتدا باید هر ۴ پرسشنامه مربوط به این خرید را تکمیل کنید.
+    </p>
 
-    </body>
+    <a href="dashboard.php" class="btn btn-primary">
+        بازگشت به داشبورد
+    </a>
 
-    </html>
+</div>
+```
+
+</div>
+
 <?php
+
     exit;
+
 }
 
+
+// =====================================================
+// ساخت کد پوست از فرم‌های همین دوره
+// =====================================================
 
 $skinCode =
     $oilyform['type'] .
@@ -72,8 +187,16 @@ $skinCode =
     $wrinkledform['type'];
 
 
+// =====================================================
+// دریافت اطلاعات نوع پوست
+// =====================================================
+
 $stmt = $pdo->prepare("
-    SELECT title, short_description, full_description, code
+    SELECT
+        title,
+        short_description,
+        full_description,
+        code
     FROM skin_types
     WHERE code = ?
     LIMIT 1
@@ -83,16 +206,30 @@ $stmt->execute([$skinCode]);
 
 $prescription = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
 if (!$prescription) {
+
     die("نسخه‌ای برای این نوع پوست پیدا نشد.");
+
 }
 
+
+// =====================================================
+// دریافت نسخه دارویی
+// =====================================================
+
 if (isset($medicines[$skinCode])) {
+
     $medicine = $medicines[$skinCode];
+
 } else {
+
     die('نسخه‌ای برای این نوع پوست تعریف نشده است.');
+
 }
+
 ?>
+
 
 <!doctype html>
 <html lang="fa" dir="rtl">

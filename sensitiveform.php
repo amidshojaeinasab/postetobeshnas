@@ -1,28 +1,65 @@
 <?php
+
 require_once 'config.php';
 is_login();
+
 $user_id = $_SESSION['user_id'];
 
-$filled = false;
 
-$stmt = $pdo->prepare("SELECT id FROM sensitiveform WHERE user_id = ?");
-$stmt->execute([$_SESSION['user_id']]);
+// =====================================================
+// بررسی تعداد پرداخت‌های کاربر
+// =====================================================
 
-if ($stmt->fetch()) {
-    $filled = true;
+$stmt = $pdo->prepare("
+    SELECT is_paid
+    FROM users
+    WHERE id = ?
+");
+
+$stmt->execute([$user_id]);
+
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    header("Location: login.php");
+    exit;
 }
 
-$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
-$stmt->execute([$_SESSION['user_id']]);
+$purchase_count = (int) $user['is_paid'];
 
-$user = $stmt->fetch();
 
-if ($user['is_paid'] != 1) {
+// اگر کاربر هیچ پرداختی ندارد
+if ($purchase_count <= 0) {
     header("Location: payment.php");
     exit;
 }
 
-if (isset($_POST["submit"])) {
+
+// =====================================================
+// بررسی تعداد دفعات تکمیل sensitiveform
+// =====================================================
+
+$stmt = $pdo->prepare("
+    SELECT COUNT(*)
+    FROM sensitiveform
+    WHERE user_id = ?
+");
+
+$stmt->execute([$user_id]);
+
+$form_count = (int) $stmt->fetchColumn();
+
+
+// اگر تعداد فرم‌های تکمیل‌شده به تعداد خریدها رسیده باشد
+$filled = ($form_count >= $purchase_count);
+
+
+// =====================================================
+// ثبت فرم
+// =====================================================
+
+if (isset($_POST["submit"]) && !$filled) {
+
     $q1 = $_POST["q1"];
     $q2 = $_POST["q2"];
     $q3 = $_POST["q3"];
@@ -43,34 +80,91 @@ if (isset($_POST["submit"])) {
     $q18 = $_POST["q18"];
     $q19 = $_POST["q19"];
 
+
+    // =================================================
+    // محاسبه امتیاز
+    // =================================================
+
     $res = 0;
 
     for ($i = 1; $i <= 19; $i++) {
 
-        $value = (int)$_POST["q$i"];
+        $value = (int) $_POST["q$i"];
 
+        // سؤال 19 شامل قانون امتیاز 2.5 نیست
         if ($i != 19 && $value == 5) {
+
             $res += 2.5;
+
         } else {
+
             $res += $value;
         }
     }
 
+
+    // =================================================
+    // توضیح نتیجه
+    // =================================================
+
     $description = "";
+
     if ($res >= 34 && $res <= 72) {
+
         $description = "پوست بسیار حساس دارید.";
+
     } elseif ($res >= 30 && $res <= 33) {
+
         $description = "پوست کمی حساس دارید.";
+
     } elseif ($res >= 25 && $res <= 29) {
+
         $description = "پوست کمی مقاوم دارید.";
+
     } elseif ($res >= 17 && $res <= 24) {
+
         $description = "پوست بسیار مقاوم دارید.";
     }
 
 
+    // =================================================
+    // تعیین نوع پوست
+    // =================================================
+
     $type = ($res >= 30) ? "S" : "R";
 
-    $insert = $pdo->prepare("INSERT INTO sensitiveform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, q14=?, q15=?, q16=?, q17=?, q18=?, q19=?, res=?, type=?, user_id=?");
+
+    // =================================================
+    // ذخیره نتیجه در دیتابیس
+    // =================================================
+
+    $insert = $pdo->prepare("
+        INSERT INTO sensitiveform
+        SET
+            q1 = ?,
+            q2 = ?,
+            q3 = ?,
+            q4 = ?,
+            q5 = ?,
+            q6 = ?,
+            q7 = ?,
+            q8 = ?,
+            q9 = ?,
+            q10 = ?,
+            q11 = ?,
+            q12 = ?,
+            q13 = ?,
+            q14 = ?,
+            q15 = ?,
+            q16 = ?,
+            q17 = ?,
+            q18 = ?,
+            q19 = ?,
+            res = ?,
+            type = ?,
+            user_id = ?
+    ");
+
     $insert->bindValue(1, $q1);
     $insert->bindValue(2, $q2);
     $insert->bindValue(3, $q3);
@@ -92,13 +186,20 @@ if (isset($_POST["submit"])) {
     $insert->bindValue(19, $q19);
     $insert->bindValue(20, $res);
     $insert->bindValue(21, $type);
-    $insert->bindValue(22, $_SESSION["user_id"]);
+    $insert->bindValue(22, $user_id);
+
     $insert->execute();
 
-    header("Location: resultsensitiveform.php");
-};
-?>
 
+    // =================================================
+    // انتقال به صفحه نتیجه
+    // =================================================
+
+    header("Location: resultsensitiveform.php");
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 
@@ -114,15 +215,22 @@ if (isset($_POST["submit"])) {
 
 <?php if ($filled): ?>
 
-<div class="alert-box">
-    <h3>⚠️ این پرسشنامه قبلاً تکمیل شده است.</h3>
-    <p>هر کاربر فقط یک بار مجاز به تکمیل این پرسشنامه است.</p>
-    <a href='dashboard.php'>
-                بازگشت به پنل
-            </a>
-</div>
+    <div class="alert-box">
+
+        <h3>⚠️ این پرسشنامه قبلاً تکمیل شده است.</h3>
+
+        <p>
+            این پرسشنامه برای خرید فعلی شما قبلاً تکمیل شده است.
+        </p>
+
+        <a href="dashboard.php">
+            بازگشت به پنل
+        </a>
+
+    </div>
 
 <?php else: ?>
+
 
 <body>
 

@@ -1,80 +1,41 @@
 <?php
 
 require 'config.php';
-is_login();
 
-function showMessage($title, $message, $type = "danger", $button = null)
+
+// ======================================================
+// تابع نمایش پیام
+// ======================================================
+
+function showMessage($title, $message, $type = 'danger', $buttonText = 'بازگشت')
 {
-?>
-<!doctype html>
-<html lang="fa" dir="rtl">
+    global $button;
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    $button = '';
 
-    <title><?= $title ?></title>
+    if ($buttonText) {
+        $button = '
+            <a href="dashboard.php" class="btn btn-primary">
+                ' . htmlspecialchars($buttonText) . '
+            </a>
+        ';
+    }
 
-    <link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
-<link rel="stylesheet" href="assets/style.css">
-
-
-</head>
-
-<body class="body-callback">
-
-<div class="container">
-
-    <div class="row justify-content-center">
-
-        <div class="col-lg-6">
-
-            <div class="card-callback p-5 text-center">
-
-                <?php if($type=="success"){ ?>
-
-                    <div class="icon-callback text-success mb-3">
-                        ✔
-                    </div>
-
-                <?php }else{ ?>
-
-                    <div class="icon-callback text-danger mb-3">
-                        ✖
-                    </div>
-
-                <?php } ?>
-
-                <h2 class="mb-3"><?= $title ?></h2>
-
-                <p class="text-muted mb-4"><?= $message ?></p>
-
-                <?php
-                if($button){
-                    echo $button;
-                }
-                ?>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-</body>
-</html>
-<?php
-exit;
+    // نمایش صفحه پیام
+    include 'callback-view.php';
+    exit;
 }
 
 
+// ======================================================
+// بررسی اطلاعات برگشتی از زرین پال
+// ======================================================
 
 if (!isset($_GET['Authority']) || !isset($_GET['Status'])) {
+
     showMessage(
-        "درخواست نامعتبر",
-        "اطلاعات تراکنش ارسال نشده است."
+        'درخواست نامعتبر',
+        'اطلاعات تراکنش ارسال نشده است.'
     );
 }
 
@@ -82,170 +43,256 @@ if (!isset($_GET['Authority']) || !isset($_GET['Status'])) {
 $authority = $_GET['Authority'];
 $status = $_GET['Status'];
 
-if ($status != 'OK') {
+
+// ======================================================
+// بررسی لغو شدن پرداخت
+// ======================================================
+
+if ($status !== 'OK') {
+
     showMessage(
-        "پرداخت لغو شد",
-        "پرداخت توسط کاربر لغو شده است.",
-        "danger",
-        '<a href="payment.php" class="btn btn-primary">بازگشت</a>'
+        'پرداخت لغو شد',
+        'پرداخت توسط کاربر لغو شده است.',
+        'danger',
+        'بازگشت'
     );
 }
 
 
+// ======================================================
+// پیدا کردن تراکنش در دیتابیس
+// ======================================================
 
-$stmt = $pdo->prepare("SELECT * FROM payments WHERE authority=? LIMIT 1");
+$stmt = $pdo->prepare("
+    SELECT *
+    FROM payments
+    WHERE authority = ?
+    LIMIT 1
+");
+
 $stmt->execute([$authority]);
 
 $payment = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
+// اگر تراکنش پیدا نشد
 if (!$payment) {
+
     showMessage(
-        "تراکنش پیدا نشد",
-        "اطلاعات این تراکنش در سیستم وجود ندارد."
+        'تراکنش پیدا نشد',
+        'اطلاعات این تراکنش در سیستم وجود ندارد.'
     );
 }
 
 
-if ($payment['status'] == 'success') {
-    header("Location: Oilyform.php");
+// ======================================================
+// جلوگیری از ثبت دوباره یک پرداخت
+// ======================================================
+
+if ($payment['status'] === 'success') {
+
+    header('Location: Oilyform.php');
     exit;
 }
 
 
+// ======================================================
+// ارسال درخواست Verify به زرین پال
+// ======================================================
 
 $data = [
-    "merchant_id"=>$merchant_id,
-    "amount"=>$payment['amount'],
-    "authority"=>$authority
+    'merchant_id' => $merchant_id,
+    'amount'      => $payment['amount'],
+    'authority'   => $authority
 ];
 
-$jsonData=json_encode($data);
+$jsonData = json_encode($data);
 
 
-$ch=curl_init("https://payment.zarinpal.com/pg/v4/payment/verify.json");
+$ch = curl_init(
+    'https://payment.zarinpal.com/pg/v4/payment/verify.json'
+);
 
-curl_setopt($ch,CURLOPT_USERAGENT,'ZarinPal Rest Api v4');
-curl_setopt($ch,CURLOPT_CUSTOMREQUEST,'POST');
-curl_setopt($ch,CURLOPT_POSTFIELDS,$jsonData);
-curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-curl_setopt($ch,CURLOPT_HTTPHEADER,[
+
+curl_setopt($ch, CURLOPT_USERAGENT, 'ZarinPal Rest Api v4');
+
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
     'Content-Type: application/json',
-    'Content-Length: '.strlen($jsonData)
+    'Content-Length: ' . strlen($jsonData)
 ]);
 
-$result=curl_exec($ch);
+
+$result = curl_exec($ch);
 
 curl_close($ch);
 
-$result=json_decode($result,true);
+
+$result = json_decode($result, true);
 
 
+// ======================================================
+// بررسی نتیجه Verify
+// ======================================================
 
-if(isset($result['data']) && ($result['data']['code']==100 || $result['data']['code']==101)){
+if (
+    isset($result['data']) &&
+    isset($result['data']['code']) &&
+    (
+        $result['data']['code'] == 100 ||
+        $result['data']['code'] == 101
+    )
+) {
 
-    $ref_id=$result['data']['ref_id'];
+    $ref_id = $result['data']['ref_id'];
 
-    $stmt=$pdo->prepare("
+
+    try {
+
+        // شروع تراکنش دیتابیس
+        $pdo->beginTransaction();
+
+
+        // ==================================================
+        // قفل کردن رکورد پرداخت
+        // ==================================================
+
+        $stmt = $pdo->prepare("
+            SELECT *
+            FROM payments
+            WHERE authority = ?
+            LIMIT 1
+            FOR UPDATE
+        ");
+
+        $stmt->execute([$authority]);
+
+        $payment = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        // اگر قبلاً ثبت شده باشد
+        if ($payment['status'] === 'success') {
+
+            $pdo->commit();
+
+            header('Location: Oilyform.php');
+            exit;
+        }
+
+
+        // ==================================================
+        // ثبت پرداخت موفق
+        // ==================================================
+
+        $stmt = $pdo->prepare("
+            UPDATE payments
+            SET
+                status = 'success',
+                ref_id = ?,
+                paid_at = NOW()
+            WHERE authority = ?
+        ");
+
+        $stmt->execute([
+            $ref_id,
+            $authority
+        ]);
+
+
+        // ==================================================
+        // افزایش تعداد پرداخت‌های کاربر
+        // ==================================================
+
+        $stmt = $pdo->prepare("
+            UPDATE users
+            SET is_paid = is_paid + 1
+            WHERE id = ?
+        ");
+
+        $stmt->execute([
+            $payment['user_id']
+        ]);
+
+
+        // نهایی کردن تراکنش
+        $pdo->commit();
+
+
+        // ==================================================
+        // انتقال کاربر به اولین پرسشنامه
+        // ==================================================
+
+        header('Location: Oilyform.php');
+        exit;
+		
+
+
+    } catch (Exception $e) {
+
+        // اگر خطایی رخ داد
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+
+
+        showMessage(
+            'خطا در ثبت پرداخت',
+            'پرداخت تأیید شد اما ثبت اطلاعات آن در سیستم با مشکل مواجه شد.',
+            'danger',
+            'بازگشت'
+        );
+    }
+
+
+} else {
+
+
+    // ==================================================
+    // پرداخت توسط زرین پال تأیید نشده است
+    // ==================================================
+
+    $errorMessage = 'پرداخت تأیید نشد.';
+
+
+    if (
+        isset($result['errors']) &&
+        isset($result['errors']['message'])
+    ) {
+
+        $errorMessage = $result['errors']['message'];
+    }
+
+
+    // ثبت تراکنش ناموفق
+    $stmt = $pdo->prepare("
         UPDATE payments
-        SET
-        status='success',
-        ref_id=?,
-        paid_at=NOW()
-        WHERE authority=?
-    ");
-
-    $stmt->execute([$ref_id,$authority]);
-
-
-
-    $stmt=$pdo->prepare("
-        UPDATE users
-        SET is_paid=1
-        WHERE id=?
-    ");
-
-    $stmt->execute([$payment['user_id']]);
-
-?>
-<!doctype html>
-<html lang="fa" dir="rtl">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta http-equiv="refresh" content="3;url=Oilyform.php">
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<link rel="stylesheet" href="assets/css/bootstrap.rtl.min.css">
-<link rel="stylesheet" href="assets/style.css">
-
-</head>
-
-<body class="body-callback">
-
-<div class="container">
-
-<div class="row justify-content-center">
-
-<div class="col-lg-6">
-
-<div class="card-callback p-5 text-center">
-
-<div class="display-1 text-success mb-3">
-✔
-</div>
-
-<h2 class="text-success mb-3">
-پرداخت با موفقیت انجام شد
-</h2>
-
-<p class="text-muted">
-کد رهگیری پرداخت
-</p>
-
-<h3 class="fw-bold mb-4">
-<?= $ref_id ?>
-</h3>
-
-<div class="spinner-border text-success mb-3"></div>
-
-<p class="text-muted">
-تا چند ثانیه دیگر به صفحه پرسشنامه منتقل می‌شوید...
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</body>
-
-</html>
-
-<?php
-
-exit;
-
-}else{
-
-    $stmt=$pdo->prepare("
-        UPDATE payments
-        SET status='failed'
-        WHERE authority=?
+        SET status = 'failed'
+        WHERE authority = ?
     ");
 
     $stmt->execute([$authority]);
 
-    showMessage(
-        "پرداخت ناموفق",
-        "پرداخت تأیید نشد. در صورت کسر وجه، مبلغ معمولاً طی چند ساعت تا حداکثر ۷۲ ساعت به حساب شما بازمی‌گردد.",
-        "danger",
-        '<a href="payment.php" class="btn btn-danger">تلاش مجدد</a>'
-    );
 
+    function showMessage($title, $message, $type = 'danger', $buttonText = 'بازگشت')
+{
+    $button = '';
+
+    if ($buttonText) {
+        $button = '
+            <a href="dashboard.php" class="btn btn-primary">
+                ' . htmlspecialchars($buttonText) . '
+            </a>
+        ';
+    }
+
+    include 'callback-view.php';
+    exit;
 }
+}
+
+?>

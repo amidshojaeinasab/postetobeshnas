@@ -1,29 +1,65 @@
 <?php
+
 require_once 'config.php';
 is_login();
+
 $user_id = $_SESSION['user_id'];
 
-$filled = false;
 
-$stmt = $pdo->prepare("SELECT id FROM pigmentedform WHERE user_id = ?");
-$stmt->execute([$_SESSION['user_id']]);
+// =====================================================
+// بررسی تعداد پرداخت‌های کاربر
+// =====================================================
 
-if ($stmt->fetch()) {
-    $filled = true;
+$stmt = $pdo->prepare("
+    SELECT is_paid
+    FROM users
+    WHERE id = ?
+");
+
+$stmt->execute([$user_id]);
+
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    header("Location: login.php");
+    exit;
 }
 
-$stmt = $pdo->prepare("SELECT is_paid FROM users WHERE id=?");
-$stmt->execute([$_SESSION['user_id']]);
+$purchase_count = (int) $user['is_paid'];
 
-$user = $stmt->fetch();
 
-if ($user['is_paid'] != 1) {
+// اگر کاربر هیچ پرداختی ندارد
+if ($purchase_count <= 0) {
     header("Location: payment.php");
     exit;
 }
 
 
-if (isset($_POST["submit"])) {
+// =====================================================
+// بررسی تعداد دفعات تکمیل pigmentedform
+// =====================================================
+
+$stmt = $pdo->prepare("
+    SELECT COUNT(*)
+    FROM pigmentedform
+    WHERE user_id = ?
+");
+
+$stmt->execute([$user_id]);
+
+$form_count = (int) $stmt->fetchColumn();
+
+
+// اگر تعداد فرم‌های تکمیل‌شده به تعداد خریدها رسیده باشد
+$filled = ($form_count >= $purchase_count);
+
+
+// =====================================================
+// ثبت فرم
+// =====================================================
+
+if (isset($_POST["submit"]) && !$filled) {
+
     $q1 = $_POST["q1"];
     $q2 = $_POST["q2"];
     $q3 = $_POST["q3"];
@@ -40,31 +76,77 @@ if (isset($_POST["submit"])) {
     $q14 = $_POST["q14"];
 
 
+    // =================================================
+    // محاسبه امتیاز
+    // =================================================
+
     $res = 0;
+
     for ($i = 1; $i <= 14; $i++) {
 
-        $value = (int)$_POST["q$i"];
+        $value = (int) $_POST["q$i"];
 
+        // سؤال 14 شامل قانون امتیاز 2.5 نیست
         if ($i != 14 && $value == 5) {
+
             $res += 2.5;
+
         } else {
+
             $res += $value;
         }
     }
 
+
+    // =================================================
+    // توضیح نتیجه
+    // =================================================
+
     $description = "";
+
     if ($res >= 13 && $res <= 28) {
+
         $description = "نوع پوست شما رنگدانه دار است.";
+
     } elseif ($res >= 29 && $res <= 52) {
+
         $description = "نوع پوست شما غیر رنگدانه دار است.";
     }
 
 
-
+    // =================================================
+    // تعیین نوع پوست
+    // =================================================
 
     $type = ($res >= 29) ? "P" : "N";
 
-    $insert = $pdo->prepare("INSERT INTO pigmentedform set q1=?, q2=?, q3=?, q4=?, q5=?, q6=?, q7=?, q8=?, q9=?, q10=?, q11=?, q12=?, q13=?, q14=?, res=?, type=?, user_id=?");
+
+    // =================================================
+    // ذخیره نتیجه در دیتابیس
+    // =================================================
+
+    $insert = $pdo->prepare("
+        INSERT INTO pigmentedform
+        SET
+            q1 = ?,
+            q2 = ?,
+            q3 = ?,
+            q4 = ?,
+            q5 = ?,
+            q6 = ?,
+            q7 = ?,
+            q8 = ?,
+            q9 = ?,
+            q10 = ?,
+            q11 = ?,
+            q12 = ?,
+            q13 = ?,
+            q14 = ?,
+            res = ?,
+            type = ?,
+            user_id = ?
+    ");
+
     $insert->bindValue(1, $q1);
     $insert->bindValue(2, $q2);
     $insert->bindValue(3, $q3);
@@ -81,11 +163,19 @@ if (isset($_POST["submit"])) {
     $insert->bindValue(14, $q14);
     $insert->bindValue(15, $res);
     $insert->bindValue(16, $type);
-    $insert->bindValue(17, $_SESSION["user_id"]);
+    $insert->bindValue(17, $user_id);
+
     $insert->execute();
 
+
+    // =================================================
+    // انتقال به صفحه نتیجه
+    // =================================================
+
     header("Location: resultpigmentedform.php");
-};
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -103,13 +193,19 @@ if (isset($_POST["submit"])) {
 
 <?php if ($filled): ?>
 
-<div class="alert-box">
-    <h3>⚠️ این پرسشنامه قبلاً تکمیل شده است.</h3>
-    <p>هر کاربر فقط یک بار مجاز به تکمیل این پرسشنامه است.</p>
-    <a href='dashboard.php'>
-                بازگشت به پنل
-            </a>
-</div>
+    <div class="alert-box">
+
+        <h3>⚠️ این پرسشنامه قبلاً تکمیل شده است.</h3>
+
+        <p>
+            این پرسشنامه برای خرید فعلی شما قبلاً تکمیل شده است.
+        </p>
+
+        <a href="dashboard.php">
+            بازگشت به پنل
+        </a>
+
+    </div>
 
 <?php else: ?>
 
